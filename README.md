@@ -23,4 +23,4 @@ Documentation in markdown format can be found [here](MdDocs/index.md)
     ```
     From FanScript.DocumentationGenerator\bin\Release\net8.0 to the top directory
 - Run FanScript.DocumentationGenerator.exe
-(PRs with modified FanScript.dll will be rejected)
+- PRs with modified FanScript.dll will be rejected
