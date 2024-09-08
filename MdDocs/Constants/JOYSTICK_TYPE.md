@@ -7,8 +7,8 @@ JOYSTICK_TYPE_SCREEN
 #### JOYSTICK_TYPE_XZ
 Value: 0
 
-The output value is in world space.
+Outputs XZ vector values perpendicular to camera direction (While assuming that the screen is always facing straight to a certain axis).
 #### JOYSTICK_TYPE_SCREEN
 Value: 1
 
-The output value is in screen space.
+Outputs XY vector values regardless of where the camera is facing.

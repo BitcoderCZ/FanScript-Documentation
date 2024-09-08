@@ -3,5 +3,5 @@
 @info:
 @names:JOYSTICK_TYPE_XZ;;JOYSTICK_TYPE_SCREEN
 @values:0;;1
-@infos:The output value is in world space.;;The output value is in screen space.
+@infos:Outputs XZ vector values perpendicular to camera direction \(While assuming that the screen is always facing straight to a certain axis\).;;Outputs XY vector values regardless of where the camera is facing.
 $template constant
