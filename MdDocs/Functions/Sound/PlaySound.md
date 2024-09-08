@@ -31,10 +31,10 @@ If the sound should loop (Must be constant).
 #### `SOUND`
 Type: float
 
-Which sound to play, must be one of [SOUND](Constants/SOUND.md).
+Which sound to play, must be one of [SOUND](/MdDocs/Constants/SOUND.md).
 
 ## Related
 
- - [stopSound(float)](Functions/Sound/StopSound.md)
- - [setVolumePitch(float,float,float)](Functions/Sound/SetVolumePitch.md)
+ - [stopSound(float)](/MdDocs/Functions/Sound/StopSound.md)
+ - [setVolumePitch(float,float,float)](/MdDocs/Functions/Sound/SetVolumePitch.md)
 

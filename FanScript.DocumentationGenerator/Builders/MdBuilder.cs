@@ -14,6 +14,8 @@ namespace FanScript.DocumentationGenerator.Builders
 {
     public sealed class MdBuilder : Builder
     {
+        private const string linkPrefix = "/MdDocs/";
+
         private StringBuilder builder = new();
 
         private readonly Dictionary<string, string> args = new();
@@ -74,7 +76,7 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.Append($"[{token.Value}]({StringUtils.ToHeaderRef(token.Value)})");
         }
         protected override void buildConstantLink(ConstantLinkToken token)
-            => builder.Append($"[{token.Value}](Constants/{token.Value}.md)");
+            => builder.Append($"[{token.Value}]({linkPrefix}Constants/{token.Value}.md)");
         protected override void buildFunctionLink(FunctionLinkToken token)
         {
             string[] split = token.Value.Split(',');
@@ -108,7 +110,7 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(string.Join(',', func.Parameters.Select(param => param.Type.ToString())));
                     builder.Append(')');
 
-                    builder.Append("](Functions/");
+                    builder.Append($"]({linkPrefix}Functions/");
                     if (!string.IsNullOrEmpty(category))
                     {
                         builder.Append(category);

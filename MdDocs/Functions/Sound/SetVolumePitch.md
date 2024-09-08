@@ -11,7 +11,7 @@ void setVolumePitch(float channel, float volume, float pitch)
 #### `channel`
 Type: float
 
-The channel from [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md).
+The channel from [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md).
 
 #### `volume`
 Type: float
@@ -25,6 +25,6 @@ The new pitch (0-4).
 
 ## Related
 
- - [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md)
- - [stopSound(float)](Functions/Sound/StopSound.md)
+ - [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md)
+ - [stopSound(float)](/MdDocs/Functions/Sound/StopSound.md)
 

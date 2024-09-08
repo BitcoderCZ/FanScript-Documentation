@@ -11,10 +11,10 @@ void stopSound(float channel)
 #### `channel`
 Type: float
 
-The channel from [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md).
+The channel from [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md).
 
 ## Related
 
- - [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md)
- - [setVolumePitch(float,float,float)](Functions/Sound/SetVolumePitch.md)
+ - [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md)
+ - [setVolumePitch(float,float,float)](/MdDocs/Functions/Sound/SetVolumePitch.md)
 
