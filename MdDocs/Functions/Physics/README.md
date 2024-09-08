@@ -11,7 +11,6 @@
 - [LinearLimits](LinearLimits.md)
 - [LinearMotor](LinearMotor.md)
 - [LinearSpring](LinearSpring.md)
-- [README](README.md)
 - [SetBounciness](SetBounciness.md)
 - [SetFriction](SetFriction.md)
 - [SetGravity](SetGravity.md)

@@ -9,7 +9,6 @@
 - [GetPos](GetPos.md)
 - [GetSize](GetSize.md)
 - [Raycast](Raycast.md)
-- [README](README.md)
 - [SetPos](SetPos.md)
 - [SetPos2](SetPos2.md)
 - [SetVisible](SetVisible.md)

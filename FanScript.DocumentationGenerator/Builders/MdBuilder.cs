@@ -376,6 +376,10 @@ namespace FanScript.DocumentationGenerator.Builders
             foreach (string file in Directory.EnumerateFiles(startDir))
             {
                 string fileName = Path.GetFileNameWithoutExtension(file);
+
+                if (fileName == "README")
+                    continue;
+
                 builder.AppendLine($"- [{fileName}]({fileName}.md)");
             }
 
@@ -393,6 +397,10 @@ namespace FanScript.DocumentationGenerator.Builders
                 foreach (string file in Directory.EnumerateFiles(dir))
                 {
                     string fileName = Path.GetFileNameWithoutExtension(file);
+
+                    if (fileName == "README")
+                        continue;
+
                     builder.AppendLine(offset + $"- [{fileName}]({relativeDir}/{fileName}.md)");
                 }
 

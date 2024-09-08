@@ -8,6 +8,5 @@
 - [LateUpdate](LateUpdate.md)
 - [Loop](Loop.md)
 - [Play](Play.md)
-- [README](README.md)
 - [Swipe](Swipe.md)
 - [Touch](Touch.md)

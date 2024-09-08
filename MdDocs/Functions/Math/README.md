@@ -18,7 +18,6 @@
 - [Min](Min.md)
 - [Normalize](Normalize.md)
 - [Random](Random.md)
-- [README](README.md)
 - [Round](Round.md)
 - [ScreenToWorld](ScreenToWorld.md)
 - [SetRandomSeed](SetRandomSeed.md)
