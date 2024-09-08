@@ -10,8 +10,9 @@ Documentation in markdown format can be found [here](MdDocs/index.md)
 - Make sure you have installed [dotnet 8 sdk](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - Run `dotnet build -c Release` in FanScript.DocumentationGenerator/
 
-## Updating the documentation
-- Change files in DocSrc/ (do not change files in MdDocs/, they will be overwritten)
+## Contributing
+
+- Update the generator and/or files in DocSrc/ (do not change files in MdDocs/, they will be overwritten)
 - [Build](#building)
 - Copy
     ```
@@ -22,3 +23,4 @@ Documentation in markdown format can be found [here](MdDocs/index.md)
     ```
     From FanScript.DocumentationGenerator\bin\Release\net8.0 to the top directory
 - Run FanScript.DocumentationGenerator.exe
+(PRs with modified FanScript.dll will be rejected)
