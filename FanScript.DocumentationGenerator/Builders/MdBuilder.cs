@@ -349,6 +349,11 @@ namespace FanScript.DocumentationGenerator.Builders
                 if (infos is not null && !string.IsNullOrEmpty(infos[i]))
                 {
                     builder.AppendLine();
+
+                    string builtInfo = parse(infos[i]);
+                    if (!builtInfo.EndsWith('.'))
+                        Console.WriteLine("Constant infos should end with '.' - " + infos[i]);
+
                     builder.AppendLine(parse(infos[i]));
                 }
             }

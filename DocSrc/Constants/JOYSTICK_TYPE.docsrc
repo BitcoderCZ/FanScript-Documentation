@@ -3,5 +3,5 @@
 @info:
 @names:JOYSTICK_TYPE_XZ;;JOYSTICK_TYPE_SCREEN
 @values:0;;1
-@infos:;;
+@infos:The output value is in world space.;;The output value is in screen space.
 $template constant
