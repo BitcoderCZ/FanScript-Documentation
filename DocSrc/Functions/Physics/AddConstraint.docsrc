@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:addConstraint
-@info:
+@info:Creates a $plink constraint; \(an invisible connection between 2 objects\) between $plink part; and $plink base;.
 @param_mods:;;;;;;out
 @param_types:object;;object;;vec3;;constr
 @param_names:base;;part;;pivot;;constraint
-@param_infos:;;;;;;
+@param_infos:The object that will be glued on.;;The object that will be glued on the $plink base;.;;The other end of the constraint rod.;;The created constraint.
+@related:$flink linearLimits,constr,vec3,vec3;;$flink angularLimits,constr,vec3,vec3;;$flink linearSpring,constr,vec3,vec3;;$flink angularSpring,constr,vec3,vec3;;$flink linearMotor,constr,vec3,vec3;;$flink angularMotor,constr,vec3,vec3
 $template function

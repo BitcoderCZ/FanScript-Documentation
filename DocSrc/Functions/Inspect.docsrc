@@ -3,7 +3,7 @@
 @is_generic:true
 @is_method:false
 @name:inspect
-@info:Inspects $plink value;.
+@info:Displays $plink value;.
 @param_mods:
 @param_types:generic
 @param_names:value

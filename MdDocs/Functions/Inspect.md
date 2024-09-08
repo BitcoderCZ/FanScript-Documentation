@@ -1,6 +1,6 @@
 # Inspect<>(generic)
 
-Inspects [value](#value).
+Displays [value](#value).
 
 ```
 void inspect<>(generic value)

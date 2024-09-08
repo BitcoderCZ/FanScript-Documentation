@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:setLocked
-@info:
+@info:Restricts $plink object;'s movement, forces applied to $plink object; are multiplied by $plink position; and $plink rotation;.
 @param_mods:;;;;
 @param_types:object;;vec3;;vec3
 @param_names:object;;position;;rotation
-@param_infos:;;;;
+@param_infos:The object to restrict the movement of.;;The movement multiplier.;;The rotation multiplier.
+@remarks:Negative numbers reverse physics and numbers bigger than 1 increase them.
 $template function

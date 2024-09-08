@@ -182,7 +182,7 @@ namespace FanScript.DocumentationGenerator.Builders
             {
                 string builtInfo = parse(info);
                 if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with. - " + info);
+                    Console.WriteLine("Infos should end with '.' - " + info);
 
                 builder.AppendLine(builtInfo);
                 builder.AppendLine();
@@ -240,7 +240,7 @@ namespace FanScript.DocumentationGenerator.Builders
                         builder.AppendLine();
                         string builtInfo = parse(param_infos[i]);
                         if (!builtInfo.EndsWith('.'))
-                            Console.WriteLine("Param infos should end with. - " + info);
+                            Console.WriteLine("Param infos should end with '.' - " + param_infos[i]);
 
                         builder.AppendLine(builtInfo);
                     }
@@ -278,7 +278,12 @@ namespace FanScript.DocumentationGenerator.Builders
                 builder.AppendLine("## Remarks");
                 builder.AppendLine();
 
-                builder.AppendLine(parse(remarks));
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
                 builder.AppendLine();
             }
 

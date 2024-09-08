@@ -3,9 +3,9 @@
 @is_generic:false
 @is_method:true
 @name:setBounciness
-@info:
+@info:Sets how bouncy $plink object; is \(how much momentum it retains after each bounce\).
 @param_mods:;;
 @param_types:object;;float
 @param_names:object;;bounciness
-@param_infos:;;
+@param_infos:The object to set the bounciness of.;;How much momentum $plink object; retains after each bounce \(0-1, if higher $plink object;'s velocity will increase after each jump\).
 $template function

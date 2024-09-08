@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:linearLimits
-@info:
+@info:Sets the linear limits of $plink constraint;.
 @param_mods:;;;;
 @param_types:constr;;vec3;;vec3
 @param_names:constraint;;lower;;upper
-@param_infos:;;;;
+@param_infos:The constraint to apply the limits to.;;The lower limit.;;The upper limit.
+@related:$flink addConstraint,object,object,vec3,constr
 $template function

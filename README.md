@@ -2,7 +2,7 @@
 
 Documentation for the language [FanScript](https://github.com/BitcoderCZ/FanScript)
 
-Some things were copied from the [Fancade Wiki](https://www.fancade.com/wiki/home)
+Some information was copied from the [Fancade Wiki](https://www.fancade.com/wiki/home)
 
 Documentation in markdown format can be found [here](MdDocs/README.md)
 

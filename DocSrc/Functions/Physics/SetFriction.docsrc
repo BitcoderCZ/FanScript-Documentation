@@ -3,9 +3,9 @@
 @is_generic:false
 @is_method:true
 @name:setFriction
-@info:
+@info:Sets the friction of $plink object;.
 @param_mods:;;
 @param_types:object;;float
 @param_names:object;;friction
-@param_infos:;;
+@param_infos:The object to set the friction of.;;How much friction to apply to $plink object; when colliding with other objects \(0.5 by default\).
 $template function

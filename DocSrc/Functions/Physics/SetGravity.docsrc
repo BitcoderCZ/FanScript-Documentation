@@ -3,9 +3,9 @@
 @is_generic:false
 @is_method:false
 @name:setGravity
-@info:
+@info:Sets the direction \(and magnitude\) in which any physics objects falls. 
 @param_mods:
 @param_types:vec3
 @param_names:gravity
-@param_infos:
+@param_infos:Default is \(0, -9.8, 0\).
 $template function

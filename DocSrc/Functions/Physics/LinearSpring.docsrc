@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:linearSpring
-@info:
+@info:Makes the constraint springy, $flink linearLimits,constr,vec3,vec3; must be called before for linear spring to work.
 @param_mods:;;;;
 @param_types:constr;;vec3;;vec3
 @param_names:constraint;;stiffness;;damping
-@param_infos:;;;;
+@param_infos:The constraint to use.;;How stiff the sping will be.;;How much damping \(drag\) to apply.
+@related:$flink addConstraint,object,object,vec3,constr
 $template function
