@@ -1,11 +1,6 @@
 ﻿using FanScript.DocumentationGenerator.Tokens;
 using FanScript.DocumentationGenerator.Tokens.Links;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.Builders
 {
@@ -27,7 +22,7 @@ namespace FanScript.DocumentationGenerator.Builders
                 switch (token)
                 {
                     case NewLineToken newLine:
-                        buildNewLine(newLine); 
+                        buildNewLine(newLine);
                         break;
                     case TabToken tab:
                         buildTab(tab);

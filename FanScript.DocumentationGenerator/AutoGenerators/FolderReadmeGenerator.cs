@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FanScript.DocumentationGenerator.AutoGenerators
+﻿namespace FanScript.DocumentationGenerator.AutoGenerators
 {
     public static class FolderReadmeGenerator
     {

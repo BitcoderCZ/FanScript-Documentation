@@ -1,11 +1,7 @@
 ﻿using FanScript.DocumentationGenerator.Tokens;
 using FanScript.DocumentationGenerator.Tokens.Links;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.Builders
 {
@@ -57,6 +53,6 @@ namespace FanScript.DocumentationGenerator.Builders
             => builder.Append("$flink " + token.Value + ";");
 
         protected override void buildCodeBlock(CodeBlockToken token)
-            => builder.Append("$codeblock " + token.Lang + ";(" +  token.Value + ")");
+            => builder.Append("$codeblock " + token.Lang + ";(" + token.Value + ")");
     }
 }

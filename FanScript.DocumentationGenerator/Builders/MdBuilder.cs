@@ -3,12 +3,8 @@ using FanScript.DocumentationGenerator.Parsing;
 using FanScript.DocumentationGenerator.Tokens;
 using FanScript.DocumentationGenerator.Tokens.Links;
 using FanScript.DocumentationGenerator.Utils;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.Builders
 {

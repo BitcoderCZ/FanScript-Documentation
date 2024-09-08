@@ -1,14 +1,9 @@
 ﻿using FanScript.DocumentationGenerator.Tokens;
 using FanScript.DocumentationGenerator.Tokens.Links;
-using FanScript.DocumentationGenerator.Utils;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.Parsing
 {
