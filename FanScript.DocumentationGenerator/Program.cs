@@ -23,6 +23,7 @@ namespace FanScript.DocumentationGenerator
 
             FunctionGenerator.Generate(srcDir, onlyDisplayErrors);
             ConstantGenerator.Generate(srcDir, onlyDisplayErrors);
+            FolderReadmeGenerator.Generate(srcDir, onlyDisplayErrors);
 
             Console.WriteLine("Generated");
 
@@ -54,7 +55,7 @@ namespace FanScript.DocumentationGenerator
 
                 try
                 {
-                    Builder builder = new MdBuilder(tokens);
+                    Builder builder = new MdBuilder(tokens, path);
 
                     string outPath = Path.Combine(outDir, Path.GetRelativePath(srcDir, path));
 

@@ -16,14 +16,17 @@ namespace FanScript.DocumentationGenerator.Builders
     {
         private const string linkPrefix = "/MdDocs/";
 
+        private string path;
+
         private StringBuilder builder = new();
 
         private readonly Dictionary<string, string> args = new();
 
         private Func<string, bool> plinkValidator = param => true;
 
-        public MdBuilder(ImmutableArray<Token> tokens) : base(tokens)
+        public MdBuilder(ImmutableArray<Token> tokens, string path) : base(tokens)
         {
+            this.path = path;
         }
 
         public override string Build()
@@ -61,6 +64,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 case "constant":
                     buildConstantTemplate();
                     break;
+                case "contents":
+                    buildContentsTemplate();
+                    break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
             }
@@ -96,8 +102,8 @@ namespace FanScript.DocumentationGenerator.Builders
 
             foreach (var (func, category) in BuiltinFunctions.GetAllWithCategory())
             {
-                if (func.Name == name && 
-                    func.Parameters.Length == numbParams && 
+                if (func.Name == name &&
+                    func.Parameters.Length == numbParams &&
                     func.Parameters.Select(param => param.Type).SequenceEqual(paramTypes))
                 {
                     builder.Append('[');
@@ -262,7 +268,7 @@ namespace FanScript.DocumentationGenerator.Builders
                 }
             }
 
-            if (!string.IsNullOrEmpty(examples ))
+            if (!string.IsNullOrEmpty(examples))
             {
                 builder.AppendLine("## Examples");
                 builder.AppendLine();
@@ -346,13 +352,44 @@ namespace FanScript.DocumentationGenerator.Builders
                 }
             }
         }
+        private void buildContentsTemplate()
+        {
+            string startDir = Path.GetDirectoryName(path)!;
+
+            foreach (string file in Directory.EnumerateFiles(startDir))
+            {
+                string fileName = Path.GetFileNameWithoutExtension(file);
+                builder.AppendLine($"- [{fileName}]({fileName}.md)");
+            }
+
+            foreach (string dir in Directory.EnumerateDirectories(startDir))
+                buildDir(dir, string.Empty);
+
+            void buildDir(string dir, string offset)
+            {
+                string relativeDir = Path.GetRelativePath(startDir, dir).Replace('\\', '/');
+
+                builder.AppendLine(offset + $"- [{Path.GetFileName(dir)}]({relativeDir}/README.md)");
+
+                offset += "    ";
+
+                foreach (string file in Directory.EnumerateFiles(dir))
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+                    builder.AppendLine(offset + $"- [{fileName}]({relativeDir}/{fileName}.md)");
+                }
+
+                foreach (string subDir in Directory.EnumerateDirectories(dir))
+                    buildDir(subDir, offset);
+            }
+        }
         #endregion
 
         #region Utils
         private string parse(string str, Func<string, bool>? plinkValidator = null)
         {
             Parser parser = new Parser(str);
-            MdBuilder builder = new MdBuilder(parser.Parse());
+            MdBuilder builder = new MdBuilder(parser.Parse(), path);
 
             if (plinkValidator is not null)
                 builder.plinkValidator = plinkValidator;
