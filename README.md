@@ -4,7 +4,7 @@ Documentation for the language [FanScript](https://github.com/BitcoderCZ/FanScri
 
 Some things were copied from the [Fancade Wiki](https://www.fancade.com/wiki/home)
 
-Documentation in markdown format can be found [here](MdDocs/index.md)
+Documentation in markdown format can be found [here](MdDocs/README.md)
 
 ## Building
 - Make sure you have installed [dotnet 8 sdk](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
