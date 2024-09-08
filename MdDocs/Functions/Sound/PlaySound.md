@@ -35,6 +35,6 @@ Which sound to play, must be one of [SOUND](Constants/SOUND.md).
 
 ## Related
 
- - [stopSound(float)](Functions/Sound/StopSound.md)
+ - [stopSound(float)](/Functions/Sound/StopSound.md)
  - [setVolumePitch(float,float,float)](Functions/Sound/SetVolumePitch.md)
 
