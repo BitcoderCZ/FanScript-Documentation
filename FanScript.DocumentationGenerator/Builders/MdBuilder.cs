@@ -63,6 +63,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 case "contents":
                     buildContentsTemplate();
                     break;
+                case "event":
+                    buildEventTemplate();
+                    break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
             }
@@ -132,6 +135,8 @@ namespace FanScript.DocumentationGenerator.Builders
 
             throw new Exception($"Function '{name}' with {numbParams} parameters ({string.Join(", ", paramTypes.Select(type => type.ToString()))}) wasn't found.");
         }
+        protected override void buildEventLink(EventLinkToken token)
+            => builder.Append($"[{token.Value}]({linkPrefix}Events/{token.Value}.md)");
 
         protected override void buildCodeBlock(CodeBlockToken token)
         {
@@ -329,7 +334,13 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.AppendLine();
 
             if (!string.IsNullOrEmpty(info))
-                builder.AppendLine(parse(info));
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Constant info should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+            }
 
             builder.AppendLine("```");
 
@@ -389,6 +400,155 @@ namespace FanScript.DocumentationGenerator.Builders
                     buildDir(subDir, offset);
             }
         }
+        private void buildEventTemplate()
+        {
+            string name = getArg("name");
+            string? info = getOptionalArg("info");
+            string[] param_mods = getArg("param_mods").Split(";;");
+            string[] param_types = getArg("param_types").Split(";;");
+            string[] param_names = getArg("param_names").Split(";;");
+            bool[] param_is_constant = getArg("param_is_constant").Split(";;").Select(parseBool).ToArray();
+            string[]? param_infos = getOptionalArg("param_infos")?.Split(";;");
+
+            string? examples = getOptionalArg("examples");
+            string? remarks = getOptionalArg("remarks");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            if (param_mods.Length != param_names.Length)
+                throw new InvalidDataException("param_mods length must match param_names length");
+            if (param_types.Length != param_names.Length)
+                throw new InvalidDataException("param_types length must match param_names length");
+            if (param_is_constant.Length != param_names.Length)
+                throw new InvalidDataException("param_is_constant length must match param_names length");
+
+            if (param_infos is not null && param_infos.Length != param_names.Length)
+                throw new InvalidDataException("param_infos length must match param_names length");
+
+            int numbParams = param_names.Length;
+
+            if (param_names.Length == 1 && string.IsNullOrEmpty(param_names[0]))
+                numbParams = 0;
+
+            builder.Append($"# {name.ToUpperFirst()}");
+            builder.AppendLine("(" + string.Join(", ", param_types) + ")");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Infos should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+
+            builder.Append("on ");
+            builder.Append(name.ToLowerFirst());
+            builder.Append('(');
+
+            for (int i = 0; i < numbParams; i++)
+            {
+                if (i != 0)
+                    builder.Append(", ");
+
+                if (param_is_constant[i])
+                    builder.Append("const ");
+
+                if (!string.IsNullOrEmpty(param_mods[i]))
+                {
+                    builder.Append(param_mods[i]);
+                    builder.Append(' ');
+                }
+
+                appendType(param_types[i]);
+                builder.Append(' ');
+                builder.Append(param_names[i]);
+            }
+
+            builder.AppendLine(") { }");
+
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            if (numbParams != 0)
+            {
+                builder.AppendLine("## Parameters");
+                builder.AppendLine();
+
+                for (int i = 0; i < numbParams; i++)
+                {
+                    builder.Append("#### `");
+                    builder.Append(param_names[i]);
+                    builder.AppendLine("`");
+
+                    builder.Append("Type: ");
+                    appendType(param_types[i]);
+                    builder.AppendLine();
+
+                    if (param_is_constant[i])
+                    {
+                        builder.AppendLine("Value must be constant.");
+                        builder.AppendLine();
+                    }
+
+                    if (param_infos is not null && !string.IsNullOrEmpty(param_infos[i]))
+                    {
+                        builder.AppendLine();
+                        string builtInfo = parse(param_infos[i]);
+                        if (!builtInfo.EndsWith('.'))
+                            Console.WriteLine("Param infos should end with '.' - " + param_infos[i]);
+
+                        builder.AppendLine(builtInfo);
+                    }
+
+                    builder.AppendLine();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => param_names.Contains(paramName)).Trim();
+            }
+        }
         #endregion
 
         #region Utils
@@ -401,6 +561,14 @@ namespace FanScript.DocumentationGenerator.Builders
                 builder.plinkValidator = plinkValidator;
 
             return builder.Build();
+        }
+
+        private bool parseBool(string? value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return false;
+            else
+                return bool.Parse(value);
         }
 
         private void appendType(string typeName)

@@ -7,7 +7,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 {
     public static class FunctionGenerator
     {
-        public static void Generate(string docSrcPath, bool onlyDisplayErrors)
+        public static void Generate(string docSrcPath, bool showSkipped)
         {
             docSrcPath = Path.Combine(docSrcPath, "Functions");
             Directory.CreateDirectory(docSrcPath);
@@ -41,17 +41,17 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
                 if (File.Exists(path))
                 {
-                    if (!onlyDisplayErrors)
+                    if (showSkipped)
                         Console.WriteLine($"Skipped '{path}', because it already exists.");
+
                     continue;
                 }
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
-                    processFunctions(func, writer);
+                    generateFunction(func, writer);
 
-                if (!onlyDisplayErrors)
-                    Console.WriteLine($"Generated '{path}'.");
+                Console.WriteLine($"Generated '{path}'.");
             }
 
             foreach (Type subType in typeof(BuiltinFunctions)
@@ -93,22 +93,22 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
                     if (File.Exists(path))
                     {
-                        if (!onlyDisplayErrors)
+                        if (showSkipped)
                             Console.WriteLine($"Skipped '{path}', because it already exists.");
+
                         continue;
                     }
 
                     using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                     using (StreamWriter writer = new StreamWriter(stream))
-                        processFunctions(func, writer);
+                        generateFunction(func, writer);
 
-                    if (!onlyDisplayErrors)
-                        Console.WriteLine($"Generated '{path}'.");
+                    Console.WriteLine($"Generated '{path}'.");
                 }
             }
         }
 
-        private static void processFunctions(BuiltinFunctionSymbol func, StreamWriter writer)
+        private static void generateFunction(BuiltinFunctionSymbol func, TextWriter writer)
         {
             writer.WriteLine("@type:" + func.Type.Name);
             writer.WriteLine("@return_info:");

@@ -1,0 +1,8 @@
+@name:Touch
+@info:Executes when a touch of index $plink TOUCH_FINGER; is detected.
+@param_mods:out;;out;;;;
+@param_types:float;;float;;float;;float
+@param_names:screenX;;screenY;;TOUCH_STATE;;TOUCH_FINGER
+@param_is_constant:False;;False;;True;;True
+@param_infos:The x coordinate of the touch \(in pixels\).;;The y coordinate of the touch \(in pixels\).;;One of $clink TOUCH_STATE;.;;One of $clink TOUCH_FINGER;.
+$template event

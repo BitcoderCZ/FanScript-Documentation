@@ -1,5 +1,6 @@
 # RANKING
 ### Type: float
+Used by [setScore(float,float,float)](/MdDocs/Functions/Game/SetScore.md), determines how players are ranked.
 ```
 RANKING_POINTS_MOST
 RANKING_POINST_FEWEST

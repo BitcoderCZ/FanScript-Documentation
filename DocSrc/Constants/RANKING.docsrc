@@ -1,6 +1,6 @@
 @type:float
 @name:RANKING
-@info:
+@info:Used by $flink setScore,float,float,float;, determines how players are ranked.
 @names:RANKING_POINTS_MOST;;RANKING_POINST_FEWEST;;RANKING_TIME_FASTEST;;RANKING_TIME_LONGEST
 @values:2;;3;;4;;5
 @infos:;;;;;;

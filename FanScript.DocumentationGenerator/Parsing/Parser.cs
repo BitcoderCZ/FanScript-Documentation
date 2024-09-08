@@ -272,6 +272,8 @@ namespace FanScript.DocumentationGenerator.Parsing
                     return parseCLink();
                 case "flink":
                     return parseFLink();
+                case "elink":
+                    return parseELink();
                 case "codeblock":
                     return parseCodeBlock();
                 default:
@@ -309,6 +311,12 @@ namespace FanScript.DocumentationGenerator.Parsing
             string constantName = new string(readUntilChar(';'));
             position++;
             return new FunctionLinkToken(constantName);
+        }
+        private EventLinkToken parseELink()
+        {
+            string constantName = new string(readUntilChar(';'));
+            position++;
+            return new EventLinkToken(constantName);
         }
         private CodeBlockToken parseCodeBlock()
         {

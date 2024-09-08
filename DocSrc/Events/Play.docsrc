@@ -1,0 +1,8 @@
+@name:Play
+@info:Executed only on the first frame.
+@param_mods:
+@param_types:
+@param_names:
+@param_is_constant:
+@param_infos:
+$template event

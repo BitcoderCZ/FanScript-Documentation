@@ -1,0 +1,9 @@
+@name:Swipe
+@info:Executes when a swipe is detected.
+@param_mods:out
+@param_types:vec3
+@param_names:direction
+@param_is_constant:False
+@param_infos:Direction of the swipe \(a cardinal direction in the XZ plane\).
+@remarks:If the player holds the finger after swiping, swipe is executed every 15 frames.
+$template event

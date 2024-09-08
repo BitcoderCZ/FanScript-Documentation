@@ -1,5 +1,6 @@
 # SOUND
 ### Type: float
+Used by [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md).
 ```
 SOUND_CHIRP
 SOUND_SCRAPE

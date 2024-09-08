@@ -1,5 +1,6 @@
 # JOYSTICK_TYPE
 ### Type: float
+Used by [joystick(vec3,float)](/MdDocs/Functions/Control/Joystick.md).
 ```
 JOYSTICK_TYPE_XZ
 JOYSTICK_TYPE_SCREEN

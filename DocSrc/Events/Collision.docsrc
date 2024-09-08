@@ -1,0 +1,9 @@
+@name:Collision
+@info:Executes when $plink object2; collides with $plink object1;.
+@param_mods:;;out;;out;;out
+@param_types:object;;object;;float;;vec3
+@param_names:object1;;object2;;impulse;;normal
+@param_is_constant:False;;False;;False;;False
+@param_infos:The object to detect collisions for.;;The object which $plink object1; collided with.;;Impact force of the collision.;;Direction of impact from $plink object2; to $plink object1;.
+@remarks:- If $plink object1; is colliding with multiple objects the most forceful collision will be reported.\n- If you're overriding physics to move objects (using Set Position) then no collisions will occur.
+$template event

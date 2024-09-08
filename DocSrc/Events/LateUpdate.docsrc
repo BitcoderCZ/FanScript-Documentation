@@ -1,0 +1,9 @@
+@name:LateUpdate
+@info:Executes after physics, before rendering.
+@param_mods:
+@param_types:
+@param_names:
+@param_is_constant:
+@param_infos:
+@remarks:- Each frame Fancade does the following:\n    1. Runs scripts.\n    2. Simulates physics.\n    3. Runs Late Update scripts.
+$template event

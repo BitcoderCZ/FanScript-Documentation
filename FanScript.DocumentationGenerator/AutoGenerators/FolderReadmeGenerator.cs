@@ -2,22 +2,22 @@
 {
     public static class FolderReadmeGenerator
     {
-        public static void Generate(string docSrcPath, bool onlyDisplayErrors)
+        public static void Generate(string docSrcPath, bool showSkipped)
         {
             foreach (string dir in Directory.EnumerateDirectories(docSrcPath))
-                generate(dir, docSrcPath, onlyDisplayErrors);
+                generate(dir, docSrcPath, showSkipped);
         }
 
-        private static void generate(string dir, string startDir, bool onlyDisplayErrors)
+        private static void generate(string dir, string startDir, bool showSkipped)
         {
             foreach (string subDir in Directory.EnumerateDirectories(dir))
-                generate(subDir, startDir, onlyDisplayErrors);
+                generate(subDir, startDir, showSkipped);
 
             string path = Path.Combine(dir, "README.docsrc");
 
             if (File.Exists(path))
             {
-                if (!onlyDisplayErrors)
+                if (showSkipped)
                     Console.WriteLine($"Skipped '{path}', because it already exists.");
 
                 return;
@@ -33,8 +33,7 @@
                 writer.WriteLine("$template contents");
                 writer.Flush();
 
-                if (!onlyDisplayErrors)
-                    Console.WriteLine($"Generated '{path}'");
+                Console.WriteLine($"Generated '{path}'");
             }
         }
     }

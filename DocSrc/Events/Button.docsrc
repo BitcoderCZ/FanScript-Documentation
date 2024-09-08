@@ -1,0 +1,8 @@
+@name:Button
+@info:Creates a button for this frame, executes if the button is pressed.
+@param_mods:
+@param_types:float
+@param_names:BUTTON_TYPE
+@param_is_constant:True
+@param_infos:Type of the button, one of $clink BUTTON_TYPE;.
+$template event

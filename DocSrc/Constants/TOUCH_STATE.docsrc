@@ -1,7 +1,7 @@
 @type:float
 @name:TOUCH_STATE
-@info:
+@info:Used by $elink Touch;, determines which "state" of a touch $elink Touch; detects.
 @names:TOUCH_STATE_TOUCHING;;TOUCH_STATE_BEGINS;;TOUCH_STATE_ENDS
 @values:0;;1;;2
-@infos:;;;;
+@infos:When a touch is held for multiple frames.;;When a touch starts.;;When a touch ends.
 $template constant

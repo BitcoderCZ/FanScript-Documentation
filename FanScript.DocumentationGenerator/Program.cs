@@ -9,8 +9,6 @@ namespace FanScript.DocumentationGenerator
     {
         static void Main(string[] args)
         {
-            const bool onlyDisplayErrors = true;
-
             string srcDir = Path.GetFullPath("DocSrc");
             string outDir = Path.GetFullPath("MdDocs");
 
@@ -21,9 +19,10 @@ namespace FanScript.DocumentationGenerator
                 return;
             }
 
-            FunctionGenerator.Generate(srcDir, onlyDisplayErrors);
-            ConstantGenerator.Generate(srcDir, onlyDisplayErrors);
-            FolderReadmeGenerator.Generate(srcDir, onlyDisplayErrors);
+            FunctionGenerator.Generate(srcDir, false);
+            ConstantGenerator.Generate(srcDir, false);
+            EventGenerator.Generate(srcDir, false);
+            FolderReadmeGenerator.Generate(srcDir, false);
 
             Console.WriteLine("Generated");
 
@@ -62,8 +61,7 @@ namespace FanScript.DocumentationGenerator
                     outPath = Path.ChangeExtension(outPath, ".md");
 
                     File.WriteAllText(outPath, builder.Build());
-                    if (!onlyDisplayErrors)
-                        Console.WriteLine($"Generated file '{outPath}'");
+                    //Console.WriteLine($"Generated file '{outPath}'");
                 }
                 catch (Exception ex)
                 {

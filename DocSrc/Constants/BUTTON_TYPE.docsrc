@@ -1,7 +1,7 @@
 @type:float
 @name:BUTTON_TYPE
-@info:
+@info:Used by $elink Button;.
 @names:BUTTON_TYPE_DIRECTION;;BUTTON_TYPE_BUTTON
 @values:0;;1
-@infos:;;
+@infos:A directional arrow.;;A circle.
 $template constant
