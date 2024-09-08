@@ -1,0 +1,7 @@
+@type:float
+@name:RANKING
+@info:
+@names:RANKING_POINTS_MOST;;RANKING_POINST_FEWEST;;RANKING_TIME_FASTEST;;RANKING_TIME_LONGEST
+@values:2;;3;;4;;5
+@infos:;;;;;;
+$template constant

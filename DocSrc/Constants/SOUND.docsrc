@@ -1,0 +1,7 @@
+@type:float
+@name:SOUND
+@info:
+@names:SOUND_CHIRP;;SOUND_SCRAPE;;SOUND_SQUEEK;;SOUND_ENGINE;;SOUND_BUTTON;;SOUND_BALL;;SOUND_PIANO;;SOUND_MARIMBA;;SOUND_PAD;;SOUND_BEEP;;SOUND_PLOP;;SOUND_FLOP;;SOUND_SPLASH;;SOUND_BOOM;;SOUND_HIT;;SOUND_CLANG;;SOUND_JUMP
+@values:0;;1;;2;;3;;4;;5;;6;;7;;8;;9;;10;;11;;12;;13;;14;;15;;16
+@infos:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+$template constant

@@ -1,0 +1,11 @@
+@type:vec3
+@return_info:
+@is_generic:false
+@is_method:false
+@name:getScreenSize
+@info:
+@param_mods:
+@param_types:
+@param_names:
+@param_infos:
+$template function

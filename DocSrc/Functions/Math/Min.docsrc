@@ -1,0 +1,11 @@
+@type:float
+@return_info:
+@is_generic:false
+@is_method:false
+@name:min
+@info:
+@param_mods:;;
+@param_types:float;;float
+@param_names:num1;;num2
+@param_infos:;;
+$template function

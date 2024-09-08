@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:getPos
+@info:
+@param_mods:;;out;;out
+@param_types:object;;vec3;;rot
+@param_names:object;;position;;rotation
+@param_infos:;;;;
+$template function

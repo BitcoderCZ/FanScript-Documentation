@@ -1,0 +1,7 @@
+@type:float
+@name:TOUCH_STATE
+@info:
+@names:TOUCH_STATE_TOUCHING;;TOUCH_STATE_BEGINS;;TOUCH_STATE_ENDS
+@values:0;;1;;2
+@infos:;;;;
+$template constant

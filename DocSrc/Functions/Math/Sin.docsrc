@@ -1,0 +1,11 @@
+@type:float
+@return_info:
+@is_generic:false
+@is_method:false
+@name:sin
+@info:
+@param_mods:
+@param_types:float
+@param_names:num
+@param_infos:
+$template function

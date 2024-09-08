@@ -1,0 +1,7 @@
+@type:float
+@name:JOYSTICK_TYPE
+@info:
+@names:JOYSTICK_TYPE_XZ;;JOYSTICK_TYPE_SCREEN
+@values:0;;1
+@infos:;;
+$template constant

@@ -1,0 +1,11 @@
+@type:vec3
+@return_info:
+@is_generic:false
+@is_method:false
+@name:lineVsPlane
+@info:
+@param_mods:;;;;;;
+@param_types:vec3;;vec3;;vec3;;vec3
+@param_names:lineFrom;;lineTo;;planePoint;;planeNormal
+@param_infos:;;;;;;
+$template function

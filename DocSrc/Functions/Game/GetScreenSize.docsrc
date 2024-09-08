@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:getScreenSize
+@info:
+@param_mods:out;;out
+@param_types:float;;float
+@param_names:width;;height
+@param_infos:;;
+$template function

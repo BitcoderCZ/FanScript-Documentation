@@ -1,0 +1,11 @@
+@type:float
+@return_info:
+@is_generic:false
+@is_method:false
+@name:dist
+@info:
+@param_mods:;;
+@param_types:vec3;;vec3
+@param_names:vector;;vector
+@param_infos:;;
+$template function

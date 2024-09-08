@@ -1,0 +1,11 @@
+@type:rot
+@return_info:
+@is_generic:false
+@is_method:false
+@name:lerp
+@info:
+@param_mods:;;;;
+@param_types:rot;;rot;;float
+@param_names:from;;to;;amount
+@param_infos:;;;;
+$template function

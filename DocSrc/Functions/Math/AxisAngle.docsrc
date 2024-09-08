@@ -1,0 +1,11 @@
+@type:rot
+@return_info:
+@is_generic:false
+@is_method:false
+@name:axisAngle
+@info:
+@param_mods:;;
+@param_types:vec3;;float
+@param_names:axis;;angle
+@param_infos:;;
+$template function

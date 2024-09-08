@@ -1,0 +1,11 @@
+@type:float
+@return_info:
+@is_generic:false
+@is_method:false
+@name:log
+@info:
+@param_mods:;;
+@param_types:float;;float
+@param_names:number;;base
+@param_infos:;;
+$template function

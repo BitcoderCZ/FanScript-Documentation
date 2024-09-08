@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:raycast
+@info:
+@param_mods:;;;;out;;out;;out
+@param_types:vec3;;vec3;;bool;;vec3;;object
+@param_names:from;;to;;didHit;;hitPos;;hitObj
+@param_infos:;;;;;;;;
+$template function

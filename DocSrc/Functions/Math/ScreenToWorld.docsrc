@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:screenToWorld
+@info:
+@param_mods:;;;;out;;out
+@param_types:float;;float;;vec3;;vec3
+@param_names:screenX;;screenY;;worldNear;;worldFar
+@param_infos:;;;;;;
+$template function

@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:getVelocity
+@info:
+@param_mods:;;out;;out
+@param_types:object;;vec3;;vec3
+@param_names:object;;velocity;;spin
+@param_infos:;;;;
+$template function

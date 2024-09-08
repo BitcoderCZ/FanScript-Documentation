@@ -1,0 +1,12 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:stopSound
+@info:Stops the sound playing at $plink channel;.
+@param_mods:
+@param_types:float
+@param_names:channel
+@param_infos:The channel from $flink playSound,float,float,float,bool,float;.
+@related:$flink playSound,float,float,float,bool,float;;$flink setVolumePitch,float,float,float
+$template function

@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:setLight
+@info:
+@param_mods:;;
+@param_types:vec3;;rot
+@param_names:position;;rotation
+@param_infos:;;
+$template function

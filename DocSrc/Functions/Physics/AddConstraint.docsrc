@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:addConstraint
+@info:
+@param_mods:;;;;;;out
+@param_types:object;;object;;vec3;;constr
+@param_names:base;;part;;pivot;;constraint
+@param_infos:;;;;;;
+$template function

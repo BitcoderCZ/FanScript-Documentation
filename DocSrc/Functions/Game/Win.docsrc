@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:win
+@info:
+@param_mods:
+@param_types:float
+@param_names:DELAY
+@param_infos:
+$template function

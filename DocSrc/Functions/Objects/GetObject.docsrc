@@ -1,0 +1,11 @@
+@type:object
+@return_info:
+@is_generic:false
+@is_method:false
+@name:getObject
+@info:
+@param_mods:
+@param_types:vec3
+@param_names:position
+@param_infos:
+$template function

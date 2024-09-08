@@ -1,0 +1,15 @@
+@type:void
+@return_info:
+@is_generic:true
+@is_method:false
+@name:inspect
+@info:Inspects $plink value;.
+@param_mods:
+@param_types:generic
+@param_names:value
+@param_infos:
+@examples:($codeblock fcs;
+(vec3 pos
+// ...
+inspect(pos)))
+$template function

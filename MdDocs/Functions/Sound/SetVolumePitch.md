@@ -1,0 +1,30 @@
+# SetVolumePitch(float, float, float)
+
+Sets the [volume](#volume) and [pitch](#pitch) of the sound playing at [channel](#channel).
+
+```
+void setVolumePitch(float channel, float volume, float pitch)
+```
+
+## Parameters
+
+#### `channel`
+Type: float
+
+The channel from [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md).
+
+#### `volume`
+Type: float
+
+The new volume (0-1).
+
+#### `pitch`
+Type: float
+
+The new pitch (0-4).
+
+## Related
+
+ - [playSound(float,float,float,bool,float)](Functions/Sound/PlaySound.md)
+ - [stopSound(float)](Functions/Sound/StopSound.md)
+

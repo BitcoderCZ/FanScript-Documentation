@@ -1,0 +1,10 @@
+# MAX_ITEMS
+### Type: float
+```
+MAX_ITEMS_ONOFF
+MAX_ITEMS_NO_LIMIT
+```
+#### MAX_ITEMS_ONOFF
+Value: 1
+#### MAX_ITEMS_NO_LIMIT
+Value: 101

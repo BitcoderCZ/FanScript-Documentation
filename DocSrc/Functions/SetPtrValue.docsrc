@@ -1,0 +1,18 @@
+@type:void
+@return_info:
+@is_generic:true
+@is_method:false
+@name:setPtrValue
+@info:Sets the value of a variable/array element.
+@param_mods:;;
+@param_types:generic;;generic
+@param_names:pointer;;value
+@param_infos:The variable/array element to set.;;The value to set $plink pointer; to.
+@examples:($codeblock fcs;
+(array<float> arr
+// ...
+inline float first = arr.get(0)
+inspect(first)
+setPtrValue(first, 10)
+// arr - [10, ...]))
+$template function

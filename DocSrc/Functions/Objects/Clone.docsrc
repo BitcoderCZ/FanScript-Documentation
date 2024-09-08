@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:clone
+@info:
+@param_mods:;;out
+@param_types:object;;object
+@param_names:object;;copy
+@param_infos:;;
+$template function

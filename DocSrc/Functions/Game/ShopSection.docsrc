@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:shopSection
+@info:
+@param_mods:
+@param_types:string
+@param_names:NAME
+@param_infos:
+$template function

@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:setBounciness
+@info:
+@param_mods:;;
+@param_types:object;;float
+@param_names:object;;bounciness
+@param_infos:;;
+$template function

@@ -1,0 +1,11 @@
+@type:vec3
+@return_info:
+@is_generic:false
+@is_method:false
+@name:worldToScreen
+@info:
+@param_mods:
+@param_types:vec3
+@param_names:worldPos
+@param_infos:
+$template function

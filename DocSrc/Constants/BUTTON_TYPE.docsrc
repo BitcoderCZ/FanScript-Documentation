@@ -1,0 +1,7 @@
+@type:float
+@name:BUTTON_TYPE
+@info:
+@names:BUTTON_TYPE_DIRECTION;;BUTTON_TYPE_BUTTON
+@values:0;;1
+@infos:;;
+$template constant

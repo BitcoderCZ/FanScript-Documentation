@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:true
+@name:setFriction
+@info:
+@param_mods:;;
+@param_types:object;;float
+@param_names:object;;friction
+@param_infos:;;
+$template function

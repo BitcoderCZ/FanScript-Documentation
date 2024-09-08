@@ -1,0 +1,13 @@
+# TOUCH_FINGER
+### Type: float
+```
+TOUCH_FINGER_1
+TOUCH_FINGER_2
+TOUCH_FINGER_3
+```
+#### TOUCH_FINGER_1
+Value: 0
+#### TOUCH_FINGER_2
+Value: 1
+#### TOUCH_FINGER_3
+Value: 2

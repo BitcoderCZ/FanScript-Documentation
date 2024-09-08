@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:setScore
+@info:
+@param_mods:;;;;
+@param_types:float;;float;;float
+@param_names:score;;coins;;RANKING
+@param_infos:;;;;
+$template function

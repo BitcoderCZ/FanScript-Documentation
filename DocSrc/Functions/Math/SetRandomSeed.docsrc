@@ -1,0 +1,11 @@
+@type:void
+@return_info:
+@is_generic:false
+@is_method:false
+@name:setRandomSeed
+@info:
+@param_mods:
+@param_types:float
+@param_names:seed
+@param_infos:
+$template function

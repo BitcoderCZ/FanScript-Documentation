@@ -1,0 +1,7 @@
+@type:float
+@name:MAX_ITEMS
+@info:
+@names:MAX_ITEMS_ONOFF;;MAX_ITEMS_NO_LIMIT
+@values:1;;101
+@infos:;;
+$template constant
