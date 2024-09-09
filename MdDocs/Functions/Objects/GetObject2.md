@@ -18,6 +18,3 @@ Type: float
 ## Returns
 
 object
-
-
-

@@ -1,5 +1,7 @@
 # Ceiling(float)
 
+Returns [num](#num) rounded up.
+
 ```
 float ceiling(float num)
 ```
@@ -13,5 +15,5 @@ Type: float
 
 float
 
-
+[num](#num) rounded up.
 

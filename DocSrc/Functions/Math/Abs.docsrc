@@ -1,9 +1,9 @@
 @type:float
-@return_info:
+@return_info:Absolute value of $plink num; \(if ($plink num; >= 0) $plink num; else -$plink num;\).
 @is_generic:false
 @is_method:false
 @name:abs
-@info:
+@info:Gets the absolute value of $plink num;.
 @param_mods:
 @param_types:float
 @param_names:num

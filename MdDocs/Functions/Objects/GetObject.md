@@ -12,6 +12,3 @@ Type: vec3
 ## Returns
 
 object
-
-
-

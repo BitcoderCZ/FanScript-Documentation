@@ -1,5 +1,7 @@
 # Floor(float)
 
+Returns [num](#num) rounded down.
+
 ```
 float floor(float num)
 ```
@@ -13,5 +15,5 @@ Type: float
 
 float
 
-
+[num](#num) rounded down.
 

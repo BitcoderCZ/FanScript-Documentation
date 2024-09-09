@@ -1,11 +1,11 @@
 @type:float
-@return_info:
+@return_info:The distance between $plink vector1; and $plink vector2;.
 @is_generic:false
 @is_method:false
 @name:dist
-@info:
+@info:Returns the distance between $plink vector1; and $plink vector2;.
 @param_mods:;;
 @param_types:vec3;;vec3
-@param_names:vector;;vector
-@param_infos:;;
+@param_names:vector1;;vector2
+@param_infos:The first vector.;;The second vector.
 $template function

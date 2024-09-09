@@ -263,10 +263,15 @@ namespace FanScript.DocumentationGenerator.Builders
                 appendType(type);
                 builder.AppendLine();
 
-                if (return_info is not null)
+                if (!string.IsNullOrEmpty(return_info))
                 {
                     builder.AppendLine();
-                    builder.AppendLine(parse(return_info));
+
+                    string builtInfo = parse(return_info);
+                    if (!builtInfo.EndsWith('.'))
+                        Console.WriteLine("Param infos should end with '.' - " + return_info);
+
+                    builder.AppendLine(builtInfo);
                     builder.AppendLine();
                 }
             }

@@ -1,11 +1,11 @@
 @type:vec3
-@return_info:
+@return_info:Cross product of $plink vector1; and $plink vector2;.
 @is_generic:false
 @is_method:false
 @name:cross
-@info:
+@info:Returns the $link cross product;https://en.wikipedia.org/wiki/Cross_product; of $plink vector1; and $plink vector2;.
 @param_mods:;;
 @param_types:vec3;;vec3
-@param_names:vector;;vector
-@param_infos:;;
+@param_names:vector1;;vector2
+@param_infos:The first vector.;;The second vector.
 $template function

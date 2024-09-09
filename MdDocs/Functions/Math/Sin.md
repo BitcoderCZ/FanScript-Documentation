@@ -1,5 +1,7 @@
 # Sin(float)
 
+Retuns [sine](https://en.wikipedia.org/wiki/Sine_and_cosine) of [num](#num).
+
 ```
 float sin(float num)
 ```
@@ -9,9 +11,15 @@ float sin(float num)
 #### `num`
 Type: float
 
+Angle in degrees.
+
 ## Returns
 
 float
 
+Sin of [num](#num).
 
+## Related
+
+ - [cos(float)](/MdDocs/Functions/Math/Cos.md)
 

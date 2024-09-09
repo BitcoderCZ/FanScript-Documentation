@@ -1,5 +1,7 @@
 # Abs(float)
 
+Gets the absolute value of [num](#num).
+
 ```
 float abs(float num)
 ```
@@ -13,5 +15,5 @@ Type: float
 
 float
 
-
+Absolute value of [num](#num) (if [num](#num) >= 0 [num](#num) else -[num](#num)).
 

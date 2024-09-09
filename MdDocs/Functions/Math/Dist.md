@@ -1,20 +1,26 @@
 # Dist(vec3, vec3)
 
+Returns the distance between [vector1](#vector1) and [vector2](#vector2).
+
 ```
-float dist(vec3 vector, vec3 vector)
+float dist(vec3 vector1, vec3 vector2)
 ```
 
 ## Parameters
 
-#### `vector`
+#### `vector1`
 Type: vec3
 
-#### `vector`
+The first vector.
+
+#### `vector2`
 Type: vec3
+
+The second vector.
 
 ## Returns
 
 float
 
-
+The distance between [vector1](#vector1) and [vector2](#vector2).
 

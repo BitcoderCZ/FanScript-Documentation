@@ -1,11 +1,11 @@
 @type:rot
-@return_info:
+@return_info:Rotation "looking" in $plink direction;.
 @is_generic:false
 @is_method:false
 @name:lookRotation
-@info:
+@info:Returns a rotation pointing in $plink direction;.
 @param_mods:;;
 @param_types:vec3;;vec3
 @param_names:direction;;up
-@param_infos:;;
+@param_infos:The direction to point in.;;The up direction \(default is (0, 1, 0)\).
 $template function

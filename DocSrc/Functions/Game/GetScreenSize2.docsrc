@@ -1,5 +1,5 @@
 @type:vec3
-@return_info:Size of the screen in pixels, Width/Height - X/Y
+@return_info:Size of the screen in pixels, Width/Height - X/Y.
 @is_generic:false
 @is_method:false
 @name:getScreenSize

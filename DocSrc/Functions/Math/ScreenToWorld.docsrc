@@ -3,9 +3,11 @@
 @is_generic:false
 @is_method:false
 @name:screenToWorld
-@info:
+@info:Gets a ray going from \($plink screenX;,$plink screenY;\).
 @param_mods:;;;;out;;out
 @param_types:float;;float;;vec3;;vec3
 @param_names:screenX;;screenY;;worldNear;;worldFar
-@param_infos:;;;;;;
+@param_infos:The x screen coordinate.;;The y screen coordinate.;;Position 2 units away from the camera.;;Position 400 units away from the camera.
+@remarks:Due to a technical issue, still to be fixed, the output lags by one frame. I.e. if you Set Camera on frame N, then this block's output will change on frame N+1 - the function will not work on the first frame.
+@related:$flink worldToScreen,vec3,float,float;;$flink worldToScreen,vec3
 $template function

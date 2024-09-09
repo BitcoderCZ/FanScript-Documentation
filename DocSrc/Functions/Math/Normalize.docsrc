@@ -1,9 +1,9 @@
 @type:vec3
-@return_info:
+@return_info:The normalized $plink vector;.
 @is_generic:false
 @is_method:false
 @name:normalize
-@info:
+@info:Returns a vector with the same direction as $plink vector;, but with the lenght of 1.
 @param_mods:
 @param_types:vec3
 @param_names:vector

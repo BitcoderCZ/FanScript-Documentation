@@ -1,5 +1,7 @@
 # Round(float)
 
+Returns [num](#num) rounded to the nearest integer.
+
 ```
 float round(float num)
 ```
@@ -9,9 +11,11 @@ float round(float num)
 #### `num`
 Type: float
 
+The number to round.
+
 ## Returns
 
 float
 
-
+[num](#num) rounded to the nearest integer.
 

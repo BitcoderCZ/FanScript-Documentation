@@ -1,11 +1,13 @@
 @type:float
-@return_info:
+@return_info:The randomly selected number.
 @is_generic:false
 @is_method:false
 @name:random
-@info:
+@info:Returns a random float between $plink min; and $plink max;.
 @param_mods:;;
 @param_types:float;;float
 @param_names:min;;max
-@param_infos:;;
+@param_infos:The minimum number \(inclusive\).;;The maximum number \(exclusive\).
+@remarks:Do not use in inline variables, may return the same number.
+@related:$flink setRandomSeed,float
 $template function

@@ -1,9 +1,9 @@
 @type:float
-@return_info:
+@return_info:$plink num; rounded up.
 @is_generic:false
 @is_method:false
 @name:ceiling
-@info:
+@info:Returns $plink num; rounded up.
 @param_mods:
 @param_types:float
 @param_names:num
