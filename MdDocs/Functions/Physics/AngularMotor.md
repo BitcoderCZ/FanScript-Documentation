@@ -25,5 +25,5 @@ How much force to apply.
 
 ## Related
 
- - [addConstraint(object,object,vec3,constr)](/MdDocs/Functions/Physics/AddConstraint.md)
+ - [addConstraint(obj,obj,vec3,constr)](/MdDocs/Functions/Physics/AddConstraint.md)
 

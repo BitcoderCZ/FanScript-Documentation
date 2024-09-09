@@ -1,15 +1,15 @@
-# SetBounciness(object, float)
+# SetBounciness(obj, float)
 
 Sets how bouncy [object](#object) is (how much momentum it retains after each bounce).
 
 ```
-void setBounciness(this object object, float bounciness)
+void setBounciness(this obj object, float bounciness)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object to set the bounciness of.
 

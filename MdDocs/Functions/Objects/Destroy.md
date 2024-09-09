@@ -1,23 +1,23 @@
-# Destroy(object)
+# Destroy(obj)
 
 Destroys [object](#object).
 
 ```
-void destroy(this object object)
+void destroy(this obj object)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object to be destroyed.
 
 ## Remarks
 
-**Only destroys blocks created by [clone(object,object)](/MdDocs/Functions/Objects/Clone.md)**.
+**Only destroys blocks created by [clone(obj,obj)](/MdDocs/Functions/Objects/Clone.md)**.
 
 ## Related
 
- - [clone(object,object)](/MdDocs/Functions/Objects/Clone.md)
+ - [clone(obj,obj)](/MdDocs/Functions/Objects/Clone.md)
 

@@ -5,9 +5,9 @@
 @name:destroy
 @info:Destroys $plink object;.
 @param_mods:
-@param_types:object
+@param_types:obj
 @param_names:object
 @param_infos:The object to be destroyed.
-@remarks:**Only destroys blocks created by $flink clone,object,object;**.
-@related:$flink clone,object,object
+@remarks:**Only destroys blocks created by $flink clone,obj,obj;**.
+@related:$flink clone,obj,obj
 $template function

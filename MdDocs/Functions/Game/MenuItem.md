@@ -1,9 +1,9 @@
-# MenuItem(float, object, string, float, float)
+# MenuItem(float, obj, string, float, float)
 
 Adds an item to the [shop](https://www.fancade.com/wiki/script/how-to-use-the-shop-system).
 
 ```
-void menuItem(ref float variable, object picture, string NAME, float MAX_ITEMS, float PRICE_INCREASE)
+void menuItem(ref float variable, obj picture, string NAME, float MAX_ITEMS, float PRICE_INCREASE)
 ```
 
 ## Parameters
@@ -14,7 +14,7 @@ Type: float
 Which variable to store the value of times bought in, should have saved modifier.
 
 #### `picture`
-Type: object
+Type: obj
 
 Which object to display for the item.
 

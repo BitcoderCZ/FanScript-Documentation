@@ -1,15 +1,15 @@
-# SetVisible(object, bool)
+# SetVisible(obj, bool)
 
 Sets if [object](#object) is visible and has collision/physics.
 
 ```
-void setVisible(this object object, bool visible)
+void setVisible(this obj object, bool visible)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 #### `visible`
 Type: bool

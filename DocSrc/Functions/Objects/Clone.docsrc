@@ -5,9 +5,9 @@
 @name:clone
 @info:Creates a copy of $plink object;.
 @param_mods:;;out
-@param_types:object;;object
+@param_types:obj;;obj
 @param_names:object;;copy
 @param_infos:The object to copy.;;The copy of $plink object;.
 @remarks:Scripts inside $plink object; do not get copied inside of $plink copy;.
-@related:$flink destroy,object
+@related:$flink destroy,obj
 $template function

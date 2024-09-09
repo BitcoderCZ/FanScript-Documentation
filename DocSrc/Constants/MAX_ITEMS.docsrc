@@ -1,6 +1,6 @@
 @type:float
 @name:MAX_ITEMS
-@info:Used by $flink menuItem,float,object,string,float,float;, determines how many times the item can be bought.
+@info:Used by $flink menuItem,float,obj,string,float,float;, determines how many times the item can be bought.
 @names:MAX_ITEMS_ONOFF;;MAX_ITEMS_NO_LIMIT
 @values:1;;101
 @infos:The item can be bought once and toggled on/off.;;There is no limit on how many times the item can be bought.

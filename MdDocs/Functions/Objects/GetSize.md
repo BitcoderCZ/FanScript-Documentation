@@ -1,15 +1,15 @@
-# GetSize(object, vec3, vec3)
+# GetSize(obj, vec3, vec3)
 
 Gets the size of [object](#object).
 
 ```
-void getSize(this object object, out vec3 min, out vec3 max)
+void getSize(this obj object, out vec3 min, out vec3 max)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 #### `min`
 Type: vec3

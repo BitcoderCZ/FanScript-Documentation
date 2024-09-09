@@ -1,15 +1,15 @@
-# SetMass(object, float)
+# SetMass(obj, float)
 
 Sets the mass of [object](#object).
 
 ```
-void setMass(this object object, float mass)
+void setMass(this obj object, float mass)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object to set the mass of.
 

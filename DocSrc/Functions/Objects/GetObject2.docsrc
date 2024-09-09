@@ -1,4 +1,4 @@
-@type:object
+@type:obj
 @return_info:The object at \($plink x;, $plink y;, $plink z;\).
 @is_generic:false
 @is_method:false

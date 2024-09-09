@@ -1,20 +1,20 @@
-# Clone(object, object)
+# Clone(obj, obj)
 
 Creates a copy of [object](#object).
 
 ```
-void clone(this object object, out object copy)
+void clone(this obj object, out obj copy)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object to copy.
 
 #### `copy`
-Type: object
+Type: obj
 
 The copy of [object](#object).
 
@@ -24,5 +24,5 @@ Scripts inside [object](#object) do not get copied inside of [copy](#copy).
 
 ## Related
 
- - [destroy(object)](/MdDocs/Functions/Objects/Destroy.md)
+ - [destroy(obj)](/MdDocs/Functions/Objects/Destroy.md)
 

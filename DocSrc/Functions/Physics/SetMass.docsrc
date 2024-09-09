@@ -5,7 +5,7 @@
 @name:setMass
 @info:Sets the mass of $plink object;.
 @param_mods:;;
-@param_types:object;;float
+@param_types:obj;;float
 @param_names:object;;mass
 @param_infos:The object to set the mass of.;;The new mass of $plink object; \(the default values is determined by the volume of $plink object;'s collider\).
 $template function

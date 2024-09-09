@@ -1,6 +1,6 @@
 # ShopSection(string)
 
-Creates a section in the shop, calls to [menuItem(float,object,string,float,float)](/MdDocs/Functions/Game/MenuItem.md) after this will create items in this section.
+Creates a section in the shop, calls to [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.md) after this will create items in this section.
 
 ```
 void shopSection(string NAME)
@@ -15,5 +15,5 @@ The name of this section, will be shown as a header above the items, must be con
 
 ## Related
 
- - [menuItem(float,object,string,float,float)](/MdDocs/Functions/Game/MenuItem.md)
+ - [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.md)
 

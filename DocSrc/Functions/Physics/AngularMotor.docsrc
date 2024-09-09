@@ -8,5 +8,5 @@
 @param_types:constr;;vec3;;vec3
 @param_names:constraint;;speed;;force
 @param_infos:The constraint to use.;;The speed at which to rotate at.;;How much force to apply.
-@related:$flink addConstraint,object,object,vec3,constr
+@related:$flink addConstraint,obj,obj,vec3,constr
 $template function

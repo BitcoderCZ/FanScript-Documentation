@@ -3,10 +3,10 @@
 @is_generic:false
 @is_method:false
 @name:shopSection
-@info:Creates a section in the shop, calls to $flink menuItem,float,object,string,float,float; after this will create items in this section.
+@info:Creates a section in the shop, calls to $flink menuItem,float,obj,string,float,float; after this will create items in this section.
 @param_mods:
 @param_types:string
 @param_names:NAME
 @param_infos:The name of this section, will be shown as a header above the items, must be constant.
-@related:$flink menuItem,float,object,string,float,float;
+@related:$flink menuItem,float,obj,string,float,float;
 $template function

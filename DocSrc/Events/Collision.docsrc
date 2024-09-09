@@ -1,7 +1,7 @@
 @name:Collision
 @info:Executes when $plink object2; collides with $plink object1;.
 @param_mods:;;out;;out;;out
-@param_types:object;;object;;float;;vec3
+@param_types:obj;;obj;;float;;vec3
 @param_names:object1;;object2;;impulse;;normal
 @param_is_constant:False;;False;;False;;False
 @param_infos:The object to detect collisions for.;;The object which $plink object1; collided with.;;Impact force of the collision.;;Direction of impact from $plink object2; to $plink object1;.

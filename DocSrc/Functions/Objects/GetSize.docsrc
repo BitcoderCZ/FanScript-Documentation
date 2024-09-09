@@ -5,7 +5,7 @@
 @name:getSize
 @info:Gets the size of $plink object;.
 @param_mods:;;out;;out
-@param_types:object;;vec3;;vec3
+@param_types:obj;;vec3;;vec3
 @param_names:object;;min;;max
 @param_infos:;;Distance from the center of $plink object; to the negative edge.;;Distance from the center of $plink object; to the positive edge.
 @remarks:Size is measured in blocks, not in voxels.

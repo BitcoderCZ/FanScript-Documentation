@@ -3,7 +3,7 @@
 Returns the object at ([x](#x), [y](#y), [z](#z)).
 
 ```
-object getObject(float x, float y, float z)
+obj getObject(float x, float y, float z)
 ```
 
 ## Parameters
@@ -25,7 +25,7 @@ Z position of the object, must be constant.
 
 ## Returns
 
-object
+obj
 
 The object at ([x](#x), [y](#y), [z](#z)).
 

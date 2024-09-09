@@ -5,8 +5,8 @@
 @name:setVelocity
 @info:Sets the linear and angular velocity of $plink object;.
 @param_mods:;;;;
-@param_types:object;;vec3;;vec3
+@param_types:obj;;vec3;;vec3
 @param_names:object;;velocity;;spin
 @param_infos:The object to set the velocity of.;;The linear velocity \(units/second\).;;The angular velocity \(degrees/second\).
-@related:$flink getVelocity,object,vec3,vec3;;$flink addForce,object,vec3,vec3,vec3
+@related:$flink getVelocity,obj,vec3,vec3;;$flink addForce,obj,vec3,vec3,vec3
 $template function

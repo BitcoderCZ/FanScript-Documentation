@@ -1,15 +1,15 @@
-# SetFriction(object, float)
+# SetFriction(obj, float)
 
 Sets the friction of [object](#object).
 
 ```
-void setFriction(this object object, float friction)
+void setFriction(this obj object, float friction)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object to set the friction of.
 

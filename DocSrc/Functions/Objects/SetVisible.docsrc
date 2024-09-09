@@ -5,7 +5,7 @@
 @name:setVisible
 @info:Sets if $plink object; is visible and has collision/physics.
 @param_mods:;;
-@param_types:object;;bool
+@param_types:obj;;bool
 @param_names:object;;visible
 @param_infos:;;
 @remarks:When $plink object; is set to invisible, all constraints associated with it will be deleted.

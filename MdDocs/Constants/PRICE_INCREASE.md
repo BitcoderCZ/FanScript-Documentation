@@ -1,6 +1,6 @@
 # PRICE_INCREASE
 ### Type: float
-Used by [menuItem(float,object,string,float,float)](/MdDocs/Functions/Game/MenuItem.md), determines the price and how the price increases after buing the item.
+Used by [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.md), determines the price and how the price increases after buing the item.
 ```
 PRICE_INCREASE_FREE
 PRICE_INCREASE_FIXED_10

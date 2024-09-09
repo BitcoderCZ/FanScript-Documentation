@@ -1,21 +1,21 @@
-# SetPos(object, vec3)
+# SetPos(obj, vec3)
 
 Sets the position of [object](#object).
 
 ```
-void setPos(this object object, vec3 position)
+void setPos(this obj object, vec3 position)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 #### `position`
 Type: vec3
 
 ## Related
 
- - [getPos(object,vec3,rot)](/MdDocs/Functions/Objects/GetPos.md)
- - [setPos(object,vec3,rot)](/MdDocs/Functions/Objects/SetPos2.md)
+ - [getPos(obj,vec3,rot)](/MdDocs/Functions/Objects/GetPos.md)
+ - [setPos(obj,vec3,rot)](/MdDocs/Functions/Objects/SetPos2.md)
 

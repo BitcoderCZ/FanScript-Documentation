@@ -3,7 +3,7 @@
 Returns the object at [position](#position).
 
 ```
-object getObject(vec3 position)
+obj getObject(vec3 position)
 ```
 
 ## Parameters
@@ -15,7 +15,7 @@ Position of the object, must be constant.
 
 ## Returns
 
-object
+obj
 
 The object at [position](#position).
 

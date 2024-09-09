@@ -8,5 +8,5 @@
 @param_types:constr;;vec3;;vec3
 @param_names:constraint;;stiffness;;damping
 @param_infos:The constraint to use.;;How stiff the sping will be.;;How much damping \(drag\) to apply.
-@related:$flink addConstraint,object,object,vec3,constr
+@related:$flink addConstraint,obj,obj,vec3,constr
 $template function

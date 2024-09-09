@@ -1,20 +1,20 @@
-# AddConstraint(object, object, vec3, constr)
+# AddConstraint(obj, obj, vec3, constr)
 
 Creates a [constraint](#constraint) (an invisible connection between 2 objects) between [part](#part) and [base](#base).
 
 ```
-void addConstraint(this object base, object part, vec3 pivot, out constr constraint)
+void addConstraint(this obj base, obj part, vec3 pivot, out constr constraint)
 ```
 
 ## Parameters
 
 #### `base`
-Type: object
+Type: obj
 
 The object that will be glued on.
 
 #### `part`
-Type: object
+Type: obj
 
 The object that will be glued on the [base](#base).
 

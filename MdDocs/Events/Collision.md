@@ -1,20 +1,20 @@
-# Collision(object, object, float, vec3)
+# Collision(obj, obj, float, vec3)
 
 Executes when [object2](#object2) collides with [object1](#object1).
 
 ```
-on collision(object object1, out object object2, out float impulse, out vec3 normal) { }
+on collision(obj object1, out obj object2, out float impulse, out vec3 normal) { }
 ```
 
 ## Parameters
 
 #### `object1`
-Type: object
+Type: obj
 
 The object to detect collisions for.
 
 #### `object2`
-Type: object
+Type: obj
 
 The object which [object1](#object1) collided with.
 

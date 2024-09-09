@@ -1,9 +1,9 @@
-# Raycast(vec3, vec3, bool, vec3, object)
+# Raycast(vec3, vec3, bool, vec3, obj)
 
 Detects if an object intersects a line between [from](#from) and [to](#to).
 
 ```
-void raycast(vec3 from, vec3 to, out bool didHit, out vec3 hitPos, out object hitObj)
+void raycast(vec3 from, vec3 to, out bool didHit, out vec3 hitPos, out obj hitObj)
 ```
 
 ## Parameters
@@ -29,7 +29,7 @@ Type: vec3
 The position at which the ray intersected [hitObj](#hitObj).
 
 #### `hitObj`
-Type: object
+Type: obj
 
 The object that was hit.
 

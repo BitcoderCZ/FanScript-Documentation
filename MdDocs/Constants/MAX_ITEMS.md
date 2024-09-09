@@ -1,6 +1,6 @@
 # MAX_ITEMS
 ### Type: float
-Used by [menuItem(float,object,string,float,float)](/MdDocs/Functions/Game/MenuItem.md), determines how many times the item can be bought.
+Used by [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.md), determines how many times the item can be bought.
 ```
 MAX_ITEMS_ONOFF
 MAX_ITEMS_NO_LIMIT

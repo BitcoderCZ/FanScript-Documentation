@@ -5,8 +5,8 @@
 @name:setPos
 @info:Sets the position and rotation of $plink object;.
 @param_mods:;;;;
-@param_types:object;;vec3;;rot
+@param_types:obj;;vec3;;rot
 @param_names:object;;position;;rotation
 @param_infos:;;;;
-@related:$flink getPos,object,vec3,rot;;$flink setPos,object,vec3,rot
+@related:$flink getPos,obj,vec3,rot;;$flink setPos,obj,vec3,rot
 $template function

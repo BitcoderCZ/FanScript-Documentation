@@ -1,15 +1,15 @@
-# AddForce(object, vec3, vec3, vec3)
+# AddForce(obj, vec3, vec3, vec3)
 
 Adds [force](#force) and/or [torque](#torque) to [object](#object).
 
 ```
-void addForce(this object object, vec3 force, vec3 applyAt, vec3 torque)
+void addForce(this obj object, vec3 force, vec3 applyAt, vec3 torque)
 ```
 
 ## Parameters
 
 #### `object`
-Type: object
+Type: obj
 
 The object that the force will be applied to.
 
@@ -30,6 +30,6 @@ The rotational force to apply to [object](#object).
 
 ## Related
 
- - [setVelocity(object,vec3,vec3)](/MdDocs/Functions/Physics/SetVelocity.md)
- - [getVelocity(object,vec3,vec3)](/MdDocs/Functions/Physics/GetVelocity.md)
+ - [setVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/SetVelocity.md)
+ - [getVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/GetVelocity.md)
 
