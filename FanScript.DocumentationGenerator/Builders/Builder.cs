@@ -42,7 +42,7 @@ namespace FanScript.DocumentationGenerator.Builders
                     case LinkToken link:
                         buildLink(link);
                         break;
-                    // TODO: $tLink - TypeSymbol link, $fLink - FunctionSymbol link
+                    // TODO: $tLink - TypeSymbol link
                     case ParamLinkToken paramLink:
                         buildParamLink(paramLink);
                         break;

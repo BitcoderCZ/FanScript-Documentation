@@ -23,7 +23,6 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
                 SpecialBlockTypeInfo info = eventType.GetInfo();
 
-
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
                     generateEvent(info, writer);
