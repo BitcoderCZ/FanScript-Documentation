@@ -10,7 +10,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
             docSrcPath = Path.Combine(docSrcPath, "Events");
             Directory.CreateDirectory(docSrcPath);
 
-            foreach (SpecialBlockType eventType in Enum.GetValues<SpecialBlockType>())
+            foreach (EventType eventType in Enum.GetValues<EventType>())
             {
                 string path = Path.Combine(docSrcPath, eventType.ToString() + ".docsrc");
 
@@ -21,7 +21,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                     continue;
                 }
 
-                SpecialBlockTypeInfo info = eventType.GetInfo();
+                EventTypeInfo info = eventType.GetInfo();
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
@@ -29,7 +29,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
             }
         }
 
-        private static void generateEvent(SpecialBlockTypeInfo info, TextWriter writer)
+        private static void generateEvent(EventTypeInfo info, TextWriter writer)
         {
             writer.Write("@name:");
             writer.WriteLine(info.Type.ToString());
