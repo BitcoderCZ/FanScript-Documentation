@@ -3,9 +3,18 @@
 @is_generic:false
 @is_method:true
 @name:setVisible
-@info:
+@info:Sets if $plink object; is visible and has collision/physics.
 @param_mods:;;
 @param_types:object;;bool
 @param_names:object;;visible
 @param_infos:;;
+@remarks:When $plink object; is set to invisible, all constraints associated with it will be deleted.
+@examples:($codeblock fcs;
+(// Here's how an object can be invisible, while also having physics:
+object obj
+obj.setVisible(true)
+on LateUpdate
+{
+    obj.setVisible(false)
+}))
 $template function

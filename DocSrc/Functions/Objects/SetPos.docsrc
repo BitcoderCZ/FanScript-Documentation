@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:setPos
-@info:
+@info:Sets the position of $plink object;.
 @param_mods:;;
 @param_types:object;;vec3
 @param_names:object;;position
 @param_infos:;;
+@related:$flink getPos,object,vec3,rot;;$flink setPos,object,vec3,rot
 $template function

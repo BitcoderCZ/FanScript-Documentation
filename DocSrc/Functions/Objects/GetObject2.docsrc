@@ -1,11 +1,12 @@
 @type:object
-@return_info:
+@return_info:The object at \($plink x;, $plink y;, $plink z;\).
 @is_generic:false
 @is_method:false
 @name:getObject
-@info:
+@info:Returns the object at \($plink x;, $plink y;, $plink z;\).
 @param_mods:;;;;
 @param_types:float;;float;;float
 @param_names:x;;y;;z
-@param_infos:;;;;
+@param_infos:X position of the object, must be constant.;;Y position of the object, must be constant.;;Z position of the object, must be constant.
+@related:$flink getObject,vec3
 $template function

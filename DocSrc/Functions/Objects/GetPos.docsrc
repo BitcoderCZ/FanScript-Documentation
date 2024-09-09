@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:true
 @name:getPos
-@info:
+@info:Gets the $plink position; and $plink rotation; of $plink object;.
 @param_mods:;;out;;out
 @param_types:object;;vec3;;rot
 @param_names:object;;position;;rotation
-@param_infos:;;;;
+@param_infos:;;$plink object;'s position.;;$plink object;'s rotation.
+@related:$flink setPos,object,vec3;;$flink setPos,object,vec3,rot
 $template function

@@ -3,9 +3,11 @@
 @is_generic:false
 @is_method:true
 @name:clone
-@info:
+@info:Creates a copy of $plink object;.
 @param_mods:;;out
 @param_types:object;;object
 @param_names:object;;copy
-@param_infos:;;
+@param_infos:The object to copy.;;The copy of $plink object;.
+@remarks:Scripts inside $plink object; do not get copied inside of $plink copy;.
+@related:$flink destroy,object
 $template function

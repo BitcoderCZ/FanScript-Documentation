@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:false
 @name:raycast
-@info:
+@info:Detects if an object intersects a line between $plink from; and $plink to;.
 @param_mods:;;;;out;;out;;out
 @param_types:vec3;;vec3;;bool;;vec3;;object
 @param_names:from;;to;;didHit;;hitPos;;hitObj
-@param_infos:;;;;;;;;
+@param_infos:From position of the ray.;;To position of the ray.;;If the ray hit an object.;;The position at which the ray intersected $plink hitObj;.;;The object that was hit.
+@remarks:- Only detects the outside surface of a block. If it starts inside of a block, the block won't be detected.\n- Won't detect object created on the same frame as the raycast is performed.\n- Won't detect objects without collion or script blocks.\n- If the raycast hits the floor, $plink hitObj; will be equal to null.
 $template function
