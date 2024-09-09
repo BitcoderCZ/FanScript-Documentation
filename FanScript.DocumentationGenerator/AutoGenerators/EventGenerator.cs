@@ -1,10 +1,5 @@
 ﻿using FanScript.Compiler;
 using FanScript.DocumentationGenerator.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {

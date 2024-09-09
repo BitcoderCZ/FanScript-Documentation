@@ -419,7 +419,7 @@ namespace FanScript.DocumentationGenerator.Builders
             string[] param_names = getArg("param_names").Split(";;");
             bool[] param_is_constant = getArg("param_is_constant").Split(";;").Select(parseBool).ToArray();
             string[]? param_infos = getOptionalArg("param_infos")?.Split(";;");
-            
+
             string? remarks = getOptionalArg("remarks");
             string? examples = getOptionalArg("examples");
             string[]? related = getOptionalArg("related")?.Split(";;");
