@@ -9,3 +9,7 @@ void win(float DELAY)
 #### `DELAY`
 Type: float
 
+## Related
+
+ - [lose(float)](/MdDocs/Functions/Game/Lose.md)
+

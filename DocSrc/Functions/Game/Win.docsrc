@@ -8,4 +8,5 @@
 @param_types:float
 @param_names:DELAY
 @param_infos:
+@related:$flink lose,float
 $template function

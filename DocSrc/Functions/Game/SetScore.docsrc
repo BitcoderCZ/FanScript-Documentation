@@ -3,9 +3,9 @@
 @is_generic:false
 @is_method:false
 @name:setScore
-@info:
+@info:Sets the $plink score; and/or $plink coins;.
 @param_mods:;;;;
 @param_types:float;;float;;float
 @param_names:score;;coins;;RANKING
-@param_infos:;;;;
+@param_infos:The new score, if $plink RANKING; is $cvlink RANKING;RANKING_TIME_FASTEST; or $cvlink RANKING;RANKING_TIME_LONGEST; time is specified in frames \(60 - 1s\).;;The new amount of coins.;;How players are ranked, one of $clink RANKING;, must be constant.
 $template function

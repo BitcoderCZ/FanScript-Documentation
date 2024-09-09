@@ -82,6 +82,8 @@ namespace FanScript.DocumentationGenerator.Builders
         }
         protected override void buildConstantLink(ConstantLinkToken token)
             => builder.Append($"[{token.Value}]({linkPrefix}Constants/{token.Value}.md)");
+        protected override void buildConstantValueLink(ConstantValueLinkToken token)
+            => builder.Append($"[{token.Value}]({linkPrefix}Constants/{token.ConstantName}.md{StringUtils.ToHeaderRef(token.Value)})");
         protected override void buildFunctionLink(FunctionLinkToken token)
         {
             string[] split = token.Value.Split(',');
@@ -159,8 +161,8 @@ namespace FanScript.DocumentationGenerator.Builders
             string[] param_names = getArg("param_names").Split(";;");
             string[]? param_infos = getOptionalArg("param_infos")?.Split(";;");
 
-            string? examples = getOptionalArg("examples");
             string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
             string[]? related = getOptionalArg("related")?.Split(";;");
 
             if (param_mods.Length != param_names.Length)
@@ -269,15 +271,6 @@ namespace FanScript.DocumentationGenerator.Builders
                 }
             }
 
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
             if (!string.IsNullOrEmpty(remarks))
             {
                 builder.AppendLine("## Remarks");
@@ -289,6 +282,15 @@ namespace FanScript.DocumentationGenerator.Builders
                     Console.WriteLine("Remarks should end with '.' - " + remarks);
 
                 builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
                 builder.AppendLine();
             }
 
@@ -417,9 +419,9 @@ namespace FanScript.DocumentationGenerator.Builders
             string[] param_names = getArg("param_names").Split(";;");
             bool[] param_is_constant = getArg("param_is_constant").Split(";;").Select(parseBool).ToArray();
             string[]? param_infos = getOptionalArg("param_infos")?.Split(";;");
-
-            string? examples = getOptionalArg("examples");
+            
             string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
             string[]? related = getOptionalArg("related")?.Split(";;");
 
             if (param_mods.Length != param_names.Length)
@@ -516,15 +518,6 @@ namespace FanScript.DocumentationGenerator.Builders
                 }
             }
 
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
             if (!string.IsNullOrEmpty(remarks))
             {
                 builder.AppendLine("## Remarks");
@@ -536,6 +529,15 @@ namespace FanScript.DocumentationGenerator.Builders
                     Console.WriteLine("Remarks should end with '.' - " + remarks);
 
                 builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
                 builder.AppendLine();
             }
 

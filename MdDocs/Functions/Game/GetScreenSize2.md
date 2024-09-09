@@ -1,5 +1,7 @@
 # GetScreenSize()
 
+Gets the size of the screen.
+
 ```
 vec3 getScreenSize()
 ```
@@ -8,5 +10,5 @@ vec3 getScreenSize()
 
 vec3
 
-
+Size of the screen in pixels, Width/Height - X/Y
 

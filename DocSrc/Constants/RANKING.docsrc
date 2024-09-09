@@ -3,5 +3,5 @@
 @info:Used by $flink setScore,float,float,float;, determines how players are ranked.
 @names:RANKING_POINTS_MOST;;RANKING_POINST_FEWEST;;RANKING_TIME_FASTEST;;RANKING_TIME_LONGEST
 @values:2;;3;;4;;5
-@infos:;;;;;;
+@infos:The player with the `highest` score is ranked first, score is displayed as a `number`.;;The player with the `lowest` score is ranked first, score is displayed as a `number`.;;The player with the `lowest` score is ranked first, score is displayed as `time`.;;The player with the `highest` score is ranked first, score is displayed as `time`.
 $template constant

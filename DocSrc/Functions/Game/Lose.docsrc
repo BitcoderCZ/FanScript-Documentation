@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:false
 @name:lose
-@info:
+@info:Loses the game.
 @param_mods:
 @param_types:float
 @param_names:DELAY
-@param_infos:
+@param_infos:Time to lose \(in frames\), must be constant.
+@related:$flink win,float
 $template function

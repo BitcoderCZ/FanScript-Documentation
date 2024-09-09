@@ -48,6 +48,8 @@ namespace FanScript.DocumentationGenerator.Builders
 
         protected override void buildConstantLink(ConstantLinkToken token)
             => builder.Append("$clink " + token.Value + ";");
+        protected override void buildConstantValueLink(ConstantValueLinkToken token)
+            => builder.Append("$cvlink " + token.ConstantName + ";" + token.Value + ";");
 
         protected override void buildFunctionLink(FunctionLinkToken token)
             => builder.Append("$flink " + token.Value + ";");

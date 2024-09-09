@@ -3,9 +3,10 @@
 @is_generic:false
 @is_method:false
 @name:menuItem
-@info:
+@info:Adds an item to the shop.
 @param_mods:ref;;;;;;;;
 @param_types:float;;object;;string;;float;;float
 @param_names:variable;;picture;;NAME;;MAX_ITEMS;;PRICE_INCREASE
-@param_infos:;;;;;;;;
+@param_infos:Which variable to store the value of times bought in, should have saved modifier.;;Which object to display for the item.;;Name of the item, must be constant.;;Maximum number of times the item can be bought, can be 2-100 or one of $clink MAX_ITEMS;, must be constant.;;Specifies what the initial price is and how it increases, one of $clink PRICE_INCREASE;, must be constant.
+@related:$flink shopSection,string
 $template function

@@ -29,7 +29,7 @@ namespace FanScript.DocumentationGenerator.Utils
 
             for (int i = 0; i < headerText.Length; i++)
             {
-                if (char.IsLetterOrDigit(headerText[i]))
+                if (char.IsLetterOrDigit(headerText[i]) || headerText[i] == '_')
                     builder.Append(headerText[i]);
                 else if (headerText[i] == ' ')
                     builder.Append('-');

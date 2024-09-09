@@ -1,9 +1,9 @@
 @type:vec3
-@return_info:
+@return_info:Size of the screen in pixels, Width/Height - X/Y
 @is_generic:false
 @is_method:false
 @name:getScreenSize
-@info:
+@info:Gets the size of the screen.
 @param_mods:
 @param_types:
 @param_names:

@@ -270,6 +270,8 @@ namespace FanScript.DocumentationGenerator.Parsing
                     return parsePLink();
                 case "clink":
                     return parseCLink();
+                case "cvlink":
+                    return parseCVLink();
                 case "flink":
                     return parseFLink();
                 case "elink":
@@ -306,17 +308,25 @@ namespace FanScript.DocumentationGenerator.Parsing
             position++;
             return new ConstantLinkToken(constantName);
         }
-        private FunctionLinkToken parseFLink()
+        private ConstantValueLinkToken parseCVLink()
         {
             string constantName = new string(readUntilChar(';'));
             position++;
-            return new FunctionLinkToken(constantName);
+            string constantValueName = new string(readUntilChar(';'));
+            position++;
+            return new ConstantValueLinkToken(constantName, constantValueName);
+        }
+        private FunctionLinkToken parseFLink()
+        {
+            string functionSpecification = new string(readUntilChar(';'));
+            position++;
+            return new FunctionLinkToken(functionSpecification);
         }
         private EventLinkToken parseELink()
         {
-            string constantName = new string(readUntilChar(';'));
+            string eventName = new string(readUntilChar(';'));
             position++;
-            return new EventLinkToken(constantName);
+            return new EventLinkToken(eventName);
         }
         private CodeBlockToken parseCodeBlock()
         {

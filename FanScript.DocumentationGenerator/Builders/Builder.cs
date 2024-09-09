@@ -49,6 +49,9 @@ namespace FanScript.DocumentationGenerator.Builders
                     case ConstantLinkToken constantLink:
                         buildConstantLink(constantLink);
                         break;
+                    case ConstantValueLinkToken constantValueLink:
+                        buildConstantValueLink(constantValueLink);
+                        break;
                     case FunctionLinkToken functionLink:
                         buildFunctionLink(functionLink);
                         break;
@@ -73,6 +76,7 @@ namespace FanScript.DocumentationGenerator.Builders
         protected abstract void buildLink(LinkToken token);
         protected abstract void buildParamLink(ParamLinkToken token);
         protected abstract void buildConstantLink(ConstantLinkToken token);
+        protected abstract void buildConstantValueLink(ConstantValueLinkToken token);
         protected abstract void buildFunctionLink(FunctionLinkToken token);
         protected abstract void buildEventLink(EventLinkToken token);
         protected abstract void buildCodeBlock(CodeBlockToken token);
