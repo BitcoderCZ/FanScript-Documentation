@@ -1,6 +1,6 @@
 # MenuItem(float, object, string, float, float)
 
-Adds an item to the shop.
+Adds an item to the [shop](https://www.fancade.com/wiki/script/how-to-use-the-shop-system).
 
 ```
 void menuItem(ref float variable, object picture, string NAME, float MAX_ITEMS, float PRICE_INCREASE)

@@ -3,7 +3,7 @@
 @is_generic:false
 @is_method:false
 @name:menuItem
-@info:Adds an item to the shop.
+@info:Adds an item to the $link shop;https://www.fancade.com/wiki/script/how-to-use-the-shop-system;.
 @param_mods:ref;;;;;;;;
 @param_types:float;;object;;string;;float;;float
 @param_names:variable;;picture;;NAME;;MAX_ITEMS;;PRICE_INCREASE

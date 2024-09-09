@@ -1,6 +1,6 @@
 # TOUCH_FINGER
 ### Type: float
-Used by [Touch](/MdDocs/Events/Touch.md), determined which finger [Touch](/MdDocs/Events/Touch.md) detects.
+Used by [Touch](/MdDocs/Events/Touch.md), determines which finger [Touch](/MdDocs/Events/Touch.md) detects.
 ```
 TOUCH_FINGER_1
 TOUCH_FINGER_2
