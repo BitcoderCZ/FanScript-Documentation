@@ -9,23 +9,23 @@ obj getObject(float x, float y, float z)
 ## Parameters
 
 #### `x`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 X position of the object, must be constant.
 
 #### `y`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 Y position of the object, must be constant.
 
 #### `z`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 Z position of the object, must be constant.
 
 ## Returns
 
-obj
+[obj](/MdDocs/Types/Obj.md)
 
 The object at ([x](#x), [y](#y), [z](#z)).
 

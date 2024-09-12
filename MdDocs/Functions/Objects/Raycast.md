@@ -9,27 +9,27 @@ void raycast(vec3 from, vec3 to, out bool didHit, out vec3 hitPos, out obj hitOb
 ## Parameters
 
 #### `from`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 From position of the ray.
 
 #### `to`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 To position of the ray.
 
 #### `didHit`
-Type: bool
+Type: [bool](/MdDocs/Types/Bool.md)
 
 If the ray hit an object.
 
 #### `hitPos`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The position at which the ray intersected [hitObj](#hitObj).
 
 #### `hitObj`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object that was hit.
 

@@ -66,6 +66,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 case "event":
                     buildEventTemplate();
                     break;
+                case "type":
+                    buildTypeTemplate();
+                    break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
             }
@@ -139,6 +142,8 @@ namespace FanScript.DocumentationGenerator.Builders
         }
         protected override void buildEventLink(EventLinkToken token)
             => builder.Append($"[{token.Value}]({linkPrefix}Events/{token.Value}.md)");
+        protected override void buildTypeLink(TypeLinkToken token)
+            => appendType(token.Value);
 
         protected override void buildCodeBlock(CodeBlockToken token)
         {
@@ -217,7 +222,7 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(' ');
                 }
 
-                appendType(param_types[i]);
+                appendType(param_types[i], false);
                 builder.Append(' ');
                 builder.Append(param_names[i]);
             }
@@ -478,7 +483,7 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(' ');
                 }
 
-                appendType(param_types[i]);
+                appendType(param_types[i], false);
                 builder.Append(' ');
                 builder.Append(param_names[i]);
             }
@@ -564,6 +569,84 @@ namespace FanScript.DocumentationGenerator.Builders
                 return this.parse(str, paramName => param_names.Contains(paramName)).Trim();
             }
         }
+        private void buildTypeTemplate()
+        {
+            bool is_generic = getBoolArg("is_generic");
+            string name = getArg("name");
+            string? info = getOptionalArg("info");
+            string? how_to_create = getOptionalArg("how_to_create");
+
+            string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            builder.AppendLine($"# {name.ToUpperFirst()}");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Infos should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+            builder.AppendLine(TypeSymbol.GetTypeInternal(name).ToString());
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(how_to_create))
+            {
+                builder.AppendLine("## How to create");
+                builder.AppendLine();
+                builder.AppendLine(parse(how_to_create));
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => false /*Types don't have args*/).Trim();
+            }
+        }
         #endregion
 
         #region Utils
@@ -586,11 +669,14 @@ namespace FanScript.DocumentationGenerator.Builders
                 return bool.Parse(value);
         }
 
-        private void appendType(string typeName)
+        private void appendType(string typeName, bool link = true)
         {
             // TODO: link
             TypeSymbol type = TypeSymbol.GetTypeInternal(typeName);
-            builder.Append(type);
+            if (!link || type == TypeSymbol.Generic || type == TypeSymbol.Error || type == TypeSymbol.Void)
+                builder.Append(type.Name);
+            else
+                builder.Append($"[{type.Name}]({linkPrefix}Types/{type.Name.ToUpperFirst()}.md)");
         }
 
         private string getArg(string name)

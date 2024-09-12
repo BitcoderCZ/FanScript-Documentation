@@ -9,13 +9,13 @@ float cos(float num)
 ## Parameters
 
 #### `num`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 Angle in degrees.
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 Cos of [num](#num).
 

@@ -9,14 +9,14 @@ float max(float num1, float num2)
 ## Parameters
 
 #### `num1`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 #### `num2`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 Returns either [num1](#num1) or [num2](#num2), depending on which one is larger.
 

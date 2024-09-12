@@ -9,22 +9,22 @@ void screenToWorld(float screenX, float screenY, out vec3 worldNear, out vec3 wo
 ## Parameters
 
 #### `screenX`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The x screen coordinate.
 
 #### `screenY`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The y screen coordinate.
 
 #### `worldNear`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Position 2 units away from the camera.
 
 #### `worldFar`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Position 400 units away from the camera.
 

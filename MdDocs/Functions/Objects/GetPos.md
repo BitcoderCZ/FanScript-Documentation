@@ -9,15 +9,15 @@ void getPos(this obj object, out vec3 position, out rot rotation)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 #### `position`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 [object](#object)'s position.
 
 #### `rotation`
-Type: rot
+Type: [rot](/MdDocs/Types/Rot.md)
 
 [object](#object)'s rotation.
 

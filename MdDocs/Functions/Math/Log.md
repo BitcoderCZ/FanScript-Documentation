@@ -9,11 +9,11 @@ float log(float number, float base)
 ## Parameters
 
 #### `number`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 #### `base`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)

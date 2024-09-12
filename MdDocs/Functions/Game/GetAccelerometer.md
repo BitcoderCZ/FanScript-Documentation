@@ -8,7 +8,7 @@ vec3 getAccelerometer()
 
 ## Returns
 
-vec3
+[vec3](/MdDocs/Types/Vec3.md)
 
 The acceleration, can be used to determine the phone's tilt.
 

@@ -9,12 +9,12 @@ void setLight(vec3 position, rot rotation)
 ## Parameters
 
 #### `position`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Currently unused.
 
 #### `rotation`
-Type: rot
+Type: [rot](/MdDocs/Types/Rot.md)
 
 The direction of light.
 

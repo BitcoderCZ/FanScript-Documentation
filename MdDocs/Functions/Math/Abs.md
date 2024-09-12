@@ -9,11 +9,11 @@ float abs(float num)
 ## Parameters
 
 #### `num`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 Absolute value of [num](#num) (if [num](#num) >= 0 [num](#num) else -[num](#num)).
 

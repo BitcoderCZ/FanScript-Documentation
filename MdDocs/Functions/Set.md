@@ -3,16 +3,16 @@
 Sets [array](#array) at [index](#index) to [value](#value).
 
 ```
-void set<>(this array<> array, float index, generic value)
+void set<>(this array array, float index, generic value)
 ```
 
 ## Parameters
 
 #### `array`
-Type: array<>
+Type: [array](/MdDocs/Types/Array.md)
 
 #### `index`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 #### `value`
 Type: generic

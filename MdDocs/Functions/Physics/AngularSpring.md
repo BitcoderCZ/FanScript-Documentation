@@ -9,17 +9,17 @@ void angularSpring(this constr constraint, vec3 stiffness, vec3 damping)
 ## Parameters
 
 #### `constraint`
-Type: constr
+Type: [constr](/MdDocs/Types/Constr.md)
 
 The constraint to use.
 
 #### `stiffness`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 How stiff the sping will be.
 
 #### `damping`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 How much damping (drag) to apply.
 

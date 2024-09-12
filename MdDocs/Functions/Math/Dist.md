@@ -9,18 +9,18 @@ float dist(vec3 vector1, vec3 vector2)
 ## Parameters
 
 #### `vector1`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The first vector.
 
 #### `vector2`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The second vector.
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 The distance between [vector1](#vector1) and [vector2](#vector2).
 

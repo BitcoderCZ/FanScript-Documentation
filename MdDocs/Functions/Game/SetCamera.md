@@ -9,23 +9,23 @@ void setCamera(vec3 position, rot rotation, float range, bool PERSPECTIVE)
 ## Parameters
 
 #### `position`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The new position of the camera.
 
 #### `rotation`
-Type: rot
+Type: [rot](/MdDocs/Types/Rot.md)
 
 The new rotation of the camera.
 
 #### `range`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 - If in orthographic (isometric) mode, determines how wide the view frustum is
 - If in perspective mode specifies half of the field of view.
 
 #### `PERSPECTIVE`
-Type: bool
+Type: [bool](/MdDocs/Types/Bool.md)
 
 If true, the camera will be in perspective mode, otherwise it will be in orthographic mode.
 

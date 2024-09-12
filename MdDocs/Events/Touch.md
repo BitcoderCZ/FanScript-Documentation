@@ -9,24 +9,24 @@ on touch(out float screenX, out float screenY, const float TOUCH_STATE, const fl
 ## Parameters
 
 #### `screenX`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The x coordinate of the touch (in pixels).
 
 #### `screenY`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The y coordinate of the touch (in pixels).
 
 #### `TOUCH_STATE`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 Value must be constant.
 
 
 One of [TOUCH_STATE](/MdDocs/Constants/TOUCH_STATE.md).
 
 #### `TOUCH_FINGER`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 Value must be constant.
 
 

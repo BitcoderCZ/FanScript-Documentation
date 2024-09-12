@@ -9,13 +9,13 @@ float round(float num)
 ## Parameters
 
 #### `num`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The number to round.
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 [num](#num) rounded to the nearest integer.
 

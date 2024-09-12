@@ -9,22 +9,22 @@ void addConstraint(this obj base, obj part, vec3 pivot, out constr constraint)
 ## Parameters
 
 #### `base`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object that will be glued on.
 
 #### `part`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object that will be glued on the [base](#base).
 
 #### `pivot`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The other end of the constraint rod.
 
 #### `constraint`
-Type: constr
+Type: [constr](/MdDocs/Types/Constr.md)
 
 The created constraint.
 

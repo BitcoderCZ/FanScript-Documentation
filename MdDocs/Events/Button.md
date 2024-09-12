@@ -9,7 +9,7 @@ on button(const float BUTTON_TYPE) { }
 ## Parameters
 
 #### `BUTTON_TYPE`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 Value must be constant.
 
 

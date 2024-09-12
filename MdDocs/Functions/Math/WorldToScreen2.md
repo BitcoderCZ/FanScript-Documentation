@@ -9,11 +9,11 @@ vec3 worldToScreen(vec3 worldPos)
 ## Parameters
 
 #### `worldPos`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 ## Returns
 
-vec3
+[vec3](/MdDocs/Types/Vec3.md)
 
 The screen position of [worldPos](#worldPos) (XY).
 

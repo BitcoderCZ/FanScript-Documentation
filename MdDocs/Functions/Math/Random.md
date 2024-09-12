@@ -9,18 +9,18 @@ float random(float min, float max)
 ## Parameters
 
 #### `min`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The minimum number (inclusive).
 
 #### `max`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The maximum number (exclusive).
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 The randomly selected number.
 

@@ -9,17 +9,17 @@ void setVelocity(this obj object, vec3 velocity, vec3 spin)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object to set the velocity of.
 
 #### `velocity`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The linear velocity (units/second).
 
 #### `spin`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The angular velocity (degrees/second).
 

@@ -9,17 +9,17 @@ void linearLimits(this constr constraint, vec3 lower, vec3 upper)
 ## Parameters
 
 #### `constraint`
-Type: constr
+Type: [constr](/MdDocs/Types/Constr.md)
 
 The constraint to apply the limits to.
 
 #### `lower`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The lower limit.
 
 #### `upper`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The upper limit.
 

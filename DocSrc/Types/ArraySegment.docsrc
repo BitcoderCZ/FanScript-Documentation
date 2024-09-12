@@ -1,0 +1,13 @@
+@is_generic:True
+@name:arraySegment
+@info:Represents a segment of values.
+@how_to_create:(Array segment isn't a runtime type - variables of the type cannot be created.\n
+Array segment can only be used to:
+- create $tlink array;s
+- as argument in functions $flink setRange,array,float,arraySegment;
+$codeblock fcs;
+(array<float> arr = [1, 2, 3]
+arr.setRange(3, [4, 5, 6])))
+@remarks:
+@related:$tlink array
+$template type

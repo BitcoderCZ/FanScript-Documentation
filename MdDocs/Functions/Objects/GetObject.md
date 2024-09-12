@@ -9,13 +9,13 @@ obj getObject(vec3 position)
 ## Parameters
 
 #### `position`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Position of the object, must be constant.
 
 ## Returns
 
-obj
+[obj](/MdDocs/Types/Obj.md)
 
 The object at [position](#position).
 

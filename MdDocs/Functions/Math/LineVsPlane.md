@@ -9,28 +9,28 @@ vec3 lineVsPlane(vec3 lineFrom, vec3 lineTo, vec3 planePoint, vec3 planeNormal)
 ## Parameters
 
 #### `lineFrom`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Line's starting position.
 
 #### `lineTo`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Line's end position.
 
 #### `planePoint`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 A point on the plane.
 
 #### `planeNormal`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 A vector perpendicular to the plane (the up direction from the plane's surface).
 
 ## Returns
 
-vec3
+[vec3](/MdDocs/Types/Vec3.md)
 
 The intersection of a line and a plane.
 

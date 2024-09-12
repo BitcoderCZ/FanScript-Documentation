@@ -1,0 +1,9 @@
+@is_generic:False
+@name:float
+@info:A floating point number.
+@how_to_create:($codeblock fcs;
+(float a = 10
+float b = 3.14
+float c = .5))
+@remarks:
+$template type

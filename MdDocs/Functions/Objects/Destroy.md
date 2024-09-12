@@ -9,7 +9,7 @@ void destroy(this obj object)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object to be destroyed.
 

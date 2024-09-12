@@ -9,23 +9,23 @@ rot lerp(rot from, rot to, float amount)
 ## Parameters
 
 #### `from`
-Type: rot
+Type: [rot](/MdDocs/Types/Rot.md)
 
 The start value.
 
 #### `to`
-Type: rot
+Type: [rot](/MdDocs/Types/Rot.md)
 
 The end value.
 
 #### `amount`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 How far between [from](#from) and [to](#to) to transition (0-1).
 
 ## Returns
 
-rot
+[rot](/MdDocs/Types/Rot.md)
 
 The value between [from](#from) and [to](#to).
 

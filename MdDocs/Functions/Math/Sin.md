@@ -9,13 +9,13 @@ float sin(float num)
 ## Parameters
 
 #### `num`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 Angle in degrees.
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 Sin of [num](#num).
 

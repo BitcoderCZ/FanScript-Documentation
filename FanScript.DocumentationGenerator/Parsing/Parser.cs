@@ -276,12 +276,15 @@ namespace FanScript.DocumentationGenerator.Parsing
                     return parseFLink();
                 case "elink":
                     return parseELink();
+                case "tlink":
+                    return parseTLink();
                 case "codeblock":
                     return parseCodeBlock();
                 default:
                     throw new InvalidDataException($"Unknown $ expression '{s}'.");
             }
         }
+
         private TemplateToken parseTemplate()
         {
             string value = new string(readLine());
@@ -327,6 +330,12 @@ namespace FanScript.DocumentationGenerator.Parsing
             string eventName = new string(readUntilChar(';'));
             position++;
             return new EventLinkToken(eventName);
+        }
+        private TypeLinkToken parseTLink()
+        {
+            string type = new string(readUntilChar(';'));
+            position++;
+            return new TypeLinkToken(type);
         }
         private CodeBlockToken parseCodeBlock()
         {

@@ -9,11 +9,11 @@ vec3 normalize(vec3 vector)
 ## Parameters
 
 #### `vector`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 ## Returns
 
-vec3
+[vec3](/MdDocs/Types/Vec3.md)
 
 The normalized [vector](#vector).
 

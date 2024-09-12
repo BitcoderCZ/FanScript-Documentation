@@ -9,12 +9,12 @@ void clone(this obj object, out obj copy)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object to copy.
 
 #### `copy`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The copy of [object](#object).
 

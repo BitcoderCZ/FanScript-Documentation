@@ -7,7 +7,7 @@ void win(float DELAY)
 ## Parameters
 
 #### `DELAY`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Related
 

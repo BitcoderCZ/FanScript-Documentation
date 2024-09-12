@@ -1,5 +1,5 @@
 # BUTTON_TYPE
-### Type: float
+### Type: [float](/MdDocs/Types/Float.md)
 Used by [Button](/MdDocs/Events/Button.md).
 ```
 BUTTON_TYPE_DIRECTION

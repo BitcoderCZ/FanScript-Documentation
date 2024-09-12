@@ -1,5 +1,5 @@
 # TOUCH_STATE
-### Type: float
+### Type: [float](/MdDocs/Types/Float.md)
 Used by [Touch](/MdDocs/Events/Touch.md), determines which "state" of a touch [Touch](/MdDocs/Events/Touch.md) detects.
 ```
 TOUCH_STATE_TOUCHING

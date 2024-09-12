@@ -9,17 +9,17 @@ void setLocked(this obj object, vec3 position, vec3 rotation)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object to restrict the movement of.
 
 #### `position`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The movement multiplier.
 
 #### `rotation`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The rotation multiplier.
 

@@ -9,18 +9,18 @@ rot axisAngle(vec3 axis, float angle)
 ## Parameters
 
 #### `axis`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The axis to rotate around.
 
 #### `angle`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 How much to rotate (in degrees).
 
 ## Returns
 
-rot
+[rot](/MdDocs/Types/Rot.md)
 ## Examples
 
 ``` fcs

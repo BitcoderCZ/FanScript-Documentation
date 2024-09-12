@@ -26,6 +26,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
                     generateEvent(info, writer);
+
+                Console.WriteLine($"Generated '{path}'.");
             }
         }
 

@@ -9,7 +9,7 @@ void shopSection(string NAME)
 ## Parameters
 
 #### `NAME`
-Type: string
+Type: [string](/MdDocs/Types/String.md)
 
 The name of this section, will be shown as a header above the items, must be constant.
 

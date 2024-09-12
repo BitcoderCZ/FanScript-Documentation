@@ -3,16 +3,16 @@
 Returns the value (reference) from [array](#array) at [index](#index).
 
 ```
-generic get<>(this array<> array, float index)
+generic get<>(this array array, float index)
 ```
 
 ## Parameters
 
 #### `array`
-Type: array<>
+Type: [array](/MdDocs/Types/Array.md)
 
 #### `index`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Returns
 

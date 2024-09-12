@@ -1,0 +1,8 @@
+@is_generic:False
+@name:bool
+@info:true or false.
+@how_to_create:($codeblock fcs;
+(bool a = false
+bool b = true))
+@remarks:
+$template type

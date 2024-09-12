@@ -9,7 +9,7 @@ void setRandomSeed(float seed)
 ## Parameters
 
 #### `seed`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The new random seed.
 

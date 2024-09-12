@@ -9,17 +9,17 @@ on loop(float start, float stop, out float counter) { }
 ## Parameters
 
 #### `start`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The start value (inclusive).
 
 #### `stop`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The end value (exclusive).
 
 #### `counter`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 The current value.
 

@@ -3,19 +3,19 @@
 Sets a range of [array](#array), starting at [index](#index).
 
 ```
-void setRange<>(this array<> array, float index, arraySegment<> value)
+void setRange<>(this array array, float index, arraySegment value)
 ```
 
 ## Parameters
 
 #### `array`
-Type: array<>
+Type: [array](/MdDocs/Types/Array.md)
 
 #### `index`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 #### `value`
-Type: arraySegment<>
+Type: [arraySegment](/MdDocs/Types/ArraySegment.md)
 
 ## Examples
 

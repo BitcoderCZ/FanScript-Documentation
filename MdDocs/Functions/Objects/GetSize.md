@@ -9,15 +9,15 @@ void getSize(this obj object, out vec3 min, out vec3 max)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 #### `min`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Distance from the center of [object](#object) to the negative edge.
 
 #### `max`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Distance from the center of [object](#object) to the positive edge.
 

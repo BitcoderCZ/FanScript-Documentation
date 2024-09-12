@@ -9,10 +9,10 @@ void setVisible(this obj object, bool visible)
 ## Parameters
 
 #### `object`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 #### `visible`
-Type: bool
+Type: [bool](/MdDocs/Types/Bool.md)
 
 ## Remarks
 

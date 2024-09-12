@@ -8,7 +8,7 @@ float getCurrentFrame()
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 The current frame.
 

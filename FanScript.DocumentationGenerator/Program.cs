@@ -22,9 +22,10 @@ namespace FanScript.DocumentationGenerator
             FunctionGenerator.Generate(srcDir, false);
             ConstantGenerator.Generate(srcDir, false);
             EventGenerator.Generate(srcDir, false);
+            TypeGenerator.Generate(srcDir, false);
             FolderReadmeGenerator.Generate(srcDir, false);
 
-            Console.WriteLine("Generated");
+            Console.WriteLine("Generated all.");
 
             foreach (string dir in Directory.EnumerateDirectories(srcDir, "*", SearchOption.AllDirectories))
             {
@@ -33,7 +34,7 @@ namespace FanScript.DocumentationGenerator
                 Directory.CreateDirectory(newDir);
             }
 
-            Console.WriteLine("Created dirs");
+            Console.WriteLine("Created dirs.");
 
             foreach (string path in Directory.EnumerateFiles(srcDir, "*.docsrc", SearchOption.AllDirectories))
             {
@@ -70,7 +71,7 @@ namespace FanScript.DocumentationGenerator
                 }
             }
 
-            Console.WriteLine("Built");
+            Console.WriteLine("Built.");
 
             Console.ReadKey(true);
         }

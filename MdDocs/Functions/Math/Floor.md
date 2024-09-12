@@ -9,11 +9,11 @@ float floor(float num)
 ## Parameters
 
 #### `num`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 ## Returns
 
-float
+[float](/MdDocs/Types/Float.md)
 
 [num](#num) rounded down.
 

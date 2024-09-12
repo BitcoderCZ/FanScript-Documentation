@@ -9,22 +9,22 @@ on collision(obj object1, out obj object2, out float impulse, out vec3 normal) {
 ## Parameters
 
 #### `object1`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object to detect collisions for.
 
 #### `object2`
-Type: obj
+Type: [obj](/MdDocs/Types/Obj.md)
 
 The object which [object1](#object1) collided with.
 
 #### `impulse`
-Type: float
+Type: [float](/MdDocs/Types/Float.md)
 
 Impact force of the collision.
 
 #### `normal`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Direction of impact from [object2](#object2) to [object1](#object1).
 

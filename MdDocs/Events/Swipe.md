@@ -9,7 +9,7 @@ on swipe(out vec3 direction) { }
 ## Parameters
 
 #### `direction`
-Type: vec3
+Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Direction of the swipe (a cardinal direction in the XZ plane).
 
