@@ -2,6 +2,7 @@
 using FanScript.DocumentationGenerator.Builders;
 using FanScript.DocumentationGenerator.Parsing;
 using System.Collections.Immutable;
+using System.Globalization;
 
 namespace FanScript.DocumentationGenerator
 {
@@ -23,6 +24,7 @@ namespace FanScript.DocumentationGenerator
             ConstantGenerator.Generate(srcDir, false);
             EventGenerator.Generate(srcDir, false);
             TypeGenerator.Generate(srcDir, false);
+            ModifierGenerator.Generate(srcDir, false);
             FolderReadmeGenerator.Generate(srcDir, false);
 
             Console.WriteLine("Generated all.");
@@ -62,7 +64,6 @@ namespace FanScript.DocumentationGenerator
                     outPath = Path.ChangeExtension(outPath, ".md");
 
                     File.WriteAllText(outPath, builder.Build());
-                    //Console.WriteLine($"Generated file '{outPath}'");
                 }
                 catch (Exception ex)
                 {

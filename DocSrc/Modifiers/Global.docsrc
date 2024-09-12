@@ -1,0 +1,7 @@
+@name:Global
+@info:Makes the variable global - can be accesed from all functions.
+@targets:Variable
+@conflicting:saved
+@required:
+@remarks:
+$template modifier

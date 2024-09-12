@@ -1,0 +1,7 @@
+@name:Saved
+@info:
+@targets:Variable
+@conflicting:global;;const;;inline
+@required:
+@remarks:
+$template modifier

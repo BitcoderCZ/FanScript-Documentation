@@ -1,4 +1,5 @@
-﻿using FanScript.Compiler.Symbols;
+﻿using FanScript.Compiler;
+using FanScript.Compiler.Symbols;
 using FanScript.DocumentationGenerator.Parsing;
 using FanScript.DocumentationGenerator.Tokens;
 using FanScript.DocumentationGenerator.Tokens.Links;
@@ -68,6 +69,9 @@ namespace FanScript.DocumentationGenerator.Builders
                     break;
                 case "type":
                     buildTypeTemplate();
+                    break;
+                case "modifier":
+                    buildModifierTemplate();
                     break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
@@ -144,6 +148,8 @@ namespace FanScript.DocumentationGenerator.Builders
             => builder.Append($"[{token.Value}]({linkPrefix}Events/{token.Value}.md)");
         protected override void buildTypeLink(TypeLinkToken token)
             => appendType(token.Value);
+        protected override void buildModifierLink(ModifierLinkToken token)
+            => builder.Append($"[{token.Value}]({linkPrefix}Modifiers/{ModifiersE.FromKind(FanScript.Compiler.Syntax.SyntaxFacts.GetKeywordKind(token.Value))}.md)");
 
         protected override void buildCodeBlock(CodeBlockToken token)
         {
@@ -571,7 +577,6 @@ namespace FanScript.DocumentationGenerator.Builders
         }
         private void buildTypeTemplate()
         {
-            bool is_generic = getBoolArg("is_generic");
             string name = getArg("name");
             string? info = getOptionalArg("info");
             string? how_to_create = getOptionalArg("how_to_create");
@@ -645,6 +650,113 @@ namespace FanScript.DocumentationGenerator.Builders
             string parse(string str)
             {
                 return this.parse(str, paramName => false /*Types don't have args*/).Trim();
+            }
+        }
+        private void buildModifierTemplate()
+        {
+            string name = getArg("name");
+            string? info = getOptionalArg("info");
+
+            string[] targets = getArg("targets").Split(";;");
+            string[] conflicting = getArg("conflicting").Split(";;");
+            string[]? required = getOptionalArg("required")?.Split(";;");
+
+            string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            Modifiers mod = Enum.Parse<Modifiers>(name);
+
+            builder.AppendLine($"# {name.ToUpperFirst()}");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Infos should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+            builder.AppendLine(mod.ToSyntaxString());
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            builder.AppendLine("## Targets");
+            builder.AppendLine();
+            builder.AppendLine("The modifier can be applied to:");
+
+            for (int i = 0; i < targets.Length; i++)
+                builder.AppendLine(" - " + targets[i]);
+
+            builder.AppendLine();
+
+            if (conflicting.Length > 0 && !string.IsNullOrEmpty(conflicting[0]))
+            {
+                builder.AppendLine("## Conflicting modifiers");
+                builder.AppendLine();
+                builder.AppendLine("These modifiers cannot be used with this one:");
+
+                for (int i = 0; i < conflicting.Length; i++)
+                    builder.AppendLine(" - " + conflicting[i]);
+
+                builder.AppendLine();
+            }
+
+            if (required is not null && required.Length > 0 && !string.IsNullOrEmpty(required[0]))
+            {
+                builder.AppendLine("## Required modifiers");
+                builder.AppendLine();
+                builder.AppendLine("One of these modifiers must be used to use this one:");
+
+                for (int i = 0; i < required.Length; i++)
+                    builder.AppendLine(" - " + required[i]);
+
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => false /*Modifiers don't have args*/).Trim();
             }
         }
         #endregion

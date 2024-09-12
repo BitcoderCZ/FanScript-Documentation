@@ -1,0 +1,7 @@
+@name:Inline
+@info:- When applied to variable - instead of storing a value stores a reference to some code, which is ran every time the variable is accesed.\n- When applied to function - inlines the function for every call \(by default functions which are called only once are inlined automatically\) - replaces calls to this function by the code of this function.
+@targets:Variable;;Function
+@conflicting:const;;saved
+@required:
+@remarks:
+$template modifier

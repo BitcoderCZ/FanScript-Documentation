@@ -1,0 +1,7 @@
+@name:Constant
+@info:Makes the variable constant - when compiled, references to this variable get replaced by it's value.
+@targets:Variable
+@conflicting:readonly;;saved;;inline
+@required:
+@remarks:
+$template modifier

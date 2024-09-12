@@ -1,0 +1,7 @@
+@name:Readonly
+@info:
+@targets:Variable;;Parameter
+@conflicting:const;;ref;;out
+@required:
+@remarks:
+$template modifier
