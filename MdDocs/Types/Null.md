@@ -19,3 +19,7 @@ on Loop(null, 5)
 }
 ```
 
+## Remarks
+
+Null has implicit cast to all types.
+

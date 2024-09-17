@@ -10,5 +10,5 @@ on Loop(null, 5)
 {
 
 }))
-@remarks:
+@remarks:Null has implicit cast to all types.
 $template type
