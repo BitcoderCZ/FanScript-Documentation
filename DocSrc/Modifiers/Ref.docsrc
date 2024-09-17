@@ -1,5 +1,5 @@
 @name:Ref
-@info:
+@info:Similar to $mlink out;, but the argument is both taken in and out.
 @targets:Argument
 @conflicting:out;;readonly
 @required:

@@ -1,7 +1,11 @@
 @name:Readonly
-@info:
+@info:Makes the variable/parameter readonly - can be assigned only once.
 @targets:Variable;;Parameter
 @conflicting:const;;ref;;out
 @required:
-@remarks:
+@remarks:- Readonly vairables need to be initialized.
+@examples:($codeblock fcs;
+(readonly float a = 5 // works
+
+readonly float b // error - A readonly/constant variable needs to be initialized.))
 $template modifier

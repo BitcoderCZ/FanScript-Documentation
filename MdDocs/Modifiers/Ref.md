@@ -1,5 +1,7 @@
 # Ref
 
+Similar to [out](/MdDocs/Modifiers/Out.md), but the argument is both taken in and out.
+
 ```
 ref
 ```

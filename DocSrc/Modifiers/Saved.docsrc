@@ -1,7 +1,7 @@
 @name:Saved
-@info:
+@info:Saves the variable. Gets reset when you edit the game.
 @targets:Variable
 @conflicting:global;;const;;inline
 @required:
-@remarks:
+@remarks:Currently can only be applied to variables of type $tlink float;.
 $template modifier
