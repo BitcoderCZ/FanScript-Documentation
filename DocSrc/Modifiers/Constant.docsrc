@@ -1,5 +1,5 @@
 @name:Constant
-@info:Makes the variable constant - when compiled, references to this variable get replaced by it's value.
+@info:Makes the variable constant - when compiled, references to this variable get replaced by it's value.\n\nCan be applied to the following variable types:\n- $tlink bool;\n- $tlink float;\n- $tlink vec3;\n- $tlink rot;
 @targets:Variable
 @conflicting:readonly;;saved;;inline
 @required:

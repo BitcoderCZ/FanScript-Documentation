@@ -1,5 +1,7 @@
 # Constants
 
+These are built in, constant, variables that are used as arguments to some functions, you can think of them basically as enums.
+
 ## Contents
 
 - [BUTTON_TYPE](BUTTON_TYPE.md)

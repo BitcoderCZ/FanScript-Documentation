@@ -1,5 +1,5 @@
 @name:Readonly
-@info:Makes the variable/parameter readonly - can be assigned only once.
+@info:Makes the variable/parameter readonly - can be assigned only once.\n\nCan be applied to all types of varibles.
 @targets:Variable;;Parameter
 @conflicting:const;;ref;;out
 @required:

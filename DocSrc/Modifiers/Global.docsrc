@@ -1,5 +1,5 @@
 @name:Global
-@info:Makes the variable global - can be accesed from all functions.
+@info:Makes the variable global - can be accesed from all functions.\n\nCan be applied to all types of vairables.
 @targets:Variable
 @conflicting:saved
 @required:

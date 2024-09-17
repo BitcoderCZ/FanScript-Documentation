@@ -2,6 +2,9 @@
 
 Saves the variable. Gets reset when you edit the game.
 
+Can be applied to the following variable types:
+- [float](/MdDocs/Types/Float.md)
+
 ```
 saved
 ```
@@ -17,8 +20,4 @@ These modifiers cannot be used with this one:
  - global
  - const
  - inline
-
-## Remarks
-
-Currently can only be applied to variables of type [float](/MdDocs/Types/Float.md).
 

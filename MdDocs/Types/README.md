@@ -1,5 +1,17 @@
 # Types
 
+FanScript is statically typed - types of all variables, functions and parameters needs to be specified.
+
+Generic types are specified like so:
+
+``` fcs
+someGenericType<theInnerType>
+
+// for example
+array<float> // array of type float
+```
+
+
 ## Contents
 
 - [Array](Array.md)

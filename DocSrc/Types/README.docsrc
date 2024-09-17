@@ -1,5 +1,15 @@
 # Types
 
+FanScript is statically typed - types of all variables, functions and parameters needs to be specified.
+
+Generic types are specified like so:
+
+$codeblock fcs;
+(someGenericType<theInnerType>
+
+// for example
+array<float> // array of type float)
+
 ## Contents
 
 $template contents

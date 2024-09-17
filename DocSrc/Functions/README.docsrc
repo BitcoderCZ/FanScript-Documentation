@@ -1,5 +1,27 @@
 # Functions
 
+Functions are called like so:
+
+$codeblock fcs;
+(functionName(arg0, arg1))
+
+You can specify the generic type of a function like so (this isn't needed most of the time as the compiler can usually infer the type from the types of the arguments):
+
+$codeblock fcs;
+(someGenericFunction<theGenericType>(arg0, arg1))
+
+Ref and out arguments need to be prefixed with the ref/out keyword.
+
+$codeblock fcs;
+(someFunc(ref arg0, out arg1))
+
+Out arguments can be used with expression variable decleration (the variable is declared in the argument) and discards (the result of the out variable is ignored)
+
+
+$codeblock fcs;
+(someFunc(out typeOfArg0 arg0, out _))
+
+
 ## Contents
 
 $template contents

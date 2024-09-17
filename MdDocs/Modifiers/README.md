@@ -1,5 +1,14 @@
 # Modifiers
 
+Modifiers can be applied to:
+
+- Variable
+- Parameter
+- Argument
+- Function
+
+To change how they behave.
+
 ## Contents
 
 - [Constant](Constant.md)

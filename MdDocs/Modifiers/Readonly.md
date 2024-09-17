@@ -2,6 +2,8 @@
 
 Makes the variable/parameter readonly - can be assigned only once.
 
+Can be applied to all types of varibles.
+
 ```
 readonly
 ```

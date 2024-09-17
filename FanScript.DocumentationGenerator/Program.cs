@@ -2,7 +2,6 @@
 using FanScript.DocumentationGenerator.Builders;
 using FanScript.DocumentationGenerator.Parsing;
 using System.Collections.Immutable;
-using System.Globalization;
 
 namespace FanScript.DocumentationGenerator
 {

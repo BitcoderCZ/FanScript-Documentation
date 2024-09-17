@@ -1,10 +1,4 @@
 ﻿using FanScript.Compiler;
-using FanScript.Compiler.Symbols;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -25,7 +19,6 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                         Console.WriteLine($"Skipped '{path}', because it already exists.");
                     continue;
                 }
-
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))

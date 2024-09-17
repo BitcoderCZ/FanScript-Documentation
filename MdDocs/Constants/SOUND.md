@@ -1,6 +1,6 @@
 # SOUND
 ### Type: [float](/MdDocs/Types/Float.md)
-Used by [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md).
+Used by [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.md), dermines the sound that is played.
 ```
 SOUND_CHIRP
 SOUND_SCRAPE

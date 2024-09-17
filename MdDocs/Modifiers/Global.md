@@ -2,6 +2,8 @@
 
 Makes the variable global - can be accesed from all functions.
 
+Can be applied to all types of vairables.
+
 ```
 global
 ```
