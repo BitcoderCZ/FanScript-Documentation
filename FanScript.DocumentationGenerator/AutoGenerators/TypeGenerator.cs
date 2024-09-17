@@ -10,7 +10,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
             docSrcPath = Path.Combine(docSrcPath, "Types");
             Directory.CreateDirectory(docSrcPath);
 
-            foreach (TypeSymbol type in TypeSymbol.BuiltInTypes.Concat([TypeSymbol.String, TypeSymbol.ArraySegment]))
+            foreach (TypeSymbol type in TypeSymbol.BuiltInTypes.Concat([TypeSymbol.String, TypeSymbol.ArraySegment, TypeSymbol.Null]))
             {
                 string path = Path.Combine(docSrcPath, type.Name.ToUpperFirst() + ".docsrc");
 
@@ -20,7 +20,6 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                         Console.WriteLine($"Skipped '{path}', because it already exists.");
                     continue;
                 }
-
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
