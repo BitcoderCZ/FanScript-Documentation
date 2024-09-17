@@ -73,6 +73,12 @@ namespace FanScript.DocumentationGenerator.Builders
                 case "modifier":
                     buildModifierTemplate();
                     break;
+                case "operator_binary":
+                    buildBinaryOperatorTemplate();
+                    break;
+                case "operator_unary":
+                    buildUnaryOperatorTemplate();
+                    break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
             }
@@ -757,6 +763,210 @@ namespace FanScript.DocumentationGenerator.Builders
             string parse(string str)
             {
                 return this.parse(str, paramName => false /*Modifiers don't have args*/).Trim();
+            }
+        }
+        private void buildBinaryOperatorTemplate()
+        {
+            string name = getArg("name");
+            string symbol = getArg("symbol");
+            string? info = getOptionalArg("info");
+            string[] type_combs = getArg("type_combs").Split(";");
+            string[]? comb_infos = getOptionalArg("comb_infos")?.Split(";;");
+
+            string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            if (comb_infos is not null && comb_infos.Length != type_combs.Length)
+                throw new InvalidDataException("infos length must match names length");
+
+            int numbValues = type_combs.Length;
+
+            builder.AppendLine($"# {name.ToUpperFirst()}");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Infos should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+            builder.AppendLine($"c = a {symbol} b");
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            builder.AppendLine("## Types");
+            builder.AppendLine();
+
+            for (int i = 0; i < numbValues; i++)
+            {
+                string[] types = type_combs[i].Split(',');
+
+                builder.Append("- Left: ");
+                appendType(types[0]);
+                builder.Append(", Right: ");
+                appendType(types[1]);
+                builder.Append(", Result: ");
+                appendType(types[2]);
+                builder.AppendLine();
+                builder.AppendLine();
+
+                if (comb_infos is not null && !string.IsNullOrEmpty(comb_infos[i]))
+                {
+                    string builtInfo = parse(comb_infos[i]);
+                    if (!builtInfo.EndsWith('.'))
+                        Console.WriteLine("Type combination infos should end with '.' - " + comb_infos[i]);
+
+                    builder.AppendLine(builtInfo);
+                    builder.AppendLine();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => false /*Operatos don't have args*/).Trim();
+            }
+        }
+        private void buildUnaryOperatorTemplate()
+        {
+            string name = getArg("name");
+            string symbol = getArg("symbol");
+            string? info = getOptionalArg("info");
+            string[] type_combs = getArg("type_combs").Split(";");
+            string[]? comb_infos = getOptionalArg("comb_infos")?.Split(";;");
+
+            string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            if (comb_infos is not null && comb_infos.Length != type_combs.Length)
+                throw new InvalidDataException("infos length must match names length");
+
+            int numbValues = type_combs.Length;
+
+            builder.AppendLine($"# {name.ToUpperFirst()}");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Infos should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+            builder.AppendLine($"b = {symbol}a");
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            builder.AppendLine("## Types");
+            builder.AppendLine();
+
+            for (int i = 0; i < numbValues; i++)
+            {
+                string[] types = type_combs[i].Split(',');
+
+                builder.Append("- Operand: ");
+                appendType(types[0]);
+                builder.Append(", Result: ");
+                appendType(types[1]);
+                builder.AppendLine();
+                builder.AppendLine();
+
+                if (comb_infos is not null && !string.IsNullOrEmpty(comb_infos[i]))
+                {
+                    string builtInfo = parse(comb_infos[i]);
+                    if (!builtInfo.EndsWith('.'))
+                        Console.WriteLine("Type combination infos should end with '.' - " + comb_infos[i]);
+
+                    builder.AppendLine(builtInfo);
+                    builder.AppendLine();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => false /*Operatos don't have args*/).Trim();
             }
         }
         #endregion

@@ -1,0 +1,6 @@
+@name:Subtraction
+@symbol:-
+@info:Substracts b from a.
+@type_combs:float,float,float;vec3,vec3,vec3;rot,rot,rot
+@comb_infos:;;;;
+$template operator_binary

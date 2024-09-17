@@ -1,0 +1,6 @@
+@name:Less
+@symbol:<
+@info:Returns if a is less than b.
+@type_combs:float,float,bool
+@comb_infos:
+$template operator_binary

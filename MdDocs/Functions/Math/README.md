@@ -17,6 +17,7 @@
 - [Max](Max.md)
 - [Min](Min.md)
 - [Normalize](Normalize.md)
+- [Pow](Pow.md)
 - [Random](Random.md)
 - [Round](Round.md)
 - [ScreenToWorld](ScreenToWorld.md)

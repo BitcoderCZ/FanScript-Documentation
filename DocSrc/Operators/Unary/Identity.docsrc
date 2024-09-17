@@ -1,0 +1,6 @@
+@name:Identity
+@symbol:+
+@info:Returns a.
+@type_combs:float,float;vec3,vec3;rot,rot
+@comb_infos:;;;;
+$template operator_unary

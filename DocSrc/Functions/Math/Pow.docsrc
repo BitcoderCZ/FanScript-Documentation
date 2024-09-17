@@ -1,0 +1,11 @@
+@type:float
+@return_info:$plink base; raised to $plink exponent;.
+@is_generic:false
+@is_method:false
+@name:pow
+@info:Raises $plink base; to $plink exponent;.
+@param_mods:;;
+@param_types:float;;float
+@param_names:base;;exponent
+@param_infos:;;
+$template function

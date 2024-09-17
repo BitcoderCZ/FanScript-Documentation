@@ -1,0 +1,6 @@
+@name:Negation
+@symbol:-
+@info:Returns the negation of a \(5 -> -5, vec3\(3, 0, -2\) -> vec3\(-3, 0, 2\)\).
+@type_combs:float,float;vec3,vec3;rot,rot
+@comb_infos:;;;;
+$template operator_unary

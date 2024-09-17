@@ -1,0 +1,6 @@
+@name:GreaterOrEquals
+@symbol:>=
+@info:Returns if a is greater than b or equal to b.
+@type_combs:float,float,bool
+@comb_infos:
+$template operator_binary

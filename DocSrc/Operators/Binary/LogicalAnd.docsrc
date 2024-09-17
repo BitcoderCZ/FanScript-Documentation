@@ -1,0 +1,6 @@
+@name:LogicalAnd
+@symbol:&&
+@info:Returns true, only if both a and b are true.
+@type_combs:bool,bool,bool
+@comb_infos:
+$template operator_binary

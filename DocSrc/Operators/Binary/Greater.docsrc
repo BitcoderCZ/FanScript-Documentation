@@ -1,0 +1,6 @@
+@name:Greater
+@symbol:>
+@info:Returns if a is greater than b.
+@type_combs:float,float,bool
+@comb_infos:
+$template operator_binary

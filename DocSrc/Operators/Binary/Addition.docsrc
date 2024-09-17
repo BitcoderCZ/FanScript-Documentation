@@ -1,0 +1,6 @@
+@name:Addition
+@symbol:+
+@info:Adds the value of a and b.
+@type_combs:float,float,float;vec3,vec3,vec3;rot,rot,rot
+@comb_infos:;;;;
+$template operator_binary
