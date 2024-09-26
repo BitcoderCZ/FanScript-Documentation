@@ -11,6 +11,8 @@
 - [Dot](Dot.md)
 - [Floor](Floor.md)
 - [Lerp](Lerp.md)
+- [Lerp2](Lerp2.md)
+- [Lerp3](Lerp3.md)
 - [LineVsPlane](LineVsPlane.md)
 - [Log](Log.md)
 - [LookRotation](LookRotation.md)

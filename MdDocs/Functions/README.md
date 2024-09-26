@@ -32,7 +32,9 @@ someFunc(out typeOfArg0 arg0, out _)
 
 ## Contents
 
+- [FcComment](FcComment.md)
 - [Get](Get.md)
+- [GetBlockById](GetBlockById.md)
 - [Inspect](Inspect.md)
 - [Set](Set.md)
 - [SetPtrValue](SetPtrValue.md)
@@ -61,6 +63,8 @@ someFunc(out typeOfArg0 arg0, out _)
     - [Dot](Math/Dot.md)
     - [Floor](Math/Floor.md)
     - [Lerp](Math/Lerp.md)
+    - [Lerp2](Math/Lerp2.md)
+    - [Lerp3](Math/Lerp3.md)
     - [LineVsPlane](Math/LineVsPlane.md)
     - [Log](Math/Log.md)
     - [LookRotation](Math/LookRotation.md)
