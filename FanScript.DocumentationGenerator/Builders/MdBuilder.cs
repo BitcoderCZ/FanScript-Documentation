@@ -87,6 +87,7 @@ namespace FanScript.DocumentationGenerator.Builders
             }
         }
 
+        #region Links
         protected override void buildLink(LinkToken token)
             => builder.Append($"[{token.DisplayString}]({token.Value})");
         protected override void buildParamLink(ParamLinkToken token)
@@ -161,6 +162,7 @@ namespace FanScript.DocumentationGenerator.Builders
             => builder.Append($"[{token.Value}]({linkPrefix}Modifiers/{ModifiersE.FromKind(FanScript.Compiler.Syntax.SyntaxFacts.GetKeywordKind(token.Value))}.md)");
         protected override void buildBuildCommandLink(BuildCommandLinkToken token)
             => builder.Append($"[{token.Value.ToLowerFirst()}]({linkPrefix}BuildCommands/{token.Value.ToUpperFirst()}.md)");
+        #endregion
 
         protected override void buildCodeBlock(CodeBlockToken token)
         {
