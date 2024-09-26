@@ -2,6 +2,7 @@
 
 ## Contents
 
+- [Looping](Looping.md)
 - [BuildCommands](BuildCommands/README.md)
     - [EndHighlight](BuildCommands/EndHighlight.md)
     - [Highlight](BuildCommands/Highlight.md)
