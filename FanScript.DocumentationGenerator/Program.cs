@@ -25,6 +25,7 @@ namespace FanScript.DocumentationGenerator
             TypeGenerator.Generate(srcDir, false);
             ModifierGenerator.Generate(srcDir, false);
             OperatorGenerator.Generate(srcDir, false);
+            BuildCommandGenerator.Generate(srcDir, false);
             FolderReadmeGenerator.Generate(srcDir, false);
 
             Console.WriteLine("Generated all.");

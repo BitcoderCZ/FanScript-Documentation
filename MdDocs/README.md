@@ -2,6 +2,9 @@
 
 ## Contents
 
+- [BuildCommands](BuildCommands/README.md)
+    - [EndHighlight](BuildCommands/EndHighlight.md)
+    - [Highlight](BuildCommands/Highlight.md)
 - [Constants](Constants/README.md)
     - [BUTTON_TYPE](Constants/BUTTON_TYPE.md)
     - [JOYSTICK_TYPE](Constants/JOYSTICK_TYPE.md)

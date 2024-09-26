@@ -79,6 +79,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 case "operator_unary":
                     buildUnaryOperatorTemplate();
                     break;
+                case "build_command":
+                    buildBuildCommandTemplate();
+                    break;
                 default:
                     throw new InvalidDataException($"Unknown template '{token.Value}'.");
             }
@@ -156,6 +159,8 @@ namespace FanScript.DocumentationGenerator.Builders
             => appendType(token.Value);
         protected override void buildModifierLink(ModifierLinkToken token)
             => builder.Append($"[{token.Value}]({linkPrefix}Modifiers/{ModifiersE.FromKind(FanScript.Compiler.Syntax.SyntaxFacts.GetKeywordKind(token.Value))}.md)");
+        protected override void buildBuildCommandLink(BuildCommandLinkToken token)
+            => builder.Append($"[{token.Value.ToLowerFirst()}]({linkPrefix}BuildCommands/{token.Value.ToUpperFirst()}.md)");
 
         protected override void buildCodeBlock(CodeBlockToken token)
         {
@@ -865,7 +870,7 @@ namespace FanScript.DocumentationGenerator.Builders
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Operatos don't have args*/).Trim();
+                return this.parse(str, paramName => false /*Operators don't have args*/).Trim();
             }
         }
         private void buildUnaryOperatorTemplate()
@@ -966,7 +971,74 @@ namespace FanScript.DocumentationGenerator.Builders
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Operatos don't have args*/).Trim();
+                return this.parse(str, paramName => false /*Operators don't have args*/).Trim();
+            }
+        }
+        private void buildBuildCommandTemplate()
+        {
+            string name = getArg("name");
+            string? info = getOptionalArg("info");
+
+            string? remarks = getOptionalArg("remarks");
+            string? examples = getOptionalArg("examples");
+            string[]? related = getOptionalArg("related")?.Split(";;");
+
+            builder.AppendLine($"# {name}");
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                string builtInfo = parse(info);
+                if (!builtInfo.EndsWith('.'))
+                    Console.WriteLine("Build command info should end with '.' - " + info);
+
+                builder.AppendLine(builtInfo);
+            }
+
+            builder.AppendLine("```");
+
+            builder.AppendLine("#" + name.ToLowerFirst());
+            
+            builder.AppendLine("```");
+
+            if (!string.IsNullOrEmpty(remarks))
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
+
+                string builtRemarks = parse(remarks);
+
+                if (!builtRemarks.EndsWith('.'))
+                    Console.WriteLine("Remarks should end with '.' - " + remarks);
+
+                builder.AppendLine(builtRemarks);
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parse(examples));
+                builder.AppendLine();
+            }
+
+            if (related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(related[i]));
+                }
+                builder.AppendLine();
+            }
+
+            string parse(string str)
+            {
+                return this.parse(str, paramName => false /*Build commands don't have args*/).Trim();
             }
         }
         #endregion

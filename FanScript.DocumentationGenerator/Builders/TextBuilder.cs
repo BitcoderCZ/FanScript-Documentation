@@ -63,6 +63,9 @@ namespace FanScript.DocumentationGenerator.Builders
         protected override void buildModifierLink(ModifierLinkToken token)
             => builder.Append("$mlink " + token.Value + ";");
 
+        protected override void buildBuildCommandLink(BuildCommandLinkToken token)
+            => builder.Append("$bclink " + token.Value + ";");
+
         protected override void buildCodeBlock(CodeBlockToken token)
             => builder.Append("$codeblock " + token.Lang + ";(" + token.Value + ")");
     }

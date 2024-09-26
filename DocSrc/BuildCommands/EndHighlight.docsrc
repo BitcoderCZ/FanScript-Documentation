@@ -1,0 +1,4 @@
+@name:EndHighlight
+@info:Ends block highlight, started by $bclink highlight;.
+@related:$bclink highlight
+$template build_command

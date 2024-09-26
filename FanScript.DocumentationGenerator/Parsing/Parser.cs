@@ -280,6 +280,8 @@ namespace FanScript.DocumentationGenerator.Parsing
                     return parseTLink();
                 case "mlink":
                     return parseMLink();
+                case "bclink":
+                    return parseBCLink();
                 case "codeblock":
                     return parseCodeBlock();
                 default:
@@ -344,6 +346,12 @@ namespace FanScript.DocumentationGenerator.Parsing
             string modifier = new string(readUntilChar(';'));
             position++;
             return new ModifierLinkToken(modifier);
+        }
+        private BuildCommandLinkToken parseBCLink()
+        {
+            string buildCommand = new string(readUntilChar(';'));
+            position++;
+            return new BuildCommandLinkToken(buildCommand);
         }
         private CodeBlockToken parseCodeBlock()
         {
