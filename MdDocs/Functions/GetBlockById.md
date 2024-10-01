@@ -3,21 +3,21 @@
 Returns a block with the specified id.
 
 ```
-obj getBlockById(float ID)
+obj getBlockById(float BLOCK)
 ```
 
 ## Parameters
 
-#### `ID`
+#### `BLOCK`
 Type: [float](/MdDocs/Types/Float.md)
 
-Id of the object, must be constant.
+Id of the block, must be constant.
 
 ## Returns
 
 [obj](/MdDocs/Types/Obj.md)
 
-The [obj](/MdDocs/Types/Obj.md) with the [ID](#ID).
+The [obj](/MdDocs/Types/Obj.md) specified by [BLOCK](#BLOCK).
 
 ## Remarks
 
