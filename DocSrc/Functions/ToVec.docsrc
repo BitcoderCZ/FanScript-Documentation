@@ -1,0 +1,11 @@
+@type:vec3
+@return_info:
+@is_generic:false
+@is_method:true
+@name:toVec
+@info:*Dirrectly* convers $plink rot; to $tlink vec3;.
+@param_mods:
+@param_types:rot
+@param_names:rot
+@param_infos:
+$template function

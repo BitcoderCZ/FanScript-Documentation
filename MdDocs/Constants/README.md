@@ -4,6 +4,7 @@ These are built in, constant, variables that are used as arguments to some funct
 
 ## Contents
 
+- [BLOCK](BLOCK.md)
 - [BUTTON_TYPE](BUTTON_TYPE.md)
 - [JOYSTICK_TYPE](JOYSTICK_TYPE.md)
 - [MAX_ITEMS](MAX_ITEMS.md)

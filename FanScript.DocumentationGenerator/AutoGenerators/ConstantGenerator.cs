@@ -12,9 +12,9 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
             docSrcPath = Path.Combine(docSrcPath, "Constants");
             Directory.CreateDirectory(docSrcPath);
 
-            foreach (var (name, cons) in Constants.GetGroups())
+            foreach (var group in Constants.Groups)
             {
-                string path = Path.Combine(docSrcPath, name + ".docsrc");
+                string path = Path.Combine(docSrcPath, group.Name + ".docsrc");
 
                 if (File.Exists(path))
                 {
@@ -25,20 +25,20 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
-                    generateConstant(name, cons.ToArray(), writer);
+                    generateConstant(group, writer);
 
                 Console.WriteLine($"Generated '{path}'.");
             }
         }
 
-        private static void generateConstant(string name, Constant[] cons, TextWriter writer)
+        private static void generateConstant(ConstantGroup group, TextWriter writer)
         {
-            writer.WriteLine("@type:" + cons[0].Type);
-            writer.WriteLine("@name:" + name);
+            writer.WriteLine("@type:" + group.Type);
+            writer.WriteLine("@name:" + group.Name);
             writer.WriteLine("@info:");
-            writer.WriteLine("@names:" + string.Join(";;", cons.Select(con => con.Name)));
-            writer.WriteLine("@values:" + string.Join(";;", cons.Select(con => toString(con.Value))));
-            writer.WriteLine("@infos:" + ";;".Repeat(Math.Max(0, cons.Length - 1)));
+            writer.WriteLine("@names:" + string.Join(";;", group.Values.Select(con => group.Name + "_" + con.Name)));
+            writer.WriteLine("@values:" + string.Join(";;", group.Values.Select(con => toString(con.Value))));
+            writer.WriteLine("@infos:" + ";;".Repeat(Math.Max(0, group.Values.Length - 1)));
             writer.WriteLine("$template constant");
 
             string toString(object o)
