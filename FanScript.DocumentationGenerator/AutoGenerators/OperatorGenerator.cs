@@ -1,16 +1,4 @@
 ﻿using FanScript.Compiler.Binding;
-using FanScript.Compiler.Syntax;
-using FanScript.DocumentationGenerator.Utils;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -43,17 +31,12 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    writer.WriteLine("@name:" + kind.ToString());
-                    writer.WriteLine("@symbol:" + SyntaxFacts.GetText(ops[0].SyntaxKind));
-                    writer.WriteLine("@info:");
-                    writer.WriteLine("@type_combs:" + string.Join(';', ops.Select(op => $"{op.LeftType},{op.RightType},{op.Type}")));
-                    writer.WriteLine("@comb_infos:" + ";;".Repeat(Math.Max(0, ops.Length - 1)));
-                    writer.WriteLine("$template operator_binary");
+                    writer.WriteLine($"<arg name=\"name\">{Enum.GetName(kind)}</>");
+                    writer.WriteLine("<template>operator_binary</>");
                 }
 
                 Console.WriteLine($"Generated '{path}'.");
             }
-
 
             string unaryPath = Path.Combine(docSrcPath, "Unary");
             Directory.CreateDirectory(unaryPath);
@@ -77,12 +60,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    writer.WriteLine("@name:" + kind.ToString());
-                    writer.WriteLine("@symbol:" + SyntaxFacts.GetText(ops[0].SyntaxKind));
-                    writer.WriteLine("@info:");
-                    writer.WriteLine("@type_combs:" + string.Join(';', ops.Select(op => $"{op.OperandType},{op.Type}")));
-                    writer.WriteLine("@comb_infos:" + ";;".Repeat(Math.Max(0, ops.Length - 1)));
-                    writer.WriteLine("$template operator_unary");
+                    writer.WriteLine($"<arg name=\"name\">{Enum.GetName(kind)}</>");
+                    writer.WriteLine("<template>operator_unary</>");
                 }
 
                 Console.WriteLine($"Generated '{path}'.");

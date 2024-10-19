@@ -1,7 +1,7 @@
-# Looping
+<header level="1">Looping</>
 In FanScript, there are 2 main ways of creating loops:
 - while and do while loops (if the condition is false, while doesn't execute at all, but do while executes once)
-``` fcs
+<codeblock lang="fcs">
 float i = 0
 
 while (i < 10)
@@ -15,21 +15,21 @@ do
 {
     i++
 } while (i < 10)
-```
+</>
 - Loop event
-``` fcs
+<codeblock lang="fcs">
 on Loop(0, 10, out inline float i)
 {
 
 }
-```
+</>
 
-## Which one should you use
+<header level="2">Which one should you use</>
 
-### while loop
+<header level="3">while loop</>
 - break and continue can be used
 - if the loop count isn't know at the start
 
-### on Loop
+<header level="3">on Loop</>
 - faster(?)
 - doesn't require an index variable (inline var can be used)

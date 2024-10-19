@@ -1,0 +1,3 @@
+<arg name="name">raycast</>
+<arg name="param_types">vec3;vec3;bool;vec3;obj</>
+<template>builtin_function</>

@@ -1,6 +1,2 @@
-@name:NotEquals
-@symbol:!=
-@info:Returns if the value of a is not equal to the value of b.
-@type_combs:float,float,bool;bool,bool,bool;vec3,vec3,bool;null,null,null
-@comb_infos:;;;;;;
-$template operator_binary
+<arg name="name">NotEquals</>
+<template>operator_binary</>

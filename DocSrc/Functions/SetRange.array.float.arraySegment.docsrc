@@ -1,0 +1,3 @@
+<arg name="name">setRange</>
+<arg name="param_types">array;float;arraySegment</>
+<template>builtin_function</>

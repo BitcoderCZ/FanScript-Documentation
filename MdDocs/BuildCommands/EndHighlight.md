@@ -1,9 +1,12 @@
+
 # EndHighlight
-Ends block highlight, started by [highlight](/MdDocs/BuildCommands/Highlight.md).
+
+Ends block highlight, started by [Highlight](/MdDocs/BuildCommands/highlight.md).
 ```
 #endHighlight
 ```
 ## Related
 
- - [highlight](/MdDocs/BuildCommands/Highlight.md)
+ - [Highlight](/MdDocs/BuildCommands/highlight.md)
+
 

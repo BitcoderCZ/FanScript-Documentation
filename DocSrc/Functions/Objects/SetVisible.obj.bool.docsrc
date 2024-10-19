@@ -1,0 +1,3 @@
+<arg name="name">setVisible</>
+<arg name="param_types">obj;bool</>
+<template>builtin_function</>

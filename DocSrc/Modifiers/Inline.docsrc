@@ -1,7 +1,2 @@
-@name:Inline
-@info:- When applied to variable - instead of storing a value stores a reference to some code, which is ran every time the variable is accesed.\n- When applied to function - inlines the function for every call \(by default functions which are called only once are inlined automatically\) - replaces calls to this function by the code of this function.\n\nCan be applied to the following variable types:\n- $tlink bool;\n- $tlink float;\n- $tlink vec3;\n- $tlink rot;\n- $tlink obj;\n- $tlink constr;
-@targets:Variable;;Function
-@conflicting:const;;saved
-@required:
-@remarks:
-$template modifier
+<arg name="name">Inline</>
+<template>modifier</>

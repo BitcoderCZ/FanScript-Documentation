@@ -1,0 +1,3 @@
+<arg name="name">toVec</>
+<arg name="param_types">rot</>
+<template>builtin_function</>

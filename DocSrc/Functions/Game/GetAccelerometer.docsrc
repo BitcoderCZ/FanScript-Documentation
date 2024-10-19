@@ -1,16 +1,3 @@
-@type:vec3
-@return_info:The acceleration, can be used to determine the phone's tilt.
-@is_generic:false
-@is_method:false
-@name:getAccelerometer
-@info:Gets the phone's current acceleration.
-@param_mods:
-@param_types:
-@param_names:
-@param_infos:
-@examples:($codeblock fcs;
-(// the acceleration can be smoothed out like this:
-vec3 smooth
-smooth += (getAccelerometer() - smooth) * 0.1))
-@remarks:The accelerometer makes the screen orientation unchangeable during gameplay when $flink getAccelerometer; is used.
-$template function
+<arg name="name">getAccelerometer</>
+<arg name="param_types"></>
+<template>builtin_function</>

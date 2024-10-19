@@ -1,3 +1,4 @@
+
 # Vec3
 
 A vector of 3 [float](/MdDocs/Types/Float.md)s.
@@ -19,7 +20,4 @@ const float x = 8
 vec3 c = vec3(x, 3, 5) // constant - uses the vector block
 ```
 
-## Related
-
- - [rot](/MdDocs/Types/Rot.md)
 

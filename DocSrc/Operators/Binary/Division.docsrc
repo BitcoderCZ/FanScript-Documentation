@@ -1,6 +1,2 @@
-@name:Division
-@symbol:/
-@info:Divides a by b.
-@type_combs:float,float,float;vec3,float,vec3
-@comb_infos:;;
-$template operator_binary
+<arg name="name">Division</>
+<template>operator_binary</>

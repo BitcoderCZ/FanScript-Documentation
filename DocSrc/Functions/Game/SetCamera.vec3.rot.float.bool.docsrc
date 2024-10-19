@@ -1,0 +1,3 @@
+<arg name="name">setCamera</>
+<arg name="param_types">vec3;rot;float;bool</>
+<template>builtin_function</>

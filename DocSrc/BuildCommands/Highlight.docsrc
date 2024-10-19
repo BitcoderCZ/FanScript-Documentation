@@ -1,4 +1,2 @@
-@name:Highlight
-@info:Starts block highlight, all blocks between this and $bclink EndHighlight; will get placed at the front of the level.
-@related:$bclink endHighlight
-$template build_command
+<arg name="name">Highlight</>
+<template>build_command</>

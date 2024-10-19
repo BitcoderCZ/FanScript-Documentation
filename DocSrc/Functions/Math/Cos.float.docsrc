@@ -1,0 +1,3 @@
+<arg name="name">cos</>
+<arg name="param_types">float</>
+<template>builtin_function</>

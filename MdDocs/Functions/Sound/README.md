@@ -2,6 +2,7 @@
 
 ## Contents
 
-- [PlaySound](PlaySound.md)
-- [SetVolumePitch](SetVolumePitch.md)
-- [StopSound](StopSound.md)
+- [PlaySound](PlaySound.float.float.float.bool.float.md)
+- [SetVolumePitch](SetVolumePitch.float.float.float.md)
+- [StopSound](StopSound.float.md)
+

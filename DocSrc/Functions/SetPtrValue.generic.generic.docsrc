@@ -1,0 +1,3 @@
+<arg name="name">setPtrValue</>
+<arg name="param_types">generic;generic</>
+<template>builtin_function</>

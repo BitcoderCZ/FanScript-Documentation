@@ -1,6 +1,2 @@
-@name:Modulo
-@symbol:%
-@info:Returns the remainder of division of a and b.
-@type_combs:float,float,float;vec3,float,vec3
-@comb_infos:;;
-$template operator_binary
+<arg name="name">Modulo</>
+<template>operator_binary</>

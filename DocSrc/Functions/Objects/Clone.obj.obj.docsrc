@@ -1,0 +1,3 @@
+<arg name="name">clone</>
+<arg name="param_types">obj;obj</>
+<template>builtin_function</>

@@ -1,6 +1,7 @@
+
 # Null
 
-If used as an argument or in a constant operation - gets converted to the default value (0, vec30, 0, 0), otherwise, when emited, no block gets placed.
+If used as an argument or in a constant operation - gets converted to the default value (0, vec3(0, 0, 0)), otherwise, when emited, no block gets placed.
 
 ```
 null
@@ -21,5 +22,6 @@ on Loop(null, 5)
 
 ## Remarks
 
-Null has implicit cast to all types.
+ - Null has implicit cast to all types.
+
 

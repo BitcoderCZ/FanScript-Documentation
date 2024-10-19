@@ -30,13 +30,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateType(Modifiers mod, TextWriter writer)
         {
-            writer.WriteLine("@name:" + mod);
-            writer.WriteLine("@info:");
-            writer.WriteLine("@targets:" + string.Join(";;", mod.GetTargets().Select(target => target.ToString())));
-            writer.WriteLine("@conflicting:" + string.Join(";;", mod.GetConflictingModifiers().Select(target => target.ToSyntaxString())));
-            writer.WriteLine("@required:" + string.Join(";;", mod.GetRequiredModifiers().Select(target => target.ToSyntaxString())));
-            writer.WriteLine("@remarks:");
-            writer.WriteLine("$template modifier");
+            writer.WriteLine($"<arg name=\"name\">{Enum.GetName(mod)}</>");
+            writer.WriteLine("<template>modifier</>");
         }
     }
 }

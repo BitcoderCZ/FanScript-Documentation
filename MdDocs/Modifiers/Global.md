@@ -1,3 +1,4 @@
+
 # Global
 
 Makes the variable global - can be accesed from all functions.
@@ -17,4 +18,5 @@ The modifier can be applied to:
 
 These modifiers cannot be used with this one:
  - saved
+
 

@@ -1,19 +1,2 @@
-@name:Loop
-@info:Executes multiple times from $plink start; to $plink stop;.
-@param_mods:;;;;out
-@param_types:float;;float;;float
-@param_names:start;;stop;;counter
-@param_is_constant:False;;False;;False
-@param_infos:The start value \(inclusive\).;;The end value \(exclusive\).;;The current value.
-@examples:($codeblock fcs;
-(on Loop(0, 5, out inline float i)
-{
-    inspect(i) // [0, 1, 2, 3, 4]
-})
-$codeblock fcs;
-(on Loop(5, 0, out inline float i)
-{
-    inspect(i) // [5, 4, 3, 2, 1]
-}))
-@remarks:- The counter always steps by 1 \(or -1, if $plink start; is greater than $plink stop;\).\n- The counter does not output $plink stop;.\n- If a non-integer value is provided for $plink start;, it's rounded down to the next smallest integer.\n- If a non-integer value is provided for $plink stop;, it's rounded up to the next biggest integer.
-$template event
+<arg name="name">Loop</>
+<template>event</>

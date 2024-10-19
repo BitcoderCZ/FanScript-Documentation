@@ -1,6 +1,2 @@
-@name:LogicalNegation
-@symbol:!
-@info:If a is true, returns false, otherwise returns true.
-@type_combs:bool,bool
-@comb_infos:
-$template operator_unary
+<arg name="name">LogicalNegation</>
+<template>operator_unary</>

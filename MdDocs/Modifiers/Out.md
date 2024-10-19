@@ -1,3 +1,4 @@
+
 # Out
 
 Instead of the argument being passed to the function, it is "returned" from it.
@@ -36,6 +37,6 @@ inspect(resB)
 
 // if you don't need the value of the out parameter, you can use a discard
 add(13, 22, out _)
-
 ```
+
 

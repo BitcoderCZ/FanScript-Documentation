@@ -1,6 +1,7 @@
+
 # Touch(float, float, float, float)
 
-Executes when a touch of index [TOUCH_FINGER](#TOUCH_FINGER) is detected.
+Executes when a touch is detected.
 
 ```
 on touch(out float screenX, out float screenY, const float TOUCH_STATE, const float TOUCH_FINGER) { }
@@ -31,4 +32,5 @@ Value must be constant.
 
 
 One of [TOUCH_FINGER](/MdDocs/Constants/TOUCH_FINGER.md).
+
 

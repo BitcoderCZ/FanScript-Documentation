@@ -1,7 +1,9 @@
-﻿using FanScript.DocumentationGenerator.AutoGenerators;
+﻿using FanScript.Documentation.DocElements;
+using FanScript.Documentation.DocElements.Builders;
+using FanScript.DocumentationGenerator.AutoGenerators;
 using FanScript.DocumentationGenerator.Builders;
-using FanScript.DocumentationGenerator.Parsing;
-using System.Collections.Immutable;
+using FanScript.DocumentationGenerator.Utils;
+using System.Diagnostics;
 
 namespace FanScript.DocumentationGenerator
 {
@@ -9,6 +11,10 @@ namespace FanScript.DocumentationGenerator
     {
         static void Main(string[] args)
         {
+#if DEBUG
+            Debugger.Launch();
+#endif
+
             string srcDir = Path.GetFullPath("DocSrc");
             string outDir = Path.GetFullPath("MdDocs");
 
@@ -39,38 +45,47 @@ namespace FanScript.DocumentationGenerator
 
             Console.WriteLine("Created dirs.");
 
+            DocElementParser parser = U.CreateParser(null);
+
             foreach (string path in Directory.EnumerateFiles(srcDir, "*.docsrc", SearchOption.AllDirectories))
             {
                 string text = File.ReadAllText(path);
 
-                Parser parser = new Parser(text);
+                DocElement? element;
 
-                ImmutableArray<Token> tokens;
+#if !DEBUG
                 try
                 {
-                    tokens = parser.Parse();
+#endif
+                element = parser.Parse(text);
+#if !DEBUG
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Failed to parse file '{path}': {ex}");
                     continue;
                 }
+#endif
 
+#if !DEBUG
                 try
                 {
-                    Builder builder = new MdBuilder(tokens, path);
+#endif
+                DocElementBuilder builder = new MdBuilder(path);
 
-                    string outPath = Path.Combine(outDir, Path.GetRelativePath(srcDir, path));
+                string outPath = Path.Combine(outDir, Path.GetRelativePath(srcDir, path));
 
-                    outPath = Path.ChangeExtension(outPath, ".md");
+                outPath = Path.ChangeExtension(outPath, ".md");
 
-                    File.WriteAllText(outPath, builder.Build());
+                File.WriteAllText(outPath, builder.Build(element));
+#if !DEBUG
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Failed to build file '{path}': {ex}");
                     continue;
                 }
+#endif
             }
 
             Console.WriteLine("Built.");

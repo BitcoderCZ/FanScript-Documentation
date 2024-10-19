@@ -1,0 +1,3 @@
+<arg name="name">inspect</>
+<arg name="param_types">generic</>
+<template>builtin_function</>

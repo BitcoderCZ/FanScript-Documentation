@@ -1,5 +1,4 @@
 ﻿using FanScript.Compiler;
-using FanScript.DocumentationGenerator.Utils;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -33,24 +32,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateEvent(EventTypeInfo info, TextWriter writer)
         {
-            writer.Write("@name:");
-            writer.WriteLine(info.Type.ToString());
-            writer.Write("@info:");
-            writer.WriteLine(addDotAtEnd(info.Description?.Replace("(", "\\(")?.Replace(")", "\\)")) ?? string.Empty);
-            writer.WriteLine("@param_mods:" + string.Join(";;", info.Parameters.Select(param => param.Modifiers == 0 ? string.Empty : param.Modifiers.ToSyntaxString())));
-            writer.WriteLine("@param_types:" + string.Join(";;", info.Parameters.Select(param => param.Type.Name)));
-            writer.WriteLine("@param_names:" + string.Join(";;", info.Parameters.Select(param => param.Name)));
-            writer.WriteLine("@param_is_constant:" + string.Join(";;", info.Parameters.Select(param => param.IsConstant)));
-            writer.WriteLine("@param_infos:" + ";;".Repeat(Math.Max(0, info.Parameters.Length - 1)));
-            writer.WriteLine("$template event");
-
-            string? addDotAtEnd(string? str)
-            {
-                if (str is null || str.EndsWith('.'))
-                    return str;
-                else
-                    return str + ".";
-            }
+            writer.WriteLine($"<arg name=\"name\">{Enum.GetName(info.Type)}</>");
+            writer.WriteLine("<template>event</>");
         }
     }
 }

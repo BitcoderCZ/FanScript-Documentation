@@ -1,7 +1,2 @@
-@type:float
-@name:JOYSTICK_TYPE
-@info:Used by $flink joystick,vec3,float;, determines what the output value is.
-@names:JOYSTICK_TYPE_XZ;;JOYSTICK_TYPE_SCREEN
-@values:0;;1
-@infos:Outputs XZ vector values perpendicular to camera direction \(While assuming that the screen is always facing straight to a certain axis\).;;Outputs XY vector values regardless of where the camera is facing.
-$template constant
+<arg name="name">JOYSTICK_TYPE</>
+<template>constant</>

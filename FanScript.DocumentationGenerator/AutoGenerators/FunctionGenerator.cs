@@ -1,5 +1,4 @@
-﻿using FanScript.Compiler;
-using FanScript.Compiler.Symbols;
+﻿using FanScript.Compiler.Symbols;
 using FanScript.DocumentationGenerator.Utils;
 using System.Reflection;
 
@@ -12,8 +11,6 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
             docSrcPath = Path.Combine(docSrcPath, "Functions");
             Directory.CreateDirectory(docSrcPath);
 
-            Dictionary<string, int> funcDuplicates = new();
-
             foreach (FunctionSymbol? _func in typeof(BuiltinFunctions)
                 .GetFields(BindingFlags.Public | BindingFlags.Static)
                 .Where(f => f.FieldType == typeof(FunctionSymbol))
@@ -25,17 +22,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                     continue;
                 }
 
-                string name = func.Name;
-
-                if (funcDuplicates.TryGetValue(name, out int numb))
-                {
-                    name += numb;
-                    funcDuplicates[func.Name] = numb + 1;
-                }
-                else
-                    funcDuplicates.Add(name, 2);
-
-                name = name.ToUpperFirst();
+                string name = U.FuncToFile(func);
 
                 string path = Path.Combine(docSrcPath, name + ".docsrc");
 
@@ -77,17 +64,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
                         continue;
                     }
 
-                    string name = func.Name;
-
-                    if (funcDuplicates.TryGetValue(name, out int numb))
-                    {
-                        name += numb;
-                        funcDuplicates[func.Name] = numb + 1;
-                    }
-                    else
-                        funcDuplicates.Add(name, 2);
-
-                    name = name.ToUpperFirst();
+                    string name = U.FuncToFile(func);
 
                     string path = Path.Combine(basePath, name + ".docsrc");
 
@@ -110,17 +87,9 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateFunction(BuiltinFunctionSymbol func, TextWriter writer)
         {
-            writer.WriteLine("@type:" + func.Type.Name);
-            writer.WriteLine("@return_info:");
-            writer.WriteLine("@is_generic:" + func.IsGeneric.ToString().ToLowerInvariant());
-            writer.WriteLine("@is_method:" + func.IsMethod.ToString().ToLowerInvariant());
-            writer.WriteLine("@name:" + func.Name);
-            writer.WriteLine("@info:");
-            writer.WriteLine("@param_mods:" + string.Join(";;", func.Parameters.Select(param => param.Modifiers == 0 ? string.Empty : param.Modifiers.ToSyntaxString())));
-            writer.WriteLine("@param_types:" + string.Join(";;", func.Parameters.Select(param => param.Type.Name)));
-            writer.WriteLine("@param_names:" + string.Join(";;", func.Parameters.Select(param => param.Name)));
-            writer.WriteLine("@param_infos:" + ";;".Repeat(Math.Max(0, func.Parameters.Length - 1)));
-            writer.WriteLine("$template function");
+            writer.WriteLine($"<arg name=\"name\">{func.Name}</>");
+            writer.WriteLine($"<arg name=\"param_types\">{string.Join(";", func.Parameters.Select(param => param.Type.Name))}</>");
+            writer.WriteLine("<template>builtin_function</>");
         }
     }
 }

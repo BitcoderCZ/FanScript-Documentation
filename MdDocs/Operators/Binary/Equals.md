@@ -1,3 +1,4 @@
+
 # Equals
 
 Returns if a and b have the same value.
@@ -17,4 +18,5 @@ c = a == b
 - Left: [obj](/MdDocs/Types/Obj.md), Right: [obj](/MdDocs/Types/Obj.md), Result: [bool](/MdDocs/Types/Bool.md)
 
 - Left: [null](/MdDocs/Types/Null.md), Right: [null](/MdDocs/Types/Null.md), Result: [null](/MdDocs/Types/Null.md)
+
 

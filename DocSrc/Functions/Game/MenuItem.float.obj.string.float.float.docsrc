@@ -1,0 +1,3 @@
+<arg name="name">menuItem</>
+<arg name="param_types">float;obj;string;float;float</>
+<template>builtin_function</>

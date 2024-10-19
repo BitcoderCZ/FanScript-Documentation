@@ -1,20 +1,14 @@
-# GetScreenSize(float, float)
 
-Gets the size of the screen.
+
+# GetScreenSize()
+
+Size of the screen in pixels, Width/Height - X/Y.
 
 ```
-void getScreenSize(out float width, out float height)
+vec3 GetScreenSize()
 ```
 
-## Parameters
+## Returns
 
-#### `width`
-Type: [float](/MdDocs/Types/Float.md)
-
-Width of the screen (in pixels).
-
-#### `height`
-Type: [float](/MdDocs/Types/Float.md)
-
-Height of the screen (in pixels).
+[vec3](/MdDocs/Types/Vec3.md)
 

@@ -1,6 +1,7 @@
+
 # String
 
-List of characters.
+List of characters (text).
 
 ```
 string
@@ -8,8 +9,10 @@ string
 
 ## How to create
 
-Strings cannot currently be used as variables, only as arguments to functions.
+Strings cannot currently be used as variables, only as arguments to functions.  
+For example:
 ``` fcs
 shopSection("The string")
 ```
+
 

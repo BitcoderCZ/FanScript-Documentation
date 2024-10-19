@@ -1,0 +1,3 @@
+<arg name="name">log</>
+<arg name="param_types">float;float</>
+<template>builtin_function</>

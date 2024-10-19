@@ -1,6 +1,2 @@
-@name:LogicalOr
-@symbol:||
-@info:Returns true, if a or b are true.
-@type_combs:bool,bool,bool
-@comb_infos:
-$template operator_binary
+<arg name="name">LogicalOr</>
+<template>operator_binary</>

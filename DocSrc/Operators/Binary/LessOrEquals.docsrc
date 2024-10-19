@@ -1,6 +1,2 @@
-@name:LessOrEquals
-@symbol:<=
-@info:Returns if a is less than b or equal to b.
-@type_combs:float,float,bool
-@comb_infos:
-$template operator_binary
+<arg name="name">LessOrEquals</>
+<template>operator_binary</>

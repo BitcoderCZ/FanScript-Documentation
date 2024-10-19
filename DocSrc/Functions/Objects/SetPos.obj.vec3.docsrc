@@ -1,0 +1,3 @@
+<arg name="name">setPos</>
+<arg name="param_types">obj;vec3</>
+<template>builtin_function</>

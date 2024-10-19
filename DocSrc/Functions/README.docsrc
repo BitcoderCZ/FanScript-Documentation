@@ -1,27 +1,31 @@
-# Functions
+<header level="1">Functions</>
 
 Functions are called like so:
 
-$codeblock fcs;
-(functionName(arg0, arg1))
+<codeblock lang="fcs">
+functionName(arg0, arg1)
+</>
 
 You can specify the generic type of a function like so (this isn't needed most of the time as the compiler can usually infer the type from the types of the arguments):
 
-$codeblock fcs;
-(someGenericFunction<theGenericType>(arg0, arg1))
+<codeblock lang="fcs">
+someGenericFunction<theGenericType>(arg0, arg1)
+</>
 
 Ref and out arguments need to be prefixed with the ref/out keyword.
 
-$codeblock fcs;
-(someFunc(ref arg0, out arg1))
+<codeblock lang="fcs">
+someFunc(ref arg0, out arg1)
+</>
 
 Out arguments can be used with expression variable decleration (the variable is declared in the argument) and discards (the result of the out variable is ignored)
 
+<codeblock lang="fcs">
+someFunc(out typeOfArg0 arg0, out _)
+</>
 
-$codeblock fcs;
-(someFunc(out typeOfArg0 arg0, out _))
+If the inline modifier is applied (or the function is only called 1 time), the call to the function gets replaced by the code of the function.
 
+<header level="2">Contents</>
 
-## Contents
-
-$template contents
+<template>contents</>

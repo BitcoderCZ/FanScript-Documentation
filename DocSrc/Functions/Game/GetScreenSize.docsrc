@@ -1,11 +1,3 @@
-@type:void
-@return_info:
-@is_generic:false
-@is_method:false
-@name:getScreenSize
-@info:Gets the size of the screen.
-@param_mods:out;;out
-@param_types:float;;float
-@param_names:width;;height
-@param_infos:Width of the screen \(in pixels\).;;Height of the screen \(in pixels\).
-$template function
+<arg name="name">getScreenSize</>
+<arg name="param_types"></>
+<template>builtin_function</>

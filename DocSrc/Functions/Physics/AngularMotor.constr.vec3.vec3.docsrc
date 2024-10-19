@@ -1,0 +1,3 @@
+<arg name="name">angularMotor</>
+<arg name="param_types">constr;vec3;vec3</>
+<template>builtin_function</>

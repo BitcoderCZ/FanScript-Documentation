@@ -1,0 +1,3 @@
+<arg name="name">setLocked</>
+<arg name="param_types">obj;vec3;vec3</>
+<template>builtin_function</>

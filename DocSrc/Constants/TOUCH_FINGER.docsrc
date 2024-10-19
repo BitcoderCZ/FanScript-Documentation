@@ -1,7 +1,2 @@
-@type:float
-@name:TOUCH_FINGER
-@info:Used by $elink Touch;, determines which finger $elink Touch; detects.
-@names:TOUCH_FINGER_1;;TOUCH_FINGER_2;;TOUCH_FINGER_3
-@values:0;;1;;2
-@infos:The first finger.;;The second finger.;;The third finger.
-$template constant
+<arg name="name">TOUCH_FINGER</>
+<template>constant</>

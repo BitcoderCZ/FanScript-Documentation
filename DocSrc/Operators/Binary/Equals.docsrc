@@ -1,6 +1,2 @@
-@name:Equals
-@symbol:==
-@info:Returns if a and b have the same value.
-@type_combs:float,float,bool;bool,bool,bool;vec3,vec3,bool;obj,obj,bool;null,null,null
-@comb_infos:;;;;;;;;
-$template operator_binary
+<arg name="name">Equals</>
+<template>operator_binary</>

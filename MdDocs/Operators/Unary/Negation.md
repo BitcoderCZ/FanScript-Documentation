@@ -1,3 +1,4 @@
+
 # Negation
 
 Returns the negation of a (5 -> -5, vec3(3, 0, -2) -> vec3(-3, 0, 2)).
@@ -13,4 +14,5 @@ b = -a
 - Operand: [vec3](/MdDocs/Types/Vec3.md), Result: [vec3](/MdDocs/Types/Vec3.md)
 
 - Operand: [rot](/MdDocs/Types/Rot.md), Result: [rot](/MdDocs/Types/Rot.md)
+
 

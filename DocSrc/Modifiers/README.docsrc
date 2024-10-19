@@ -1,4 +1,4 @@
-# Modifiers
+<header level="1">Modifiers</>
 
 Modifiers can be applied to:
 
@@ -9,6 +9,6 @@ Modifiers can be applied to:
 
 To change how they behave.
 
-## Contents
+<header level="2">Contents</>
 
-$template contents
+<template>contents</>

@@ -1,14 +1,4 @@
 ﻿using FanScript.Compiler;
-using FanScript.DocumentationGenerator.Utils;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -32,7 +22,7 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
                 using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(stream))
-                    generateCommand(command,  writer);
+                    generateCommand(command, writer);
 
                 Console.WriteLine($"Generated '{path}'.");
             }
@@ -40,9 +30,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateCommand(BuildCommand command, TextWriter writer)
         {
-            writer.WriteLine("@name:" + command);
-            writer.WriteLine("@info:");
-            writer.WriteLine("$template build_command");
+            writer.WriteLine($"<arg name=\"name\">{Enum.GetName(command)}</>");
+            writer.WriteLine("<template>build_command</>");
         }
     }
 }

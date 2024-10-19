@@ -1,5 +1,5 @@
 ﻿using FanScript.Compiler.Symbols;
-using FanScript.DocumentationGenerator.Utils;
+using FanScript.Utils;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -31,12 +31,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateType(TypeSymbol type, TextWriter writer)
         {
-            writer.WriteLine("@is_generic:" + type.IsGenericDefinition);
-            writer.WriteLine("@name:" + type.Name);
-            writer.WriteLine("@info:");
-            writer.WriteLine("@how_to_create:");
-            writer.WriteLine("@remarks:");
-            writer.WriteLine("$template type");
+            writer.WriteLine($"<arg name=\"name\">{type.Name}</>");
+            writer.WriteLine("<template>type</>");
         }
     }
 }

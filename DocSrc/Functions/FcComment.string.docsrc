@@ -1,0 +1,3 @@
+<arg name="name">fcComment</>
+<arg name="param_types">string</>
+<template>builtin_function</>

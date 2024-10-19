@@ -1,7 +1,7 @@
-# Constants
+<header level="1">Constants</>
 
 These are built in, constant, variables that are used as arguments to some functions, you can think of them basically as enums.
 
-## Contents
+<header level="2">Contents</>
 
-$template contents
+<template>contents</>

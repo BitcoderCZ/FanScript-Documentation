@@ -1,0 +1,3 @@
+<arg name="name">setMass</>
+<arg name="param_types">obj;float</>
+<template>builtin_function</>

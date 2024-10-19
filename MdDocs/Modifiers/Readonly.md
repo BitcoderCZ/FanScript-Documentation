@@ -1,3 +1,4 @@
+
 # Readonly
 
 Makes the variable/parameter readonly - can be assigned only once.
@@ -23,7 +24,7 @@ These modifiers cannot be used with this one:
 
 ## Remarks
 
-- Readonly vairables need to be initialized.
+ - Readonly vairables need to be initialized.
 
 ## Examples
 
@@ -32,4 +33,5 @@ readonly float a = 5 // works
 
 readonly float b // error - A readonly/constant variable needs to be initialized.
 ```
+
 

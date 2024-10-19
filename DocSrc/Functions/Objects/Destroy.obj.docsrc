@@ -1,0 +1,3 @@
+<arg name="name">destroy</>
+<arg name="param_types">obj</>
+<template>builtin_function</>

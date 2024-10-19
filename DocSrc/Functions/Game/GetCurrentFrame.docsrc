@@ -1,12 +1,3 @@
-@type:float
-@return_info:The current frame.
-@is_generic:false
-@is_method:false
-@name:getCurrentFrame
-@info:Gets the current frame.
-@param_mods:
-@param_types:
-@param_names:
-@param_infos:
-@remarks:- Starts at 0, increases by 1 every frame\n- Fancade runs at 60 frames per second.
-$template function
+<arg name="name">getCurrentFrame</>
+<arg name="param_types"></>
+<template>builtin_function</>

@@ -26,11 +26,11 @@
             using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
             using (StreamWriter writer = new StreamWriter(stream))
             {
-                writer.WriteLine("# " + Path.GetRelativePath(startDir, dir).Replace('\\', '/'));
+                writer.WriteLine("<header level=\"1\">" + Path.GetRelativePath(startDir, dir).Replace('\\', '/') + "</>");
                 writer.WriteLine();
-                writer.WriteLine("## Contents");
+                writer.WriteLine("<header level=\"2\">Contents</>");
                 writer.WriteLine();
-                writer.WriteLine("$template contents");
+                writer.WriteLine("<template>contents</>");
                 writer.Flush();
 
                 Console.WriteLine($"Generated '{path}'");

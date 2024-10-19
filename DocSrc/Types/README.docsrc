@@ -1,15 +1,16 @@
-# Types
+<header level="1">Types</>
 
 FanScript is statically typed - types of all variables, functions and parameters needs to be specified.
 
 Generic types are specified like so:
 
-$codeblock fcs;
-(someGenericType<theInnerType>
+<codeblock lang="fcs">
+someGenericType<theInnerType>
 
 // for example
-array<float> // array of type float)
+array<float> // array of type float
+</>
 
-## Contents
+<header level="2">Contents</>
 
-$template contents
+<template>contents</>

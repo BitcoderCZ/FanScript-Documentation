@@ -1,14 +1,2 @@
-@name:Constant
-@info:Makes the variable constant - when compiled, references to this variable get replaced by it's value.\n\nCan be applied to the following variable types:\n- $tlink bool;\n- $tlink float;\n- $tlink vec3;\n- $tlink rot;
-@targets:Variable
-@conflicting:readonly;;saved;;inline
-@required:
-@remarks:- Only constant value can be assigned to variables with this modifier.\n- Constant variables need to be initialized.
-@examples:($codeblock fcs;
-(const float a = 5 // works
-
-float b = 2
-const float c = b // error - Value must be constant.
-
-const float d // error - A readonly/constant variable needs to be initialized.))
-$template modifier
+<arg name="name">Constant</>
+<template>modifier</>

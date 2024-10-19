@@ -1,0 +1,3 @@
+<arg name="name">set</>
+<arg name="param_types">array;float;generic</>
+<template>builtin_function</>

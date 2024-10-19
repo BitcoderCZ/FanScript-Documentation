@@ -1,178 +1,201 @@
 ﻿using FanScript.Compiler;
+using FanScript.Compiler.Binding;
 using FanScript.Compiler.Symbols;
-using FanScript.DocumentationGenerator.Parsing;
-using FanScript.DocumentationGenerator.Tokens;
-using FanScript.DocumentationGenerator.Tokens.Links;
+using FanScript.Compiler.Syntax;
+using FanScript.Documentation.Attributes;
+using FanScript.Documentation.DocElements;
+using FanScript.Documentation.DocElements.Builders;
+using FanScript.Documentation.DocElements.Links;
+using FanScript.DocumentationGenerator.Elements;
 using FanScript.DocumentationGenerator.Utils;
-using System.Collections.Immutable;
+using FanScript.Utils;
 using System.Text;
 
 namespace FanScript.DocumentationGenerator.Builders
 {
-    public sealed class MdBuilder : Builder
+    public sealed class MdBuilder : DocElementBuilder
     {
         private const string linkPrefix = "/MdDocs/";
 
         private string path;
 
-        private StringBuilder builder = new();
+        private readonly Dictionary<string, DocElement?> args = new();
 
-        private readonly Dictionary<string, string> args = new();
-
-        private Func<string, bool> plinkValidator = param => true;
-
-        public MdBuilder(ImmutableArray<Token> tokens, string path) : base(tokens)
+        public MdBuilder(string path)
         {
             this.path = path;
         }
 
-        public override string Build()
+        protected override void buildString(DocString element, StringBuilder builder)
+            => builder.Append(element.Text.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;"));
+
+        protected override void buildHeader(DocHeader element, StringBuilder builder)
+            => builder.Append(new string('#', element.Level) + " " + Build(element.Value));
+
+        protected override void buildUnknownElement(DocElement element, StringBuilder builder)
         {
-            builder.Clear();
-            args.Clear();
-
-            build();
-
-            return builder.ToString();
-        }
-
-        protected override void buildTab(TabToken token)
-            => builder.Append("&nbsp;&nbsp;&nbsp;&nbsp;");
-
-        protected override void buildNewLine(NewLineToken token)
-            => builder.AppendLine();
-
-        protected override void buildString(StringToken token)
-            => builder.Append(token.Value);
-
-        protected override void buildHeader(HeaderToken token)
-            => builder.Append(new string('#', token.Level) + " " + token.Value);
-
-        protected override void buildArg(ArgToken token)
-            => args.Add(token.Name, token.Value);
-
-        protected override void buildTemplate(TemplateToken token)
-        {
-            switch (token.Value)
+            switch (element)
             {
-                case "function":
-                    buildFuntionTemplate();
+                case DocFileArg arg:
+                    buildArg(arg);
                     break;
-                case "constant":
-                    buildConstantTemplate();
-                    break;
-                case "contents":
-                    buildContentsTemplate();
-                    break;
-                case "event":
-                    buildEventTemplate();
-                    break;
-                case "type":
-                    buildTypeTemplate();
-                    break;
-                case "modifier":
-                    buildModifierTemplate();
-                    break;
-                case "operator_binary":
-                    buildBinaryOperatorTemplate();
-                    break;
-                case "operator_unary":
-                    buildUnaryOperatorTemplate();
-                    break;
-                case "build_command":
-                    buildBuildCommandTemplate();
+                case DocFileTemplate template:
+                    buildTemplate(template, builder);
                     break;
                 default:
-                    throw new InvalidDataException($"Unknown template '{token.Value}'.");
+                    base.buildUnknownElement(element, builder);
+                    break;
+            }
+        }
+
+        private void buildArg(DocFileArg element)
+            => args.Add(element.Name, element.Value);
+
+        private void buildTemplate(DocFileTemplate element, StringBuilder builder)
+        {
+            switch (element.Value.Text)
+            {
+                case "function":
+                    buildFuntionTemplate(builder);
+                    break;
+                case "builtin_function":
+                    buildBuiltinFuntionTemplate(builder);
+                    break;
+                case "constant":
+                    buildConstantTemplate(builder);
+                    break;
+                case "contents":
+                    buildContentsTemplate(builder);
+                    break;
+                case "event":
+                    buildEventTemplate(builder);
+                    break;
+                case "type":
+                    buildTypeTemplate(builder);
+                    break;
+                case "modifier":
+                    buildModifierTemplate(builder);
+                    break;
+                case "operator_binary":
+                    buildBinaryOperatorTemplate(builder);
+                    break;
+                case "operator_unary":
+                    buildUnaryOperatorTemplate(builder);
+                    break;
+                case "build_command":
+                    buildBuildCommandTemplate(builder);
+                    break;
+                default:
+                    throw new InvalidDataException($"Unknown template '{element.Value}'.");
             }
         }
 
         #region Links
-        protected override void buildLink(LinkToken token)
-            => builder.Append($"[{token.DisplayString}]({token.Value})");
-        protected override void buildParamLink(ParamLinkToken token)
+        protected override void buildUrlLink(UrlLink element, StringBuilder builder)
         {
-            if (!plinkValidator(token.Value))
-                throw new Exception($"Parameter '{token.Value}' doesn't exist.");
-
-            builder.Append($"[{token.Value}]({StringUtils.ToHeaderRef(token.Value)})");
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({link})");
         }
-        protected override void buildConstantLink(ConstantLinkToken token)
-            => builder.Append($"[{token.Value}]({linkPrefix}Constants/{token.Value}.md)");
-        protected override void buildConstantValueLink(ConstantValueLinkToken token)
-            => builder.Append($"[{token.Value}]({linkPrefix}Constants/{token.ConstantName}.md{StringUtils.ToHeaderRef(token.Value)})");
-        protected override void buildFunctionLink(FunctionLinkToken token)
+        protected override void buildParamLink(ParamLink element, StringBuilder builder)
         {
-            string[] split = token.Value.Split(',');
-            string name = split[0];
-            int numbParams = split.Length - 1;
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({StringUtils.ToHeaderRef(link)})");
+        }
+        protected override void buildConstantLink(ConstantLink element, StringBuilder builder)
+        {
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({linkPrefix}Constants/{link}.md)");
+        }
+        protected override void buildConstantValueLink(ConstantValueLink element, StringBuilder builder)
+        {
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({linkPrefix}Constants/{link}.md{StringUtils.ToHeaderRef(display)})");
+        }
+        protected override void buildFunctionLink(FunctionLink element, StringBuilder builder)
+        {
+            FunctionSymbol func = element.Function;
 
-            // remove distinguishing number
-            if (char.IsDigit(name[^1]))
-                name = name.Substring(0, name.Length - 1);
+            builder.Append('[');
 
-            TypeSymbol[] paramTypes = new TypeSymbol[numbParams];
+            builder.Append(func.Name);
+            if (func.IsGeneric)
+                builder.Append("<>");
 
-            for (int i = 0; i < numbParams; i++)
-                paramTypes[i] = TypeSymbol.GetTypeInternal(split[i + 1]);
+            builder.Append('(');
+            builder.Append(string.Join(',', func.Parameters.Select(param => param.Type.ToString())));
+            builder.Append(')');
 
-            int sameNameCounter = 0;
-
-            foreach (var (func, category) in BuiltinFunctions.GetAllWithCategory())
+            builder.Append($"]({linkPrefix}Functions/");
+            if (func.Namespace.Length > 1)
             {
-                if (func.Name == name &&
-                    func.Parameters.Length == numbParams &&
-                    func.Parameters.Select(param => param.Type).SequenceEqual(paramTypes))
-                {
-                    builder.Append('[');
-
-                    builder.Append(func.Name);
-                    if (func.IsGeneric)
-                        builder.Append("<>");
-
-                    builder.Append('(');
-                    builder.Append(string.Join(',', func.Parameters.Select(param => param.Type.ToString())));
-                    builder.Append(')');
-
-                    builder.Append($"]({linkPrefix}Functions/");
-                    if (!string.IsNullOrEmpty(category))
-                    {
-                        builder.Append(category);
-                        builder.Append('/');
-                    }
-                    builder.Append(name.ToUpperFirst());
-                    if (sameNameCounter != 0)
-                        builder.Append(sameNameCounter + 1);
-                    builder.Append(".md)");
-
-                    return;
-                }
-
-                if (func.Name == name)
-                    sameNameCounter++;
+                builder.Append(func.Namespace.Slice(1)); // remove the builtin/
+                builder.Append('/');
             }
-
-            throw new Exception($"Function '{name}' with {numbParams} parameters ({string.Join(", ", paramTypes.Select(type => type.ToString()))}) wasn't found.");
+            builder.Append(U.FuncToFile(func));
+            builder.Append(".md)");
         }
-        protected override void buildEventLink(EventLinkToken token)
-            => builder.Append($"[{token.Value}]({linkPrefix}Events/{token.Value}.md)");
-        protected override void buildTypeLink(TypeLinkToken token)
-            => appendType(token.Value);
-        protected override void buildModifierLink(ModifierLinkToken token)
-            => builder.Append($"[{token.Value}]({linkPrefix}Modifiers/{ModifiersE.FromKind(FanScript.Compiler.Syntax.SyntaxFacts.GetKeywordKind(token.Value))}.md)");
-        protected override void buildBuildCommandLink(BuildCommandLinkToken token)
-            => builder.Append($"[{token.Value.ToLowerFirst()}]({linkPrefix}BuildCommands/{token.Value.ToUpperFirst()}.md)");
+        protected override void buildEventLink(EventLink element, StringBuilder builder)
+        {
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({linkPrefix}Events/{link}.md)");
+        }
+
+        protected override void buildTypeLink(TypeLink element, StringBuilder builder)
+            => appendType(element.Type, builder);
+        protected override void buildModifierLink(ModifierLink element, StringBuilder builder)
+        {
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{display}]({linkPrefix}Modifiers/{link}.md)");
+        }
+
+        protected override void buildBuildCommandLink(BuildCommandLink element, StringBuilder builder)
+        {
+            var (display, link) = element.GetStrings();
+            builder.Append($"[{link}]({linkPrefix}BuildCommands/{display}.md)");
+        }
         #endregion
 
-        protected override void buildCodeBlock(CodeBlockToken token)
+        protected override void buildCodeBlock(DocCodeBlock element, StringBuilder builder)
         {
-            builder.AppendLine("``` " + token.Lang);
-            builder.AppendLine(token.Value);
+            builder.Append("```");
+            if (!string.IsNullOrEmpty(element.Lang))
+            {
+                builder.Append(' ');
+                builder.AppendLine(element.Lang);
+            }
+            else
+                builder.AppendLine();
+
+            builder.AppendLine(element.Value.Text.Trim());
             builder.AppendLine("```");
         }
 
+        protected override void buildList(DocList element, StringBuilder builder)
+        {
+            if (element.Value is DocList.Item onlyItem)
+                buildListItem(onlyItem, builder);
+            else if (element.Value is DocBlock block)
+            {
+                foreach (var item in block.Elements)
+                    if (item is DocList.Item listItem)
+                        buildListItem(listItem, builder);
+            }
+        }
+
+        protected override void buildListItem(DocList.Item element, StringBuilder builder)
+        {
+            if (!builder.IsCurrentLineEmpty())
+                builder.AppendLine();
+
+            builder.Append(" - ");
+            buildElement(element.Value, builder);
+
+            if (!builder.IsCurrentLineEmpty())
+                builder.AppendLine();
+        }
+
         #region Templates
-        private void buildFuntionTemplate()
+        private void buildFuntionTemplate(StringBuilder builder)
         {
             string type = getArg("type");
             string? return_info = getOptionalArg("return_info");
@@ -211,11 +234,9 @@ namespace FanScript.DocumentationGenerator.Builders
 
             if (!string.IsNullOrEmpty(info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
+                checkInfoEnd(info);
 
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(info));
                 builder.AppendLine();
             }
 
@@ -241,7 +262,7 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(' ');
                 }
 
-                appendType(param_types[i], false);
+                appendType(param_types[i], builder, false);
                 builder.Append(' ');
                 builder.Append(param_names[i]);
             }
@@ -263,17 +284,15 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.AppendLine("`");
 
                     builder.Append("Type: ");
-                    appendType(param_types[i]);
+                    appendType(param_types[i], builder);
                     builder.AppendLine();
 
                     if (param_infos is not null && !string.IsNullOrEmpty(param_infos[i]))
                     {
+                        checkInfoEnd(param_infos[i]);
                         builder.AppendLine();
-                        string builtInfo = parse(param_infos[i]);
-                        if (!builtInfo.EndsWith('.'))
-                            Console.WriteLine("Param infos should end with '.' - " + param_infos[i]);
 
-                        builder.AppendLine(builtInfo);
+                        builder.AppendLine(parse(param_infos[i]));
                     }
 
                     builder.AppendLine();
@@ -284,18 +303,16 @@ namespace FanScript.DocumentationGenerator.Builders
             {
                 builder.AppendLine("## Returns");
                 builder.AppendLine();
-                appendType(type);
+                appendType(type, builder);
                 builder.AppendLine();
 
                 if (!string.IsNullOrEmpty(return_info))
                 {
                     builder.AppendLine();
 
-                    string builtInfo = parse(return_info);
-                    if (!builtInfo.EndsWith('.'))
-                        Console.WriteLine("Param infos should end with '.' - " + return_info);
+                    checkInfoEnd(return_info);
 
-                    builder.AppendLine(builtInfo);
+                    builder.AppendLine(parse(return_info));
                     builder.AppendLine();
                 }
             }
@@ -305,12 +322,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 builder.AppendLine("## Remarks");
                 builder.AppendLine();
 
-                string builtRemarks = parse(remarks);
+                checkInfoEnd(remarks);
 
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
+                builder.AppendLine(parse(remarks));
                 builder.AppendLine();
             }
 
@@ -338,69 +352,201 @@ namespace FanScript.DocumentationGenerator.Builders
 
             string parse(string str)
             {
-                return this.parse(str, paramName => param_names.Contains(paramName)).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildConstantTemplate()
+        private void buildBuiltinFuntionTemplate(StringBuilder builder)
         {
-            string type = getArg("type");
+            string nameArg = getArg("name");
+            string[] param_types = getArg("param_types").Split(";");
+
+            TypeSymbol[] paramTypes;
+            if (param_types.Length == 1 && string.IsNullOrEmpty(param_types[0]))
+                paramTypes = Array.Empty<TypeSymbol>();
+            else
+                paramTypes = param_types
+                    .Select(str => TypeSymbol.GetTypeInternal(str))
+                    .ToArray();
+
+            FunctionSymbol? func = BuiltinFunctions
+                .GetAll()
+                .FirstOrDefault(func => func.Name == nameArg && func.Parameters.Select(param => param.Type).SequenceEqual(paramTypes));
+
+            if (func is null)
+                throw new Exception($"Built in function \"{nameArg}\" with types ({string.Join(", ", param_types)}) wasn't found.");
+
+            FunctionDocAttribute doc = BuiltinFunctions.FunctionToDoc[func];
+
+            string name = string.IsNullOrEmpty(doc.NameOverwrite) ? func.Name : doc.NameOverwrite;
+
+            builder.Append($"# {name.ToUpperFirst()}");
+            if (func.IsGeneric)
+                builder.Append("<>");
+            builder.AppendLine("(" + string.Join(", ", func.Parameters.Select(param => param.Type.Name)) + ")");
+            builder.AppendLine();
+
+            if (!string.IsNullOrEmpty(doc.Info))
+            {
+                builder.AppendLine(parse(doc.Info));
+                builder.AppendLine();
+            }
+
+            builder.AppendLine("```");
+
+            builder.Append(func.Type.Name);
+            builder.Append(' ');
+            builder.Append(name);
+            if (func.IsGeneric)
+                builder.Append("<>");
+            builder.Append('(');
+
+            for (int i = 0; i < func.Parameters.Length; i++)
+            {
+                var param = func.Parameters[i];
+
+                if (i != 0)
+                    builder.Append(", ");
+                else if (func.IsMethod)
+                    builder.Append("this ");
+
+                if (param.Modifiers != 0)
+                {
+                    builder.Append(param.Modifiers.ToSyntaxString());
+                    builder.Append(' ');
+                }
+
+                appendType(param.Type, builder, false);
+                builder.Append(' ');
+                builder.Append(param.Name);
+            }
+
+            builder.AppendLine(")");
+
+            builder.AppendLine("```");
+            builder.AppendLine();
+
+            if (func.Parameters.Length != 0)
+            {
+                builder.AppendLine("## Parameters");
+                builder.AppendLine();
+
+                for (int i = 0; i < func.Parameters.Length; i++)
+                {
+                    var param = func.Parameters[i];
+
+                    builder.Append("#### `");
+                    builder.Append(param.Name);
+                    builder.AppendLine("`");
+
+                    builder.Append("Type: ");
+                    appendType(param.Type, builder);
+                    builder.AppendLine();
+
+                    if (doc.ParameterInfos is not null && !string.IsNullOrEmpty(doc.ParameterInfos[i]))
+                    {
+                        builder.AppendLine();
+
+                        checkInfoEnd(doc.ParameterInfos[i]);
+
+                        builder.AppendLine(parse(doc.ParameterInfos[i]!));
+                    }
+
+                    builder.AppendLine();
+                }
+            }
+
+            if (func.Type != TypeSymbol.Void)
+            {
+                builder.AppendLine("## Returns");
+                builder.AppendLine();
+                appendType(func.Type, builder);
+                builder.AppendLine();
+
+                if (!string.IsNullOrEmpty(doc.ReturnValueInfo))
+                {
+                    builder.AppendLine();
+
+                    checkInfoEnd(doc.ReturnValueInfo);
+
+                    builder.AppendLine(parse(doc.ReturnValueInfo));
+                    builder.AppendLine();
+                }
+            }
+
+            buildRemarksExamplesRelated(doc, parse, builder);
+
+            string parse(string str)
+            {
+                return this.parse(str, func).Trim();
+            }
+        }
+        private void buildConstantTemplate(StringBuilder builder)
+        {
             string name = getArg("name");
-            string? info = getOptionalArg("info");
-            string[] names = getArg("names").Split(";;");
-            string[] values = getArg("values").Split(";;");
-            string[]? infos = getOptionalArg("infos")?.Split(";;");
 
-            if (values.Length != names.Length)
-                throw new InvalidDataException("values length must match names length");
+            ConstantGroup? group = Constants.Groups.FirstOrDefault(con => con.Name == name);
 
-            if (infos is not null && infos.Length != names.Length)
-                throw new InvalidDataException("infos length must match names length");
+            if (group is null)
+                throw new Exception($"Constant group \"{name}\" doesn't exist.");
 
-            int numbValues = names.Length;
+            ConstantDocAttribute doc = Constants.ConstantToDoc[group];
 
             builder.AppendLine($"# {name}");
 
             builder.Append("### Type: ");
-            appendType(type);
+            appendType(group.Type, builder);
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Constant info should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
             }
 
-            builder.AppendLine("```");
-
-            for (int i = 0; i < numbValues; i++)
-                builder.AppendLine(names[i]);
-
-            builder.AppendLine("```");
-
-            for (int i = 0; i < numbValues; i++)
+            if (doc.UsedBy is not null)
             {
-                builder.Append("#### ");
-                builder.AppendLine(names[i]);
+                builder.AppendLine("### Used by");
+                builder.AppendLine();
 
-                builder.Append("Value: ");
-                builder.AppendLine(values[i]);
-
-                if (infos is not null && !string.IsNullOrEmpty(infos[i]))
+                foreach (var item in doc.UsedBy)
                 {
-                    builder.AppendLine();
-
-                    string builtInfo = parse(infos[i]);
-                    if (!builtInfo.EndsWith('.'))
-                        Console.WriteLine("Constant infos should end with '.' - " + infos[i]);
-
-                    builder.AppendLine(parse(infos[i]));
+                    builder.Append(" - ");
+                    builder.AppendLine(parse(item));
                 }
             }
+
+            builder.AppendLine("### Values");
+            builder.AppendLine("```");
+
+            for (int i = 0; i < group.Values.Length; i++)
+                builder.AppendLine(group.Name + "_" + group.Values[i].Name);
+
+            builder.AppendLine("```");
+
+            for (int i = 0; i < group.Values.Length; i++)
+            {
+                Constant value = group.Values[i];
+
+                builder.Append("##### ");
+                builder.AppendLine(group.Name + "_" + value.Name);
+
+                builder.Append("Value: ");
+                builder.AppendLine(value.Value.ToString());
+
+                if (doc.ValueInfos is not null && !string.IsNullOrEmpty(doc.ValueInfos[i]))
+                {
+                    builder.AppendLine();
+                    builder.AppendLine(parse(doc.ValueInfos[i]!));
+                }
+            }
+
+            buildRemarksExamplesRelated(doc, parse, builder);
+
+            string parse(string str)
+            {
+                return this.parse(str, null).Trim();
+            }
         }
-        private void buildContentsTemplate()
+        private void buildContentsTemplate(StringBuilder builder)
         {
             string startDir = Path.GetDirectoryName(path)!;
 
@@ -411,7 +557,9 @@ namespace FanScript.DocumentationGenerator.Builders
                 if (fileName == "README")
                     continue;
 
-                builder.AppendLine($"- [{fileName}]({fileName}.md)");
+                int dotIndex = fileName.IndexOf('.');
+
+                builder.AppendLine($"- [{(dotIndex == -1 ? fileName : fileName.Substring(0, dotIndex))}]({fileName}.md)");
             }
 
             foreach (string dir in Directory.EnumerateDirectories(startDir))
@@ -432,53 +580,32 @@ namespace FanScript.DocumentationGenerator.Builders
                     if (fileName == "README")
                         continue;
 
-                    builder.AppendLine(offset + $"- [{fileName}]({relativeDir}/{fileName}.md)");
+                    int dotIndex = fileName.IndexOf('.');
+
+                    builder.AppendLine(offset + $"- [{(dotIndex == -1 ? fileName : fileName.Substring(0, dotIndex))}]({relativeDir}/{fileName}.md)");
                 }
 
                 foreach (string subDir in Directory.EnumerateDirectories(dir))
                     buildDir(subDir, offset);
             }
         }
-        private void buildEventTemplate()
+        private void buildEventTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string? info = getOptionalArg("info");
-            string[] param_mods = getArg("param_mods").Split(";;");
-            string[] param_types = getArg("param_types").Split(";;");
-            string[] param_names = getArg("param_names").Split(";;");
-            bool[] param_is_constant = getArg("param_is_constant").Split(";;").Select(parseBool).ToArray();
-            string[]? param_infos = getOptionalArg("param_infos")?.Split(";;");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
+            if (!Enum.TryParse(name, out EventType eventType))
+                throw new Exception($"Event \"{name}\" doesn't exist.");
 
-            if (param_mods.Length != param_names.Length)
-                throw new InvalidDataException("param_mods length must match param_names length");
-            if (param_types.Length != param_names.Length)
-                throw new InvalidDataException("param_types length must match param_names length");
-            if (param_is_constant.Length != param_names.Length)
-                throw new InvalidDataException("param_is_constant length must match param_names length");
-
-            if (param_infos is not null && param_infos.Length != param_names.Length)
-                throw new InvalidDataException("param_infos length must match param_names length");
-
-            int numbParams = param_names.Length;
-
-            if (param_names.Length == 1 && string.IsNullOrEmpty(param_names[0]))
-                numbParams = 0;
+            EventTypeInfo info = eventType.GetInfo();
+            EventDocAttribute doc = U.GetAttribute<EventType, EventDocAttribute>(eventType);
 
             builder.Append($"# {name.ToUpperFirst()}");
-            builder.AppendLine("(" + string.Join(", ", param_types) + ")");
+            builder.AppendLine("(" + string.Join(", ", info.Parameters.Select(param => param.Type.Name)) + ")");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
                 builder.AppendLine();
             }
 
@@ -488,23 +615,25 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.Append(name.ToLowerFirst());
             builder.Append('(');
 
-            for (int i = 0; i < numbParams; i++)
+            for (int i = 0; i < info.Parameters.Length; i++)
             {
+                var param = info.Parameters[i];
+
                 if (i != 0)
                     builder.Append(", ");
 
-                if (param_is_constant[i])
+                if (param.IsConstant)
                     builder.Append("const ");
 
-                if (!string.IsNullOrEmpty(param_mods[i]))
+                if (param.Modifiers != 0)
                 {
-                    builder.Append(param_mods[i]);
+                    builder.Append(param.Modifiers.ToSyntaxString());
                     builder.Append(' ');
                 }
 
-                appendType(param_types[i], false);
+                appendType(param.Type, builder, false);
                 builder.Append(' ');
-                builder.Append(param_names[i]);
+                builder.Append(param.Name);
             }
 
             builder.AppendLine(") { }");
@@ -512,102 +641,59 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.AppendLine("```");
             builder.AppendLine();
 
-            if (numbParams != 0)
+            if (info.Parameters.Length != 0)
             {
                 builder.AppendLine("## Parameters");
                 builder.AppendLine();
 
-                for (int i = 0; i < numbParams; i++)
+                for (int i = 0; i < info.Parameters.Length; i++)
                 {
+                    var param = info.Parameters[i];
+
                     builder.Append("#### `");
-                    builder.Append(param_names[i]);
+                    builder.Append(param.Name);
                     builder.AppendLine("`");
 
                     builder.Append("Type: ");
-                    appendType(param_types[i]);
+                    appendType(param.Type, builder);
                     builder.AppendLine();
 
-                    if (param_is_constant[i])
+                    if (param.IsConstant)
                     {
                         builder.AppendLine("Value must be constant.");
                         builder.AppendLine();
                     }
 
-                    if (param_infos is not null && !string.IsNullOrEmpty(param_infos[i]))
+                    if (doc.ParamInfos is not null && !string.IsNullOrEmpty(doc.ParamInfos[i]))
                     {
                         builder.AppendLine();
-                        string builtInfo = parse(param_infos[i]);
-                        if (!builtInfo.EndsWith('.'))
-                            Console.WriteLine("Param infos should end with '.' - " + param_infos[i]);
-
-                        builder.AppendLine(builtInfo);
+                        builder.AppendLine(parse(doc.ParamInfos[i]!));
                     }
 
                     builder.AppendLine();
                 }
             }
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => param_names.Contains(paramName)).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildTypeTemplate()
+        private void buildTypeTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string? info = getOptionalArg("info");
-            string? how_to_create = getOptionalArg("how_to_create");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
+            TypeSymbol type = TypeSymbol.GetTypeInternal(name);
+            TypeDocAttribute doc = TypeSymbol.TypeToDoc[type];
 
             builder.AppendLine($"# {name.ToUpperFirst()}");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
                 builder.AppendLine();
             }
 
@@ -616,80 +702,36 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.AppendLine("```");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(how_to_create))
+            if (!string.IsNullOrEmpty(doc.HowToCreate))
             {
                 builder.AppendLine("## How to create");
                 builder.AppendLine();
-                builder.AppendLine(parse(how_to_create));
+                builder.AppendLine(parse(doc.HowToCreate));
                 builder.AppendLine();
             }
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Types don't have args*/).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildModifierTemplate()
+        private void buildModifierTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string? info = getOptionalArg("info");
 
-            string[] targets = getArg("targets").Split(";;");
-            string[] conflicting = getArg("conflicting").Split(";;");
-            string[]? required = getOptionalArg("required")?.Split(";;");
+            if (!Enum.TryParse(name, out Modifiers mod))
+                throw new Exception($"Modifier \"{name}\" doesn't exist.");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
-
-            Modifiers mod = Enum.Parse<Modifiers>(name);
+            ModifierDocAttribute doc = U.GetAttribute<Modifiers, ModifierDocAttribute>(mod);
 
             builder.AppendLine($"# {name.ToUpperFirst()}");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
                 builder.AppendLine();
             }
 
@@ -702,359 +744,236 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.AppendLine();
             builder.AppendLine("The modifier can be applied to:");
 
-            for (int i = 0; i < targets.Length; i++)
-                builder.AppendLine(" - " + targets[i]);
+            foreach (var target in mod.GetTargets())
+                builder.AppendLine(" - " + Enum.GetName(target));
 
             builder.AppendLine();
 
-            if (conflicting.Length > 0 && !string.IsNullOrEmpty(conflicting[0]))
+            var conflicting = mod.GetConflictingModifiers();
+            if (conflicting.Count > 0)
             {
                 builder.AppendLine("## Conflicting modifiers");
                 builder.AppendLine();
                 builder.AppendLine("These modifiers cannot be used with this one:");
 
-                for (int i = 0; i < conflicting.Length; i++)
-                    builder.AppendLine(" - " + conflicting[i]);
+                foreach (var conflict in conflicting)
+                    builder.AppendLine(" - " + conflict.ToSyntaxString());
 
                 builder.AppendLine();
             }
 
-            if (required is not null && required.Length > 0 && !string.IsNullOrEmpty(required[0]))
+            var required = mod.GetRequiredModifiers();
+            if (required.Count > 0)
             {
                 builder.AppendLine("## Required modifiers");
                 builder.AppendLine();
                 builder.AppendLine("One of these modifiers must be used to use this one:");
 
-                for (int i = 0; i < required.Length; i++)
-                    builder.AppendLine(" - " + required[i]);
+                foreach (var req in required)
+                    builder.AppendLine(" - " + req.ToString());
 
                 builder.AppendLine();
             }
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Modifiers don't have args*/).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildBinaryOperatorTemplate()
+        private void buildBinaryOperatorTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string symbol = getArg("symbol");
-            string? info = getOptionalArg("info");
-            string[] type_combs = getArg("type_combs").Split(";");
-            string[]? comb_infos = getOptionalArg("comb_infos")?.Split(";;");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
+            if (!Enum.TryParse(name, out BoundBinaryOperatorKind @operator))
+                throw new Exception($"Build command \"{name}\" doesn't exist.");
 
-            if (comb_infos is not null && comb_infos.Length != type_combs.Length)
-                throw new InvalidDataException("infos length must match names length");
+            BinaryOperatorDocAttribute doc = U.GetAttribute<BoundBinaryOperatorKind, BinaryOperatorDocAttribute>(@operator);
 
-            int numbValues = type_combs.Length;
+            var combinations = BoundBinaryOperator.Operators
+                .Where(op => op.Kind == @operator)
+                .ToArray();
 
             builder.AppendLine($"# {name.ToUpperFirst()}");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
                 builder.AppendLine();
             }
 
             builder.AppendLine("```");
-            builder.AppendLine($"c = a {symbol} b");
+            builder.AppendLine($"c = a {combinations[0].SyntaxKind.GetText()} b");
             builder.AppendLine("```");
             builder.AppendLine();
 
             builder.AppendLine("## Types");
             builder.AppendLine();
 
-            for (int i = 0; i < numbValues; i++)
+            for (int i = 0; i < combinations.Length; i++)
             {
-                string[] types = type_combs[i].Split(',');
+                var comb = combinations[i];
 
                 builder.Append("- Left: ");
-                appendType(types[0]);
+                appendType(comb.LeftType, builder);
                 builder.Append(", Right: ");
-                appendType(types[1]);
+                appendType(comb.RightType, builder);
                 builder.Append(", Result: ");
-                appendType(types[2]);
+                appendType(comb.Type, builder);
                 builder.AppendLine();
                 builder.AppendLine();
 
-                if (comb_infos is not null && !string.IsNullOrEmpty(comb_infos[i]))
+                if (doc.CombinationInfos is not null && !string.IsNullOrEmpty(doc.CombinationInfos[i]))
                 {
-                    string builtInfo = parse(comb_infos[i]);
-                    if (!builtInfo.EndsWith('.'))
-                        Console.WriteLine("Type combination infos should end with '.' - " + comb_infos[i]);
-
-                    builder.AppendLine(builtInfo);
+                    builder.AppendLine(parse(doc.CombinationInfos[i]!));
                     builder.AppendLine();
                 }
             }
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Operators don't have args*/).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildUnaryOperatorTemplate()
+        private void buildUnaryOperatorTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string symbol = getArg("symbol");
-            string? info = getOptionalArg("info");
-            string[] type_combs = getArg("type_combs").Split(";");
-            string[]? comb_infos = getOptionalArg("comb_infos")?.Split(";;");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
+            if (!Enum.TryParse(name, out BoundUnaryOperatorKind @operator))
+                throw new Exception($"Build command \"{name}\" doesn't exist.");
 
-            if (comb_infos is not null && comb_infos.Length != type_combs.Length)
-                throw new InvalidDataException("infos length must match names length");
+            UnaryOperatorDocAttribute doc = U.GetAttribute<BoundUnaryOperatorKind, UnaryOperatorDocAttribute>(@operator);
 
-            int numbValues = type_combs.Length;
+            var combinations = BoundUnaryOperator.Operators
+                .Where(op => op.Kind == @operator)
+                .ToArray();
 
             builder.AppendLine($"# {name.ToUpperFirst()}");
             builder.AppendLine();
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Infos should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine(parse(doc.Info));
                 builder.AppendLine();
             }
 
             builder.AppendLine("```");
-            builder.AppendLine($"b = {symbol}a");
+            builder.AppendLine($"b = {combinations[0].SyntaxKind.GetText()}a");
             builder.AppendLine("```");
             builder.AppendLine();
 
             builder.AppendLine("## Types");
             builder.AppendLine();
 
-            for (int i = 0; i < numbValues; i++)
+            for (int i = 0; i < combinations.Length; i++)
             {
-                string[] types = type_combs[i].Split(',');
+                var comb = combinations[i];
 
                 builder.Append("- Operand: ");
-                appendType(types[0]);
+                appendType(comb.OperandType, builder);
                 builder.Append(", Result: ");
-                appendType(types[1]);
+                appendType(comb.Type, builder);
                 builder.AppendLine();
                 builder.AppendLine();
 
-                if (comb_infos is not null && !string.IsNullOrEmpty(comb_infos[i]))
+                if (doc.CombinationInfos is not null && !string.IsNullOrEmpty(doc.CombinationInfos[i]))
                 {
-                    string builtInfo = parse(comb_infos[i]);
-                    if (!builtInfo.EndsWith('.'))
-                        Console.WriteLine("Type combination infos should end with '.' - " + comb_infos[i]);
-
-                    builder.AppendLine(builtInfo);
+                    builder.AppendLine(parse(doc.CombinationInfos[i]!));
                     builder.AppendLine();
                 }
             }
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Operators don't have args*/).Trim();
+                return this.parse(str, null).Trim();
             }
         }
-        private void buildBuildCommandTemplate()
+        private void buildBuildCommandTemplate(StringBuilder builder)
         {
             string name = getArg("name");
-            string? info = getOptionalArg("info");
 
-            string? remarks = getOptionalArg("remarks");
-            string? examples = getOptionalArg("examples");
-            string[]? related = getOptionalArg("related")?.Split(";;");
+            if (!Enum.TryParse(name, out BuildCommand buildCommand))
+                throw new Exception($"Build command \"{name}\" doesn't exist.");
+
+            BuildCommandDocAttribute doc = U.GetAttribute<BuildCommand, BuildCommandDocAttribute>(buildCommand);
 
             builder.AppendLine($"# {name}");
 
-            if (!string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(doc.Info))
             {
-                string builtInfo = parse(info);
-                if (!builtInfo.EndsWith('.'))
-                    Console.WriteLine("Build command info should end with '.' - " + info);
-
-                builder.AppendLine(builtInfo);
+                builder.AppendLine();
+                builder.AppendLine(parse(doc.Info));
             }
 
             builder.AppendLine("```");
 
             builder.AppendLine("#" + name.ToLowerFirst());
-            
+
             builder.AppendLine("```");
 
-            if (!string.IsNullOrEmpty(remarks))
-            {
-                builder.AppendLine("## Remarks");
-                builder.AppendLine();
-
-                string builtRemarks = parse(remarks);
-
-                if (!builtRemarks.EndsWith('.'))
-                    Console.WriteLine("Remarks should end with '.' - " + remarks);
-
-                builder.AppendLine(builtRemarks);
-                builder.AppendLine();
-            }
-
-            if (!string.IsNullOrEmpty(examples))
-            {
-                builder.AppendLine("## Examples");
-                builder.AppendLine();
-
-                builder.AppendLine(parse(examples));
-                builder.AppendLine();
-            }
-
-            if (related is not null)
-            {
-                builder.AppendLine("## Related");
-                builder.AppendLine();
-
-                for (int i = 0; i < related.Length; i++)
-                {
-                    builder.Append(" - ");
-                    builder.AppendLine(parse(related[i]));
-                }
-                builder.AppendLine();
-            }
+            buildRemarksExamplesRelated(doc, parse, builder);
 
             string parse(string str)
             {
-                return this.parse(str, paramName => false /*Build commands don't have args*/).Trim();
+                return this.parse(str, null).Trim();
             }
         }
         #endregion
 
-        #region Utils
-        private string parse(string str, Func<string, bool>? plinkValidator = null)
+        private void buildRemarksExamplesRelated(DocumentationAttribute doc, Func<string, string> parseFunc, StringBuilder builder)
         {
-            Parser parser = new Parser(str);
-            MdBuilder builder = new MdBuilder(parser.Parse(), path);
+            checkInfoEnd(doc.Info);
 
-            if (plinkValidator is not null)
-                builder.plinkValidator = plinkValidator;
+            if (doc.Remarks is not null)
+            {
+                builder.AppendLine("## Remarks");
+                builder.AppendLine();
 
-            return builder.Build();
+                foreach (string remark in doc.Remarks)
+                {
+                    checkInfoEnd(remark);
+
+                    builder.Append(" - ");
+                    builder.AppendLine(parseFunc(remark));
+                }
+
+                builder.AppendLine();
+            }
+
+            if (!string.IsNullOrEmpty(doc.Examples))
+            {
+                builder.AppendLine("## Examples");
+                builder.AppendLine();
+
+                builder.AppendLine(parseFunc(doc.Examples));
+                builder.AppendLine();
+            }
+
+            if (doc.Related is not null)
+            {
+                builder.AppendLine("## Related");
+                builder.AppendLine();
+
+                for (int i = 0; i < doc.Related.Length; i++)
+                {
+                    builder.Append(" - ");
+                    builder.AppendLine(parseFunc(doc.Related[i]));
+                }
+                builder.AppendLine();
+            }
+        }
+
+        #region Utils
+        private string parse(string str, FunctionSymbol? currentFunction)
+        {
+            DocElementParser parser = U.CreateParser(currentFunction);
+            return Build(parser.Parse(str));
         }
 
         private bool parseBool(string? value)
@@ -1065,10 +984,16 @@ namespace FanScript.DocumentationGenerator.Builders
                 return bool.Parse(value);
         }
 
-        private void appendType(string typeName, bool link = true)
+        private void appendType(string typeName, StringBuilder builder, bool link = true)
         {
-            // TODO: link
             TypeSymbol type = TypeSymbol.GetTypeInternal(typeName);
+            if (!link || type == TypeSymbol.Generic || type == TypeSymbol.Error || type == TypeSymbol.Void)
+                builder.Append(type.Name);
+            else
+                builder.Append($"[{type.Name}]({linkPrefix}Types/{type.Name.ToUpperFirst()}.md)");
+        }
+        private void appendType(TypeSymbol type, StringBuilder builder, bool link = true)
+        {
             if (!link || type == TypeSymbol.Generic || type == TypeSymbol.Error || type == TypeSymbol.Void)
                 builder.Append(type.Name);
             else
@@ -1078,23 +1003,32 @@ namespace FanScript.DocumentationGenerator.Builders
         private string getArg(string name)
         {
             if (args.TryGetValue(name, out var value))
-                return value;
+                return Build(value);
             else
                 throw new Exception($"Required arg '{name}' missing.");
         }
         private bool getBoolArg(string name)
         {
             if (args.TryGetValue(name, out var value))
-                return bool.Parse(value);
+                return bool.Parse(Build(value));
             else
                 return false;
         }
         private string? getOptionalArg(string name)
         {
             if (args.TryGetValue(name, out var value))
-                return value;
+                return Build(value);
             else
                 return null;
+        }
+
+        private void checkInfoEnd(string? str)
+        {
+            if (!string.IsNullOrEmpty(str) && !str.EndsWith('.') && !str.EndsWith("</>"))
+            {
+                Console.WriteLine("Info strings should end with '.' or end tag (\"</>\"):");
+                Console.WriteLine(str);
+            }
         }
         #endregion
     }

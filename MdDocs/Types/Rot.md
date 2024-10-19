@@ -1,3 +1,4 @@
+
 # Rot
 
 Represents a rotation using euler angles, internaly uses quaternion.
@@ -19,7 +20,4 @@ const float x = 45
 rot c = rot(x, 60, 10) // constant - uses the vector block
 ```
 
-## Related
-
- - [vec3](/MdDocs/Types/Vec3.md)
 

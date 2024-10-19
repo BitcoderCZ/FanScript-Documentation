@@ -1,3 +1,4 @@
+
 # Button(float)
 
 Creates a button for this frame, executes if the button is pressed.
@@ -14,4 +15,5 @@ Value must be constant.
 
 
 Type of the button, one of [BUTTON_TYPE](/MdDocs/Constants/BUTTON_TYPE.md).
+
 

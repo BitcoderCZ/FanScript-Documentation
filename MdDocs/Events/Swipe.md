@@ -1,3 +1,4 @@
+
 # Swipe(vec3)
 
 Executes when a swipe is detected.
@@ -15,5 +16,6 @@ Direction of the swipe (a cardinal direction in the XZ plane).
 
 ## Remarks
 
-If the player holds the finger after swiping, swipe is executed every 15 frames.
+ - If the player holds the finger after swiping, swipe is executed every 15 frames.
+
 

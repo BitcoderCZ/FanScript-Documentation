@@ -1,8 +1,2 @@
-@name:BoxArt
-@info:Executes when taking a screenshot for the game cover.
-@param_mods:
-@param_types:
-@param_names:
-@param_is_constant:
-@param_infos:
-$template event
+<arg name="name">BoxArt</>
+<template>event</>

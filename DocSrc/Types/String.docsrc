@@ -1,8 +1,2 @@
-@is_generic:False
-@name:string
-@info:List of characters.
-@how_to_create:(Strings cannot currently be used as variables, only as arguments to functions.
-$codeblock fcs;
-(shopSection("The string")))
-@remarks:
-$template type
+<arg name="name">string</>
+<template>type</>

@@ -1,0 +1,3 @@
+<arg name="name">axisAngle</>
+<arg name="param_types">vec3;float</>
+<template>builtin_function</>

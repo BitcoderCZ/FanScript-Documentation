@@ -1,0 +1,3 @@
+<arg name="name">pow</>
+<arg name="param_types">float;float</>
+<template>builtin_function</>

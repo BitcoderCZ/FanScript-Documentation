@@ -1,6 +1,7 @@
+
 # Bool
 
-true or false.
+Holds one of 2 values: true or false.
 
 ```
 bool
@@ -12,4 +13,5 @@ bool
 bool a = false
 bool b = true
 ```
+
 

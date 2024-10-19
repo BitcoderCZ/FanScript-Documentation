@@ -1,7 +1,4 @@
 ﻿using FanScript.Compiler;
-using FanScript.DocumentationGenerator.Utils;
-using System.Diagnostics;
-using System.Globalization;
 
 namespace FanScript.DocumentationGenerator.AutoGenerators
 {
@@ -33,26 +30,8 @@ namespace FanScript.DocumentationGenerator.AutoGenerators
 
         private static void generateConstant(ConstantGroup group, TextWriter writer)
         {
-            writer.WriteLine("@type:" + group.Type);
-            writer.WriteLine("@name:" + group.Name);
-            writer.WriteLine("@info:");
-            writer.WriteLine("@names:" + string.Join(";;", group.Values.Select(con => group.Name + "_" + con.Name)));
-            writer.WriteLine("@values:" + string.Join(";;", group.Values.Select(con => toString(con.Value))));
-            writer.WriteLine("@infos:" + ";;".Repeat(Math.Max(0, group.Values.Length - 1)));
-            writer.WriteLine("$template constant");
-
-            string toString(object o)
-            {
-                Debug.Assert(o is not null);
-
-                switch (o)
-                {
-                    case float f:
-                        return f.ToString(CultureInfo.InvariantCulture);
-                    default:
-                        return o.ToString()!;
-                }
-            }
+            writer.WriteLine($"<arg name=\"name\">{group.Name}</>");
+            writer.WriteLine("<template>constant</>");
         }
     }
 }

@@ -2,4 +2,5 @@
 
 ## Contents
 
-- [Joystick](Joystick.md)
+- [Joystick](Joystick.vec3.float.md)
+

@@ -1,3 +1,4 @@
+
 # Float
 
 A floating point number.
@@ -15,4 +16,5 @@ float c = .5
 float d = 0b1010_0101 // binary, _ is optional
 float e = 0x1234_ABCD // hexadecimal, _ is optional
 ```
+
 

@@ -1,0 +1,3 @@
+<arg name="name">lerp</>
+<arg name="param_types">rot;rot;float</>
+<template>builtin_function</>

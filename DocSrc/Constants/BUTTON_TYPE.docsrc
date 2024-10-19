@@ -1,7 +1,2 @@
-@type:float
-@name:BUTTON_TYPE
-@info:Used by $elink Button;, determines how it is displayed.
-@names:BUTTON_TYPE_DIRECTION;;BUTTON_TYPE_BUTTON
-@values:0;;1
-@infos:A directional arrow.;;A circle.
-$template constant
+<arg name="name">BUTTON_TYPE</>
+<template>constant</>
