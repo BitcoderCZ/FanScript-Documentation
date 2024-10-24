@@ -21,16 +21,22 @@ Type: [vec3](/MdDocs/Types/Vec3.md)
 To position of the ray.
 
 #### `didHit`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [bool](/MdDocs/Types/Bool.md)
 
 If the ray hit an object.
 
 #### `hitPos`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 The position at which the ray intersected [hitObj](#hitObj).
 
 #### `hitObj`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [obj](/MdDocs/Types/Obj.md)
 
 The object that was hit.

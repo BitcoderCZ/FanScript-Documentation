@@ -15,16 +15,22 @@ Type: [obj](/MdDocs/Types/Obj.md)
 The object to detect collisions for.
 
 #### `object2`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [obj](/MdDocs/Types/Obj.md)
 
 The object which object1 collided with.
 
 #### `impulse`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
 Impact force of the collision.
 
 #### `normal`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Direction of impact from object2 to object1.

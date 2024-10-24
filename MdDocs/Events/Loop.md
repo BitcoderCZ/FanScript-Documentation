@@ -20,6 +20,8 @@ Type: [float](/MdDocs/Types/Float.md)
 The end value (exclusive).
 
 #### `counter`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
 The current value.

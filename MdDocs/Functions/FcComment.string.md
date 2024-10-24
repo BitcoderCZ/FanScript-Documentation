@@ -5,15 +5,17 @@
 Creates a comment, that gets emitted into fancade as comment blocks.
 
 ```
-void fcComment(string TEXT)
+void fcComment(const string TEXT)
 ```
 
 ## Parameters
 
 #### `TEXT`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [string](/MdDocs/Types/String.md)
 
-The text of the comment, must be constant.
+The text of the comment.
 
 ## Examples
 

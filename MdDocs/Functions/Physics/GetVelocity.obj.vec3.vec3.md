@@ -14,11 +14,15 @@ void getVelocity(this obj object, out vec3 velocity, out vec3 spin)
 Type: [obj](/MdDocs/Types/Obj.md)
 
 #### `velocity`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Linear velocity of [object](#object) (units/second).
 
 #### `spin`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Angular velocity of [object](#object) (degrees/second).

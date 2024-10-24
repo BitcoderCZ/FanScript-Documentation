@@ -26,6 +26,8 @@ Type: [vec3](/MdDocs/Types/Vec3.md)
 The other end of the constraint rod.
 
 #### `constraint`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [constr](/MdDocs/Types/Constr.md)
 
 The created constraint.

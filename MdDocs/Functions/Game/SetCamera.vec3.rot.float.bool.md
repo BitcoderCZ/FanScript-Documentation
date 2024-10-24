@@ -5,7 +5,7 @@
 Sets the [position](#position), [rotation](#rotation), [range](#range) and mode of the camera.
 
 ```
-void setCamera(vec3 position, rot rotation, float range, bool PERSPECTIVE)
+void setCamera(vec3 position, rot rotation, float range, const bool PERSPECTIVE)
 ```
 
 ## Parameters
@@ -27,6 +27,8 @@ Type: [float](/MdDocs/Types/Float.md)
  - If in perspective mode specifies half of the field of view.
 
 #### `PERSPECTIVE`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [bool](/MdDocs/Types/Bool.md)
 
 If true, the camera will be in perspective mode, otherwise it will be in orthographic mode.

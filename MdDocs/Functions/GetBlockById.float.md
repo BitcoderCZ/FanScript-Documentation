@@ -5,15 +5,17 @@
 Returns a block with the specified id.
 
 ```
-obj getBlockById(float BLOCK)
+obj getBlockById(const float BLOCK)
 ```
 
 ## Parameters
 
 #### `BLOCK`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-Id of the block, one of [BLOCK](/MdDocs/Constants/BLOCK.md), must be constant.
+Id of the block, one of [BLOCK](/MdDocs/Constants/BLOCK.md).
 
 ## Returns
 

@@ -2,34 +2,40 @@
 
 # GetObject(float, float, float)
 
-Returns the object at ([x](#x), [y](#y), [z](#z)).
+Returns the object at ([X](#X), [Y](#Y), [Z](#Z)).
 
 ```
-obj getObject(float x, float y, float z)
+obj getObject(const float X, const float Y, const float Z)
 ```
 
 ## Parameters
 
-#### `x`
+#### `X`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-X position of the object, must be constant.
+X position of the object.
 
-#### `y`
+#### `Y`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-Y position of the object, must be constant.
+Y position of the object.
 
-#### `z`
+#### `Z`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-Z position of the object, must be constant.
+Z position of the object.
 
 ## Returns
 
 [obj](/MdDocs/Types/Obj.md)
 
-The object at ([x](#x), [y](#y), [z](#z)).
+The object at ([X](#X), [Y](#Y), [Z](#Z)).
 
 ## Related
 

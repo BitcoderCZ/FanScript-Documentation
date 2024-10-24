@@ -16,6 +16,8 @@ Type: [obj](/MdDocs/Types/Obj.md)
 The object to copy.
 
 #### `copy`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [obj](/MdDocs/Types/Obj.md)
 
 The copy of [object](#object).

@@ -5,7 +5,7 @@
 Sets the [score](#score) and/or [coins](#coins).
 
 ```
-void setScore(float score, float coins, float RANKING)
+void setScore(float score, float coins, const float RANKING)
 ```
 
 ## Parameters
@@ -21,8 +21,10 @@ Type: [float](/MdDocs/Types/Float.md)
 The new amount of coins.
 
 #### `RANKING`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-How players are ranked, one of [RANKING](/MdDocs/Constants/RANKING.md), must be constant.
+How players are ranked, one of [RANKING](/MdDocs/Constants/RANKING.md).
 
 

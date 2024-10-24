@@ -9,6 +9,7 @@ using FanScript.Documentation.DocElements.Links;
 using FanScript.DocumentationGenerator.Elements;
 using FanScript.DocumentationGenerator.Utils;
 using FanScript.Utils;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace FanScript.DocumentationGenerator.Builders
@@ -139,7 +140,6 @@ namespace FanScript.DocumentationGenerator.Builders
             var (display, link) = element.GetStrings();
             builder.Append($"[{display}]({linkPrefix}Events/{link}.md)");
         }
-
         protected override void buildTypeLink(TypeLink element, StringBuilder builder)
             => appendType(element.Type, builder);
         protected override void buildModifierLink(ModifierLink element, StringBuilder builder)
@@ -147,7 +147,6 @@ namespace FanScript.DocumentationGenerator.Builders
             var (display, link) = element.GetStrings();
             builder.Append($"[{display}]({linkPrefix}Modifiers/{link}.md)");
         }
-
         protected override void buildBuildCommandLink(BuildCommandLink element, StringBuilder builder)
         {
             var (display, link) = element.GetStrings();
@@ -438,6 +437,28 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(param.Name);
                     builder.AppendLine("`");
 
+                    if (param.Modifiers != 0)
+                    {
+                        builder.Append("Modifiers: ");
+
+                        bool first = true;
+
+                        foreach (var mod in Enum.GetValues<Modifiers>())
+                        {
+                            if (param.Modifiers.HasFlag(mod))
+                            {
+                                if (!first)
+                                    builder.Append(", ");
+
+                                first = false;
+                                buildModifierLink(new ModifierLink(ImmutableArray<DocArg>.Empty, new DocString(string.Empty), mod), builder);
+                            }
+                        }
+
+                        builder.AppendLine();
+                        builder.AppendLine();
+                    }
+
                     builder.Append("Type: ");
                     appendType(param.Type, builder);
                     builder.AppendLine();
@@ -622,9 +643,6 @@ namespace FanScript.DocumentationGenerator.Builders
                 if (i != 0)
                     builder.Append(", ");
 
-                if (param.IsConstant)
-                    builder.Append("const ");
-
                 if (param.Modifiers != 0)
                 {
                     builder.Append(param.Modifiers.ToSyntaxString());
@@ -654,15 +672,31 @@ namespace FanScript.DocumentationGenerator.Builders
                     builder.Append(param.Name);
                     builder.AppendLine("`");
 
+                    if (param.Modifiers != 0)
+                    {
+                        builder.Append("Modifiers: ");
+
+                        bool first = true;
+
+                        foreach (var mod in Enum.GetValues<Modifiers>())
+                        {
+                            if (param.Modifiers.HasFlag(mod))
+                            {
+                                if (!first)
+                                    builder.Append(", ");
+
+                                first = false;
+                                buildModifierLink(new ModifierLink(ImmutableArray<DocArg>.Empty, new DocString(string.Empty), mod), builder);
+                            }
+                        }
+
+                        builder.AppendLine();
+                        builder.AppendLine();
+                    }
+
                     builder.Append("Type: ");
                     appendType(param.Type, builder);
                     builder.AppendLine();
-
-                    if (param.IsConstant)
-                    {
-                        builder.AppendLine("Value must be constant.");
-                        builder.AppendLine();
-                    }
 
                     if (doc.ParamInfos is not null && !string.IsNullOrEmpty(doc.ParamInfos[i]))
                     {

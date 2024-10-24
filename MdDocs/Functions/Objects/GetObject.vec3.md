@@ -2,24 +2,26 @@
 
 # GetObject(vec3)
 
-Returns the object at [position](#position).
+Returns the object at [POSITION](#POSITION).
 
 ```
-obj getObject(vec3 position)
+obj getObject(const vec3 POSITION)
 ```
 
 ## Parameters
 
-#### `position`
+#### `POSITION`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
-Position of the object, must be constant.
+Position of the object.
 
 ## Returns
 
 [obj](/MdDocs/Types/Obj.md)
 
-The object at [position](#position).
+The object at [POSITION](#POSITION).
 
 ## Related
 

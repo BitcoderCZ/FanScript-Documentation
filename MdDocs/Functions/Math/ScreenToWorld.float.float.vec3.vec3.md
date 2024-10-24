@@ -21,11 +21,15 @@ Type: [float](/MdDocs/Types/Float.md)
 The y screen coordinate.
 
 #### `worldNear`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Position 2 units away from the camera.
 
 #### `worldFar`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 Position 400 units away from the camera.

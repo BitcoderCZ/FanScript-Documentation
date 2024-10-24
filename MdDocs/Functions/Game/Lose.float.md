@@ -3,14 +3,16 @@
 # Lose(float)
 
 ```
-void lose(float DELAY)
+void lose(const float DELAY)
 ```
 
 ## Parameters
 
 #### `DELAY`
+Modifiers: [const](/MdDocs/Modifiers/Constant.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
-Time to lose (in frames), must be constant.
+Time to lose (in frames).
 
 

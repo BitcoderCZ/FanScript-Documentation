@@ -14,9 +14,13 @@ void worldToScreen(vec3 worldPos, out float screenX, out float screenY)
 Type: [vec3](/MdDocs/Types/Vec3.md)
 
 #### `screenX`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
 #### `screenY`
+Modifiers: [out](/MdDocs/Modifiers/Out.md)
+
 Type: [float](/MdDocs/Types/Float.md)
 
 ## Remarks
