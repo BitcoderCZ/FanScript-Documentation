@@ -2,9 +2,11 @@
 
 Documentation for the language [FanScript](https://github.com/BitcoderCZ/FanScript)
 
-Some information was copied from the [Fancade Wiki](https://www.fancade.com/wiki/home)
-
 Documentation in markdown format can be found [here](MdDocs/README.md)
+
+Example "games" can be found [here](https://github.com/BitcoderCZ/FanScript-Games)
+
+Some information was copied from the [Fancade Wiki](https://www.fancade.com/wiki/home)
 
 ## Building
 - Make sure you have installed [dotnet 8 sdk](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
