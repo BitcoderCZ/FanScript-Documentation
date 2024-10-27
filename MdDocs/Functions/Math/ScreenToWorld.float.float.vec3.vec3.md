@@ -40,7 +40,7 @@ Position 400 units away from the camera.
 
 ## Related
 
- - [worldToScreen(vec3,float,float)](/MdDocs/Functions/WorldToScreen.vec3.float.float.md)
- - [worldToScreen(vec3)](/MdDocs/Functions/WorldToScreen.vec3.md)
+ - [worldToScreen(vec3,float,float)](/MdDocs/Functions/Math/WorldToScreen.vec3.float.float.md)
+ - [worldToScreen(vec3)](/MdDocs/Functions/Math/WorldToScreen.vec3.md)
 
 

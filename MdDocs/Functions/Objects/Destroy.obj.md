@@ -17,10 +17,10 @@ The object to destroy.
 
 ## Remarks
 
- - **Only destroys blocks created by [clone(obj,obj)](/MdDocs/Functions/Clone.obj.obj.md)**.
+ - **Only destroys blocks created by [clone(obj,obj)](/MdDocs/Functions/Object/Clone.obj.obj.md)**.
 
 ## Related
 
- - [clone(obj,obj)](/MdDocs/Functions/Clone.obj.obj.md)
+ - [clone(obj,obj)](/MdDocs/Functions/Object/Clone.obj.obj.md)
 
 

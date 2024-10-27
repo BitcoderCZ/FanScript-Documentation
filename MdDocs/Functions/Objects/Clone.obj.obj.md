@@ -28,6 +28,6 @@ The copy of [object](#object).
 
 ## Related
 
- - [destroy(obj)](/MdDocs/Functions/Destroy.obj.md)
+ - [destroy(obj)](/MdDocs/Functions/Object/Destroy.obj.md)
 
 

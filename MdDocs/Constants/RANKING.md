@@ -4,7 +4,7 @@
 Determines how players are ranked.
 ### Used by
 
- - [setScore(float,float,float)](/MdDocs/Functions/SetScore.float.float.float.md)
+ - [setScore(float,float,float)](/MdDocs/Functions/Game/SetScore.float.float.float.md)
 ### Values
 ```
 RANKING_POINTS_MOST

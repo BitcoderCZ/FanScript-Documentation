@@ -25,6 +25,6 @@ The object at [POSITION](#POSITION).
 
 ## Related
 
- - [getObject(float,float,float)](/MdDocs/Functions/GetObject.float.float.float.md)
+ - [getObject(float,float,float)](/MdDocs/Functions/Object/GetObject.float.float.float.md)
 
 

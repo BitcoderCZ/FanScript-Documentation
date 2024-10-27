@@ -39,6 +39,6 @@ The object at ([X](#X), [Y](#Y), [Z](#Z)).
 
 ## Related
 
- - [getObject(vec3)](/MdDocs/Functions/GetObject.vec3.md)
+ - [getObject(vec3)](/MdDocs/Functions/Object/GetObject.vec3.md)
 
 

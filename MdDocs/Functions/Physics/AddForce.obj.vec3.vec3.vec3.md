@@ -32,7 +32,7 @@ The rotational force to apply to [object](#object).
 
 ## Related
 
- - [setVelocity(obj,vec3,vec3)](/MdDocs/Functions/SetVelocity.obj.vec3.vec3.md)
- - [getVelocity(obj,vec3,vec3)](/MdDocs/Functions/GetVelocity.obj.vec3.vec3.md)
+ - [setVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/SetVelocity.obj.vec3.vec3.md)
+ - [getVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/GetVelocity.obj.vec3.vec3.md)
 
 

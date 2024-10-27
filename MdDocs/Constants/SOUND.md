@@ -1,10 +1,10 @@
 
 # SOUND
 ### Type: [float](/MdDocs/Types/Float.md)
-Dermines the sound that is played by [playSound(float,float,float,bool,float)](/MdDocs/Functions/PlaySound.float.float.float.bool.float.md).
+Dermines the sound that is played by [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.float.float.float.bool.float.md).
 ### Used by
 
- - [playSound(float,float,float,bool,float)](/MdDocs/Functions/PlaySound.float.float.float.bool.float.md)
+ - [playSound(float,float,float,bool,float)](/MdDocs/Functions/Sound/PlaySound.float.float.float.bool.float.md)
 ### Values
 ```
 SOUND_CHIRP

@@ -2,7 +2,7 @@
 
 # AngularSpring(constr, vec3, vec3)
 
-Makes the constraint springy, [angularLimits(constr,vec3,vec3)](/MdDocs/Functions/AngularLimits.constr.vec3.vec3.md) must be called before for angular spring to work.
+Makes the constraint springy, [angularLimits(constr,vec3,vec3)](/MdDocs/Functions/Physics/AngularLimits.constr.vec3.vec3.md) must be called before for angular spring to work.
 
 ```
 void angularSpring(this constr constraint, vec3 stiffness, vec3 damping)
@@ -25,6 +25,6 @@ How much damping (drag) to apply.
 
 ## Related
 
- - [addConstraint(obj,obj,vec3,constr)](/MdDocs/Functions/AddConstraint.obj.obj.vec3.constr.md)
+ - [addConstraint(obj,obj,vec3,constr)](/MdDocs/Functions/Physics/AddConstraint.obj.obj.vec3.constr.md)
 
 

@@ -43,7 +43,7 @@ Which sound to play, one of [SOUND](/MdDocs/Constants/SOUND.md).
 
 ## Related
 
- - [stopSound(float)](/MdDocs/Functions/StopSound.float.md)
- - [setVolumePitch(float,float,float)](/MdDocs/Functions/SetVolumePitch.float.float.float.md)
+ - [stopSound(float)](/MdDocs/Functions/Sound/StopSound.float.md)
+ - [setVolumePitch(float,float,float)](/MdDocs/Functions/Sound/SetVolumePitch.float.float.float.md)
 
 

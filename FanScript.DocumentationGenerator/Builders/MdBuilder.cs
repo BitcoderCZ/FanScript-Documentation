@@ -129,7 +129,7 @@ namespace FanScript.DocumentationGenerator.Builders
             builder.Append($"]({linkPrefix}Functions/");
             if (func.Namespace.Length > 1)
             {
-                builder.Append(func.Namespace.Slice(1)); // remove the builtin/
+                builder.Append(func.Namespace.Slice(1).CapitalizeFirst()); // remove the builtin/
                 builder.Append('/');
             }
             builder.Append(U.FuncToFile(func));

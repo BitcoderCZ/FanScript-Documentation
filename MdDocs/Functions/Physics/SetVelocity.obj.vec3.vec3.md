@@ -25,7 +25,7 @@ The angular velocity (degrees/second).
 
 ## Related
 
- - [getVelocity(obj,vec3,vec3)](/MdDocs/Functions/GetVelocity.obj.vec3.vec3.md)
- - [addForce(obj,vec3,vec3,vec3)](/MdDocs/Functions/AddForce.obj.vec3.vec3.vec3.md)
+ - [getVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/GetVelocity.obj.vec3.vec3.md)
+ - [addForce(obj,vec3,vec3,vec3)](/MdDocs/Functions/Physics/AddForce.obj.vec3.vec3.vec3.md)
 
 

@@ -4,7 +4,7 @@
 Determines how many times the menu item can be bought.
 ### Used by
 
- - [menuItem(float,obj,string,float,float)](/MdDocs/Functions/MenuItem.float.obj.string.float.float.md)
+ - [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.float.obj.string.float.float.md)
 ### Values
 ```
 MAX_ITEMS_ONOFF

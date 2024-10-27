@@ -45,6 +45,6 @@ Specifies what the initial price is and how it increases, one of [PRICE_INCREASE
 
 ## Related
 
- - [shopSection(string)](/MdDocs/Functions/ShopSection.string.md)
+ - [shopSection(string)](/MdDocs/Functions/Game/ShopSection.string.md)
 
 

@@ -23,6 +23,6 @@ Sine of [num](#num).
 
 ## Related
 
- - [cos(float)](/MdDocs/Functions/Cos.float.md)
+ - [cos(float)](/MdDocs/Functions/Math/Cos.float.md)
 
 

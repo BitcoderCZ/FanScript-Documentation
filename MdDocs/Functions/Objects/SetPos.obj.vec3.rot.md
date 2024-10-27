@@ -21,7 +21,7 @@ Type: [rot](/MdDocs/Types/Rot.md)
 
 ## Related
 
- - [getPos(obj,vec3,rot)](/MdDocs/Functions/GetPos.obj.vec3.rot.md)
- - [setPos(obj,vec3)](/MdDocs/Functions/SetPos.obj.vec3.md)
+ - [getPos(obj,vec3,rot)](/MdDocs/Functions/Object/GetPos.obj.vec3.rot.md)
+ - [setPos(obj,vec3)](/MdDocs/Functions/Object/SetPos.obj.vec3.md)
 
 

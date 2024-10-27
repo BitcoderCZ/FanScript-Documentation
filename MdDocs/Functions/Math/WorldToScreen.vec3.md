@@ -25,7 +25,7 @@ The screen position of [worldPos](#worldPos) (X, Y).
 
 ## Related
 
- - [worldToScreen(vec3,float,float)](/MdDocs/Functions/WorldToScreen.vec3.float.float.md)
- - [screenToWorld(float,float,vec3,vec3)](/MdDocs/Functions/ScreenToWorld.float.float.vec3.vec3.md)
+ - [worldToScreen(vec3,float,float)](/MdDocs/Functions/Math/WorldToScreen.vec3.float.float.md)
+ - [screenToWorld(float,float,vec3,vec3)](/MdDocs/Functions/Math/ScreenToWorld.float.float.vec3.vec3.md)
 
 

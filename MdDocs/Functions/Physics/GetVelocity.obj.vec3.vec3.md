@@ -29,7 +29,7 @@ Angular velocity of [object](#object) (degrees/second).
 
 ## Related
 
- - [setVelocity(obj,vec3,vec3)](/MdDocs/Functions/SetVelocity.obj.vec3.vec3.md)
- - [addForce(obj,vec3,vec3,vec3)](/MdDocs/Functions/AddForce.obj.vec3.vec3.vec3.md)
+ - [setVelocity(obj,vec3,vec3)](/MdDocs/Functions/Physics/SetVelocity.obj.vec3.vec3.md)
+ - [addForce(obj,vec3,vec3,vec3)](/MdDocs/Functions/Physics/AddForce.obj.vec3.vec3.vec3.md)
 
 

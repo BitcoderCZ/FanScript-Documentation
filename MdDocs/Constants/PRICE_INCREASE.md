@@ -4,7 +4,7 @@
 Determines the starting price and how the price increases after buing the menu item.
 ### Used by
 
- - [menuItem(float,obj,string,float,float)](/MdDocs/Functions/MenuItem.float.obj.string.float.float.md)
+ - [menuItem(float,obj,string,float,float)](/MdDocs/Functions/Game/MenuItem.float.obj.string.float.float.md)
 ### Values
 ```
 PRICE_INCREASE_FREE

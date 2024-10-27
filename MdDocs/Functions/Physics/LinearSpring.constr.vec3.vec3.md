@@ -2,7 +2,7 @@
 
 # LinearSpring(constr, vec3, vec3)
 
-Makes the constraint springy, [linearLimits(constr,vec3,vec3)](/MdDocs/Functions/LinearLimits.constr.vec3.vec3.md) must be called before for linear spring to work.
+Makes the constraint springy, [linearLimits(constr,vec3,vec3)](/MdDocs/Functions/Physics/LinearLimits.constr.vec3.vec3.md) must be called before for linear spring to work.
 
 ```
 void linearSpring(this constr constraint, vec3 stiffness, vec3 damping)
@@ -25,6 +25,6 @@ How much damping (drag) to apply.
 
 ## Related
 
- - [addConstraint(obj,obj,vec3,constr)](/MdDocs/Functions/AddConstraint.obj.obj.vec3.constr.md)
+ - [addConstraint(obj,obj,vec3,constr)](/MdDocs/Functions/Physics/AddConstraint.obj.obj.vec3.constr.md)
 
 

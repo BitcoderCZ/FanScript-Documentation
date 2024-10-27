@@ -23,6 +23,6 @@ Cos of [num](#num).
 
 ## Related
 
- - [sin(float)](/MdDocs/Functions/Sin.float.md)
+ - [sin(float)](/MdDocs/Functions/Math/Sin.float.md)
 
 

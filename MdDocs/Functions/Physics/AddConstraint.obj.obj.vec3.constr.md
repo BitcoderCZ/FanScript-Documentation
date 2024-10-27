@@ -34,11 +34,11 @@ The created constraint.
 
 ## Related
 
- - [linearLimits(constr,vec3,vec3)](/MdDocs/Functions/LinearLimits.constr.vec3.vec3.md)
- - [angularLimits(constr,vec3,vec3)](/MdDocs/Functions/AngularLimits.constr.vec3.vec3.md)
- - [linearSpring(constr,vec3,vec3)](/MdDocs/Functions/LinearSpring.constr.vec3.vec3.md)
- - [angularSpring(constr,vec3,vec3)](/MdDocs/Functions/AngularSpring.constr.vec3.vec3.md)
- - [linearMotor(constr,vec3,vec3)](/MdDocs/Functions/LinearMotor.constr.vec3.vec3.md)
- - [angularMotor(constr,vec3,vec3)](/MdDocs/Functions/AngularMotor.constr.vec3.vec3.md)
+ - [linearLimits(constr,vec3,vec3)](/MdDocs/Functions/Physics/LinearLimits.constr.vec3.vec3.md)
+ - [angularLimits(constr,vec3,vec3)](/MdDocs/Functions/Physics/AngularLimits.constr.vec3.vec3.md)
+ - [linearSpring(constr,vec3,vec3)](/MdDocs/Functions/Physics/LinearSpring.constr.vec3.vec3.md)
+ - [angularSpring(constr,vec3,vec3)](/MdDocs/Functions/Physics/AngularSpring.constr.vec3.vec3.md)
+ - [linearMotor(constr,vec3,vec3)](/MdDocs/Functions/Physics/LinearMotor.constr.vec3.vec3.md)
+ - [angularMotor(constr,vec3,vec3)](/MdDocs/Functions/Physics/AngularMotor.constr.vec3.vec3.md)
 
 

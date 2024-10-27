@@ -29,7 +29,7 @@ Type: [float](/MdDocs/Types/Float.md)
 
 ## Related
 
- - [worldToScreen(vec3)](/MdDocs/Functions/WorldToScreen.vec3.md)
- - [screenToWorld(float,float,vec3,vec3)](/MdDocs/Functions/ScreenToWorld.float.float.vec3.vec3.md)
+ - [worldToScreen(vec3)](/MdDocs/Functions/Math/WorldToScreen.vec3.md)
+ - [screenToWorld(float,float,vec3,vec3)](/MdDocs/Functions/Math/ScreenToWorld.float.float.vec3.vec3.md)
 
 

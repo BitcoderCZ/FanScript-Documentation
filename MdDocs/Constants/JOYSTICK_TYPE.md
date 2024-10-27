@@ -1,10 +1,10 @@
 
 # JOYSTICK_TYPE
 ### Type: [float](/MdDocs/Types/Float.md)
-Determines what the output value of [joystick(vec3,float)](/MdDocs/Functions/Joystick.vec3.float.md) is.
+Determines what the output value of [joystick(vec3,float)](/MdDocs/Functions/Control/Joystick.vec3.float.md) is.
 ### Used by
 
- - [joystick(vec3,float)](/MdDocs/Functions/Joystick.vec3.float.md)
+ - [joystick(vec3,float)](/MdDocs/Functions/Control/Joystick.vec3.float.md)
 ### Values
 ```
 JOYSTICK_TYPE_XZ
